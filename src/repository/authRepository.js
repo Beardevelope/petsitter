@@ -13,4 +13,13 @@ export default class AuthRepository {
       data: { email, password, name, userName, petName, petType },
     });
   };
+
+  findUserByEmail = async (email) => {
+    const existeUser = await prisma.User.findUnique({
+      where: {
+        email,
+      },
+    });
+    return existeUser;
+  };
 }

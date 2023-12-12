@@ -1,4 +1,4 @@
-import AuthService from '../service/auth.service.js';
+import AuthService from '../service/authService.js';
 
 export default class AuthController {
   authService = new AuthService();
@@ -32,6 +32,25 @@ export default class AuthController {
       return res.status(400).json({
         success: false,
         message: error.message || '서버 문제 발생, 관리자에게 문의하세요.',
+      });
+    }
+  };
+
+  signInUser = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const result = await this.authService.signInUser(email, password);
+
+      return res.status(200).json({
+        success: true,
+        message: '로그인 성공',
+        data: result,
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        success: false,
+        message: '서버 문제 발생, 관리자에게 문의하세요.',
       });
     }
   };
