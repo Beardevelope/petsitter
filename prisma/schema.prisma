@@ -14,8 +14,8 @@ model Reservation {
   userId          Int
   sitterId        Int
   reservationDate DateTime @map("reservationDate")
-  updatedAt       DateTime @map("updatedAt")
-  createdAt       DateTime @map("createdAt")
+  updatedAt       DateTime @default(updatedAt)       @map("updatedAt")
+  createdAt       DateTime @default()@map("createdAt")
   reviews         Review[]
 
   // Foreign keys
