@@ -7,12 +7,12 @@ const reviewController = new ReviewController();
 //마이페이지 조회
 reviewRouter.get('/myPage', reviewController.myPage);
 //예약페이지 조회
-reviewRouter.get('/reservation', reviewController.reservation);
+reviewRouter.get('/sitter', reviewController.sitter);
 //생성
-reviewRouter.post('/', reviewController.reviewPost);
+reviewRouter.post('/', reviewController.post);
 //수정
-reviewRouter.put('/:reviewId', reviewController.reviewPut);
+reviewRouter.put('/:reviewId', reviewController.put);
 //삭제
-reviewRouter.delete('/:reviewId', reviewController.reviewDelete);
+reviewRouter.delete('/:reviewId', reviewController.delete);
 
 export { reviewRouter }
