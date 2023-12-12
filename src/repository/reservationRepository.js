@@ -3,7 +3,6 @@ import { prisma } from '../../utils/prisma/index.js'
 export default class ReservationRepository {
     createReservation = async ({ userId, reservationDate, sitterId }) => {
         try{
-            console.log(sitterId)
             const userData = await prisma.reservation.create({
                 data: {
                     userId,

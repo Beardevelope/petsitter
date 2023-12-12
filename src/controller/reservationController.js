@@ -6,7 +6,7 @@ export default class ReservationController {
     createController = async (req, res) => {
         try {
             const { reservationDate, sitterId } = req.body;
-            const userId = 1;
+            const userId = req.user.id
             if (!reservationDate) throw new Error ('예약 날짜를 선택해주세요.');
 
             const reservation = await this.reservationService.createService({ 
@@ -23,7 +23,7 @@ export default class ReservationController {
     getAll = async (req, res) => {
         try {
             const { sort } = req.params
-            const userId = 1;
+            const userId = user.user.id;
             const reservations = await this.reservationService.getAll(userId, sort)
             res.json(reservations)
         } catch (error) {
