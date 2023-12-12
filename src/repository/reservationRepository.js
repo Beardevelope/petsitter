@@ -1,4 +1,4 @@
-import prisma from '@prisma/client';
+import { prisma } from '../../utils/prisma/index.js'
 
 export default class ReservationRepository {
     createReservation = async (userId, reservationDate) => {
