@@ -1,4 +1,4 @@
-import AuthService from '../service/auth.service.js';
+import AuthService from '../service/authService.js';
 
 export default class AuthController {
   authService = new AuthService();

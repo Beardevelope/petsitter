@@ -1,4 +1,4 @@
-import AuthRepository from '../repository/auth.repository.js';
+import AuthRepository from '../repository/authRepository.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
