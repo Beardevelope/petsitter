@@ -1,20 +1,30 @@
 // Reservation에 대한 Prisma 스키마
 
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
 model Reservation {
-  reservationId  Int      @id @default(autoincrement()) @map("reservationId")
-  userId         Int      @map("userId")
-  sitter         PetSitter @relation(fields: [sitterId], references: [id]) @map("sitterId")
-  sitterId       Int
-  reservationData DateTime @map("reservationData")
-  updatedAt      DateTime @map("updatedAt")
-  createdAt      DateTime @map("createdAt")
+  reservationId   Int      @id @default(autoincrement()) @map("reservationId")
+  userId          Int
+  sitterId        Int
+  reservationDate DateTime @map("reservationDate")
+  updatedAt       DateTime @map("updatedAt")
+  createdAt       DateTime @map("createdAt")
+  reviews         Review[]
 
   // Foreign keys
   @@index([sitterId], name: "reservation_sitterid_foreign")
   @@index([userId], name: "reservation_userid_foreign")
 
   // Relationship fields
-  user           User     @relation(fields: [userId], references: [userId])
+  user           User      @relation(fields: [userId], references: [userId])
+  sitter         PetSitter @relation(fields: [sitterId], references: [sitterId])
 }
 
 // User에 대한 Prisma 스키마
@@ -22,14 +32,15 @@ model Reservation {
 model User {
   userId         Int      @id @default(autoincrement())
   userEmail      String   @unique @map("UserEmail")
-  password       String   @map("Password")
-  userName       String   @map("UserName")
-  petId          Int      @default(autoincrement()) @unique @map("petID")
+  password       String   @map("password")
+  userName       String   @map("userName")
   petName        String   @map("petName")
   petType        String   @map("petType")
   updatedAt      DateTime @map("updatedAt")
   createdAt      DateTime @map("createdAt")
+  
 
+  reviews Review[]
   // Relationship fields
   reservations   Reservation[]
 }
@@ -37,7 +48,7 @@ model User {
 // PetSitter에 대한 Prisma 스키마
 
 model PetSitter {
-  id             Int      @id @default(autoincrement())
+  sitterId       Int      @id @default(autoincrement())
   career         Int      @map("career")
   nickName       Int      @map("nickName")
   sitterEmail    String   @map("sitterEmail")
@@ -45,7 +56,7 @@ model PetSitter {
   sitterName     String   @map("sitterName")
   createdAt      DateTime @map("createdAt")
   updatedAt      DateTime @map("updatedAt")
-
+  
   // Relationship fields
   reservations   Reservation[]
 }
@@ -53,14 +64,15 @@ model PetSitter {
 // Review에 대한 Prisma 스키마
 
 model Review {
-  reviewId       Int      @id @default(autoincrement()) @map("ReviewId")
-  reservation    Reservation @relation(fields: [reservationId], references: [reservationId]) @map("ReservationId")
-  reservationId  Int
-  content        String   @map("Content")
+  reviewId       Int      @id @default(autoincrement()) @map("reviewId")
+  reservation    Reservation @relation(fields: [reservationId], references: [reservationId])
+  reservationId  Int      @map("reservationId")
+  content        String   @map("content")
   createdAt      DateTime @map("createdAt")
   updatedAt      DateTime @map("updatedAt")
-  user           User     @relation(fields: [userId], references: [userId]) @map("userId")
-
+  user           User     @relation(fields: [userId], references: [userId])
+  userId         Int      @map("userId")
+  
   // Foreign keys
   @@index([reservationId], name: "review_reservationid_foreign")
   @@index([userId], name: "review_userid_foreign")
