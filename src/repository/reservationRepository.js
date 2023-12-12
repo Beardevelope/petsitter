@@ -1,12 +1,13 @@
 import { prisma } from '../../utils/prisma/index.js'
 
 export default class ReservationRepository {
-    createReservation = async (userId, reservationDate) => {
+    createReservation = async (userId, reservationDate, sitterId) => {
         try{
             const userData = await prisma.reservation.create({
                 data: {
                     userId,
                     reservationDate,
+                    sitterId
                 },
             });
 

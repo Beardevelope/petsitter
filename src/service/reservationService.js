@@ -3,8 +3,8 @@ import ReservationRepository from '../repository/reservationRepository.js'
 export default class ReservationService {
     reservationRepository = new ReservationRepository();
     
-    createService = async (userId, reservationDate) => {
-        const reservation = await this.reservationRepository.create(userId, reservationDate);
+    createService = async (userId, reservationDate, sitterId) => {
+        const reservation = await this.reservationRepository.create(userId, reservationDate, sitterId);
         return reservation
     } 
 

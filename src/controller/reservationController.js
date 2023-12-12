@@ -5,7 +5,7 @@ export default class ReservationController {
 
     createController = async (req, res) => {
         try {
-            const { reservationDate } = req.body;
+            const { reservationDate, sitterId } = req.body;
             const userId = req.user.userId;
             if (!reservationDate) throw new Error ('예약 날짜를 선택해주세요.');
 
