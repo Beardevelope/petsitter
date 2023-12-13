@@ -6,7 +6,7 @@ export default class ReservationController {
     createController = async (req, res) => {
         try {
             const { reservationDate, sitterId } = req.body;
-            const userId = req.user.id
+            const userId = req.locals.userId
             if (!reservationDate) throw new Error ('예약 날짜를 선택해주세요.');
 
             const reservation = await this.reservationService.createService({ 
@@ -23,7 +23,7 @@ export default class ReservationController {
     getAll = async (req, res) => {
         try {
             const { sort } = req.params
-            const userId = user.user.id;
+            const userId = req.locals.userId;
             const reservations = await this.reservationService.getAll(userId, sort)
             res.json(reservations)
         } catch (error) {
@@ -47,8 +47,9 @@ export default class ReservationController {
     deleteController = async (req, res) => {
         try {
             const { reservationId } = req.params;
+            console.log(reservationId)
             const reservation = await this.reservationService.deleteService(Number(reservationId));
-            res.json('삭제 성공', reservation)
+            res.json({ messsage: '삭제 성공', reservation })
         } catch (error) {
             console.error(error)
         }
