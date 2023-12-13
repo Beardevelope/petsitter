@@ -96,7 +96,7 @@ export class AuthService {
     }
     // 토큰의 만료시간 설정 12시간..
     const token = jwt.sign(
-      { userId: existUser.userId },
+      { sitterId: existUser.sitterId },
       process.env.JWT_ACCESS_TOKEN_SECRET,
       {
         expiresIn: "12h",
