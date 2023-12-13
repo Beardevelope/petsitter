@@ -22,7 +22,7 @@ export default class UserService {
   // user Info update
 
   updatedUser = async (userId, password, userName, petName, petType) => {
-    const user = await this.userRepository.findUserById({ userId });
+    const user = await this.userRepository.findUserById(userId);
     if (!user) throw Error('존재하지 않는 회원입니다.');
     // const user = await this.userRepository.findUserById(userId);
 
