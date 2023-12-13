@@ -7,8 +7,7 @@ export class ReviewController {
 
     myPage = async (req, res, next) => {
         try {
-            // const { id: userId } = res.locals.user;
-            const { userId } = req.body;
+            const { id: userId } = res.locals.user;
             const data = await this.reviewService.myPage({
                 userId
             })

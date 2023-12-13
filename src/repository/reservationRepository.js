@@ -2,7 +2,7 @@ import { prisma } from '../utils/prisma/index.js'
 
 export default class ReservationRepository {
     createReservation = async ({ userId, reservationDate, sitterId }) => {
-        try{
+        try {
             const userData = await prisma.reservation.create({
                 data: {
                     userId,
@@ -16,7 +16,7 @@ export default class ReservationRepository {
             console.error(error);
             throw error;
         }
-    
+
     }
 
     getAll = async (userId, sort) => {
@@ -26,10 +26,10 @@ export default class ReservationRepository {
                 orderBy: { createdAt: sort.toUpperCase() === 'ASC' ? 'asc' : 'desc' },
             });
 
-            return userData; 
+            return userData;
         } catch (error) {
             console.error(error);
-            throw error; 
+            throw error;
         }
     }
 
@@ -39,19 +39,31 @@ export default class ReservationRepository {
                 where: { reservationId: reservationId },
                 data: { reservationDate: reservationDate },
             });
-    
+
             return updatedReservation;
         } catch (error) {
             console.error(error);
-            throw error; 
+            throw error;
         }
     }
 
     delete = async (reservationId) => {
         const userData = await prisma.reservation.delete({
             where: { reservationId: reservationId },
-            
+
         })
         return userData
+    }
+
+    getMyPage = async (userId) => {
+        try {
+            const userData = await prisma.reservation.findMany({
+                where: { userId },
+            });
+            return userData;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
     }
 }

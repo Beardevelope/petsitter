@@ -9,5 +9,5 @@ reservationRouter.post('/', needSignin, reservationController.createController);
 reservationRouter.get('/', needSignin, reservationController.getAll);
 reservationRouter.put('/:reservationId', needSignin, reservationController.updateController);
 reservationRouter.delete('/:reservationId', needSignin, reservationController.deleteController);
-
+reservationRouter.get('/myPage', needSignin, reservationController.getMyPage);
 export { reservationRouter };

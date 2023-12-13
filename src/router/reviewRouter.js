@@ -6,9 +6,9 @@ const reviewRouter = Router();
 const reviewController = new ReviewController();
 
 //마이페이지 조회
-reviewRouter.get('/myPage/', reviewController.myPage);
+reviewRouter.get('/myPage/', needSignin, reviewController.myPage);
 //예약페이지 조회
-reviewRouter.get('/sitter', reviewController.sitter);
+reviewRouter.get('/sitter', needSignin, reviewController.sitter);
 //생성
 reviewRouter.post('/', reviewController.post);
 //수정

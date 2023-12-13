@@ -13,7 +13,7 @@ model Reservation {
   reservationId   Int      @id @default(autoincrement()) @map("reservationId")
   userId          Int
   sitterId        Int
-  reservationDate DateTime @map("reservationDate")
+  reservationDate String @map("reservationDate")
   updatedAt       DateTime @updatedAt @map("updatedAt")
   createdAt       DateTime @default(now()) @map("createdAt")
   reviews         Review[]
