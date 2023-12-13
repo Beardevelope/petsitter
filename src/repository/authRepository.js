@@ -4,7 +4,7 @@ export default class AuthRepository {
   // 유저 생성
   createUser = async ({ userEmail, password, userName, petName, petType }) => {
     return prisma.User.create({
-      data: { userEmail, password, userName, petName, petType },
+      data: { userEmail, password, userName, petName, petType, updatedAt: new Date(), createdAt: new Date() },
     });
   };
 

@@ -7,7 +7,8 @@ export class ReviewController {
 
     myPage = async (req, res, next) => {
         try {
-            const { id: userId } = res.locals.user;
+            // const { id: userId } = res.locals.user;
+            const { userId } = req.body;
             const data = await this.reviewService.myPage({
                 userId
             })
@@ -23,9 +24,9 @@ export class ReviewController {
 
     sitter = async (req, res, next) => {
         try {
-            const { sitterId } = req.params;
+            const { reservationId } = req.body;
             const data = await this.reviewService.sitter({
-                sitterId
+                reservationId
             })
             return res.status(201).json({
                 success: true,
@@ -39,9 +40,9 @@ export class ReviewController {
 
     post = async (req, res, next) => {
         try {
-            const { content } = req.body;
-            const { id: userId } = res.locals.user;
-            const { reservationId } = req.params;
+            const { content, reservationId } = req.body;
+            // const { id: userId } = res.locals.user;
+            const userId = 1;
             const data = await this.reviewService.post({
                 content,
                 reservationId,
@@ -59,8 +60,7 @@ export class ReviewController {
 
     put = async (req, res, next) => {
         try {
-            const { content } = req.body;
-            const { reservationId } = req.params;
+            const { content, reviewId } = req.body;
             const data = await this.reviewService.put({
                 content,
                 reviewId
@@ -77,7 +77,7 @@ export class ReviewController {
 
     delete = async (req, res, next) => {
         try {
-            const { reviewId } = req.params;
+            const { reviewId } = req.body;
             const data = await this.reviewService.delete({
                 reviewId
             })
