@@ -38,7 +38,7 @@ export default class UserRepository {
 
   // User Info update
   updatedUser = async (userId, userName, petName, petType, password) => {
-    const user = await prisma.user.update({
+    const user = await prisma.User.update({
       where: {
         userId: +userId,
       },
