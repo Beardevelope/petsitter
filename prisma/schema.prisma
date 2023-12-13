@@ -1,5 +1,3 @@
-// Reservation에 대한 Prisma 스키마
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,70 +8,55 @@ datasource db {
 }
 
 model Reservation {
-  reservationId   Int      @id @default(autoincrement()) @map("reservationId")
+  reservationId   Int       @id @default(autoincrement()) @map("reservationId")
   userId          Int
   sitterId        Int
-  reservationDate DateTime @map("reservationDate")
-  updatedAt       DateTime @default(updatedAt)       @map("updatedAt")
-  createdAt       DateTime @default()@map("createdAt")
+  reservationDate String    @map("reservationDate") @db.VarChar(26)
+  updatedAt       DateTime  @updatedAt @map("updatedAt")
+  createdAt       DateTime  @default(now()) @map("createdAt")
+  sitter          PetSitter @relation(fields: [sitterId], references: [sitterId])
+  user            User      @relation(fields: [userId], references: [userId])
   reviews         Review[]
 
-  // Foreign keys
-  @@index([sitterId], name: "reservation_sitterid_foreign")
-  @@index([userId], name: "reservation_userid_foreign")
-
-  // Relationship fields
-  user           User      @relation(fields: [userId], references: [userId])
-  sitter         PetSitter @relation(fields: [sitterId], references: [sitterId])
+  @@index([sitterId], map: "reservation_sitterid_foreign")
+  @@index([userId], map: "reservation_userid_foreign")
 }
-
-// User에 대한 Prisma 스키마
 
 model User {
-  userId         Int      @id @default(autoincrement())
-  userEmail      String   @unique @map("UserEmail")
-  password       String   @map("password")
-  userName       String   @map("userName")
-  petName        String   @map("petName")
-  petType        String   @map("petType")
-  updatedAt      DateTime @map("updatedAt")
-  createdAt      DateTime @map("createdAt")
-  
-
-  reviews Review[]
-  // Relationship fields
-  reservations   Reservation[]
+  userId       Int           @id @default(autoincrement())
+  userEmail    String        @unique @map("UserEmail")
+  password     String        @map("password")
+  userName     String        @map("userName")
+  petName      String        @map("petName")
+  petType      String        @map("petType")
+  updatedAt    DateTime      @updatedAt @map("updatedAt")
+  createdAt    DateTime      @default(now()) @map("createdAt")
+  reservations Reservation[]
+  reviews      Review[]
 }
-
-// PetSitter에 대한 Prisma 스키마
 
 model PetSitter {
-  sitterId       Int      @id @default(autoincrement())
-  career         Int      @map("career")
-  nickName       Int      @map("nickName")
-  sitterEmail    String   @map("sitterEmail")
-  password       String   @map("password")
-  sitterName     String   @map("sitterName")
-  createdAt      DateTime @map("createdAt")
-  updatedAt      DateTime @map("updatedAt")
-  
-  // Relationship fields
-  reservations   Reservation[]
+  sitterId     Int           @id @default(autoincrement())
+  career       Int           @map("career")
+  nickName     String        @map("nickName")
+  sitterEmail  String        @map("sitterEmail")
+  password     String        @map("password")
+  sitterName   String        @map("sitterName")
+  createdAt    DateTime      @default(now()) @map("createdAt")
+  updatedAt    DateTime      @default(now()) @updatedAt @map("updatedAt")
+  reservations Reservation[]
 }
 
-// Review에 대한 Prisma 스키마
-
 model Review {
-  reviewId       Int      @id @default(autoincrement()) @map("reviewId")
-  reservation    Reservation @relation(fields: [reservationId], references: [reservationId])
-  reservationId  Int      @map("reservationId")
-  content        String   @map("content")
-  createdAt      DateTime @map("createdAt")
-  updatedAt      DateTime @map("updatedAt")
-  user           User     @relation(fields: [userId], references: [userId])
-  userId         Int      @map("userId")
-  
-  // Foreign keys
-  @@index([reservationId], name: "review_reservationid_foreign")
-  @@index([userId], name: "review_userid_foreign")
+  reviewId      Int         @id @default(autoincrement()) @map("reviewId")
+  reservationId Int         @map("reservationId")
+  content       String      @map("content")
+  createdAt     DateTime    @default(now()) @map("createdAt")
+  updatedAt     DateTime?   @updatedAt @map("updatedAt")
+  userId        Int         @map("userId")
+  reservation   Reservation @relation(fields: [reservationId], references: [reservationId])
+  user          User        @relation(fields: [userId], references: [userId])
+
+  @@index([reservationId], map: "review_reservationid_foreign")
+  @@index([userId], map: "review_userid_foreign")
 }
