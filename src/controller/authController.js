@@ -5,22 +5,30 @@ export default class AuthController {
 
   signupUser = async (req, res) => {
     try {
-      const { email, password, passwordConfirm, userName, petName, petType } =
-        req.body;
+      const {
+        userEmail,
+        password,
+        passwordConfirm,
+        userName,
+        petName,
+        petType,
+      } = req.body;
 
-      if (!email || !password || !passwordConfirm || !userName) {
+      if (!userEmail || !password || !passwordConfirm || !userName) {
         throw new Error(
           '이메일, 패스워드, 패스워드 확인, 유저 이름은 필수 입력 항목입니다.'
         );
       }
-      const newUser = await this.authService.signup(
-        email,
+      const newUser = await this.authService.signupUser(
+        userEmail,
         password,
         passwordConfirm,
         userName,
         petName,
         petType
       );
+
+      console.log(newUser);
 
       return res.status(201).json({
         success: true,
@@ -38,8 +46,8 @@ export default class AuthController {
 
   signInUser = async (req, res) => {
     try {
-      const { email, password } = req.body;
-      const result = await this.authService.signInUser(email, password);
+      const { userEmail, password } = req.body;
+      const result = await this.authService.signInUser(userEmail, password);
 
       return res.status(200).json({
         success: true,
