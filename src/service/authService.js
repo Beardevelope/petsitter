@@ -72,7 +72,7 @@ export default class AuthService {
         { userEmail: user.userEmail },
         process.env.JWT_ACCESS_TOKEN_SECRET,
         {
-          expiresIn: process.env.JWT.ACCESS_TOKEN_EXPIRES_IN,
+          expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES_IN,
         }
       );
 
