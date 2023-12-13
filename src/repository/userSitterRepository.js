@@ -1,7 +1,6 @@
 import { prisma } from '../utils/prisma/index.js';
 
 export class UserRepository {
-
   // 시터 전체 목록 조회
   getSitterUsers = async () => {
     const users = await prisma.petSitter.findMany({
@@ -9,17 +8,14 @@ export class UserRepository {
         sitterId: true,
         sitterName: true,
         career: true,
-      }
+      },
     });
 
-    return users
-  }
-
-
-
+    return users;
+  };
 
   // userId를 통한 유저 찾기
-  findUSerById = async sitterId => {
+  findUSerById = async (sitterId) => {
     const user = await prisma.petSitter.findFirst({
       where: {
         sitterId: +sitterId,
@@ -48,7 +44,7 @@ export class UserRepository {
   };
 
   // 시터 유저 정보 삭제
-  deleteUser = async sitterId => {
+  deleteUser = async (sitterId) => {
     const user = await prisma.petSitter.delete({
       where: {
         sitterId: +sitterId,
