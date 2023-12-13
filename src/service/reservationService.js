@@ -12,8 +12,8 @@ export default class ReservationService {
         return reservation
     } 
 
-    getAll = async (userId, sort) => {
-        const reservations = await this.reservationRepository.getAll(userId, sort)
+    getAll = async (sitterId, sort) => {
+        const reservations = await this.reservationRepository.getAll(sitterId, sort)
         return reservations
     };
 
