@@ -14,8 +14,8 @@ model Reservation {
   userId          Int
   sitterId        Int
   reservationDate DateTime @map("reservationDate")
-  updatedAt       DateTime @map("updatedAt")
-  createdAt       DateTime @map("createdAt")
+  updatedAt       DateTime @updatedAt @map("updatedAt")
+  createdAt       DateTime @default(now()) @map("createdAt")
   reviews         Review[]
 
   // Foreign keys
@@ -30,14 +30,14 @@ model Reservation {
 // User에 대한 Prisma 스키마
 
 model User {
-  userId         Int      @id @default(autoincrement())
-  userEmail      String   @unique @map("UserEmail")
+  userId         Int      @id             @default(autoincrement())
+  userEmail      String   @unique         @map("UserEmail")
   password       String   @map("password")
   userName       String   @map("userName")
   petName        String   @map("petName")
   petType        String   @map("petType")
-  updatedAt      DateTime @map("updatedAt")
-  createdAt      DateTime @map("createdAt")
+  updatedAt      DateTime @updatedAt      @map("updatedAt")
+  createdAt      DateTime @default(now()) @map("createdAt")
   
 
   reviews Review[]
@@ -48,14 +48,14 @@ model User {
 // PetSitter에 대한 Prisma 스키마
 
 model PetSitter {
-  sitterId       Int      @id @default(autoincrement())
+  sitterId       Int      @id              @default(autoincrement())
   career         Int      @map("career")
-  nickName       Int      @map("nickName")
+  nickName       String   @map("nickName")
   sitterEmail    String   @map("sitterEmail")
   password       String   @map("password")
   sitterName     String   @map("sitterName")
-  createdAt      DateTime @map("createdAt")
-  updatedAt      DateTime @map("updatedAt")
+  createdAt      DateTime @default(now())  @map("createdAt")
+  updatedAt      DateTime @updatedAt       @map("updatedAt")
   
   // Relationship fields
   reservations   Reservation[]
@@ -68,8 +68,8 @@ model Review {
   reservation    Reservation @relation(fields: [reservationId], references: [reservationId])
   reservationId  Int      @map("reservationId")
   content        String   @map("content")
-  createdAt      DateTime @map("createdAt")
-  updatedAt      DateTime @map("updatedAt")
+  createdAt      DateTime @default(now())               @map("createdAt")
+  updatedAt      DateTime @updatedAt                    @map("updatedAt")
   user           User     @relation(fields: [userId], references: [userId])
   userId         Int      @map("userId")
   
