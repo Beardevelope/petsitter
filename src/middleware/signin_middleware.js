@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { prisma } from '../prisma/index.js';
+import { prisma } from '../utils/prisma/index.js';
 
 export const needSignin = async (req, res, next) => {
   try {
