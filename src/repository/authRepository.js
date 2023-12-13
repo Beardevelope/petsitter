@@ -1,23 +1,18 @@
-import { prisma } from '../../utils/prisma/index.js';
+import { prisma } from '../prisma/index.js';
 
 export default class AuthRepository {
-  createUser = async ({
-    email,
-    password,
-    name,
-    userName,
-    petName,
-    petType,
-  }) => {
+  // 유저 생성
+  createUser = async ({ userEmail, password, userName, petName, petType }) => {
     return prisma.User.create({
-      data: { email, password, name, userName, petName, petType },
+      data: { userEmail, password, userName, petName, petType },
     });
   };
 
-  findUserByEmail = async (email) => {
+  // 이메일로 유저 찾기.
+  findUserByEmail = async (userEmail) => {
     const existeUser = await prisma.User.findUnique({
       where: {
-        email,
+        userEmail,
       },
     });
     return existeUser;
