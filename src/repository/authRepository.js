@@ -1,4 +1,4 @@
-import { prisma } from '../prisma/index.js';
+import { prisma } from '../utils/prisma/index.js';
 
 export default class AuthRepository {
   // 유저 생성
