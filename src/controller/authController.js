@@ -3,6 +3,7 @@ import AuthService from '../service/authService.js';
 export default class AuthController {
   authService = new AuthService();
 
+  // 회원가입 controller
   signupUser = async (req, res) => {
     try {
       const {
@@ -44,6 +45,7 @@ export default class AuthController {
     }
   };
 
+  // log in controller
   signInUser = async (req, res) => {
     try {
       const { userEmail, password } = req.body;
