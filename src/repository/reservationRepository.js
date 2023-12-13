@@ -49,8 +49,7 @@ export default class ReservationRepository {
 
     delete = async (reservationId) => {
         const userData = await prisma.reservation.delete({
-            where: { reservationId},
-            
+            where: { reservationId: reservationId },
         })
     }
 }
