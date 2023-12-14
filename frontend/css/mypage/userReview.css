@@ -294,7 +294,8 @@
     min-height: auto;
     align-items: center;
     padding-top: 67px;
-    padding-left: 3vw padding-right: var(--dl-space-space-fourunits);
+    padding-left: 3vw;
+    padding-right: var(--dl-space-space-fourunits);
     flex-direction: column;
     padding-bottom: var(--dl-space-space-sixunits);
     justify-content: flex-start;
@@ -313,7 +314,8 @@
 .social-bar {
     width: 100%;
     display: flex;
-    padding: 3vw padding-top: 3rem;
+    padding: 3vw;
+    padding-top: 3rem;
     justify-content: center;
 }
 
@@ -803,7 +805,9 @@
     display: none;
     align-items: center;
     padding-top: var(--dl-space-space-fourunits);
-    padding-left: 3vw padding-right: 3vw flex-direction: column;
+    padding-left: 3vw;
+    padding-right: 3v;
+    flex-direction: column;
     padding-bottom: var(--dl-space-space-fourunits);
     justify-content: center;
     background-color: white;
@@ -850,7 +854,8 @@
     width: 100%;
     height: auto;
     display: flex;
-    padding: 3vw max-width: 450px;
+    padding: 3vw;
+    max-width: 450px;
     min-height: 450px;
     align-items: flex-start;
     padding-top: var(--dl-space-space-twounits);
@@ -1060,7 +1065,8 @@
     width: 100%;
     display: flex;
     align-items: flex-start;
-    margin-bottom: 3vw flex-direction: column;
+    margin-bottom: 3vw;
+    flex-direction: column;
 }
 
 .container14 {
@@ -1180,7 +1186,8 @@
     gap: var(--dl-space-space-twounits);
     width: 100%;
     display: flex;
-    padding: 3vw max-width: 450px;
+    padding: 3vw;
+    max-width: 450px;
     min-height: 450px;
     align-items: flex-start;
     padding-top: var(--dl-space-space-twounits);
@@ -1343,7 +1350,9 @@
     max-width: var(--dl-size-size-maxwidth);
     align-items: center;
     padding-top: var(--dl-space-space-twounits);
-    padding-left: 3vw padding-right: 3vw flex-direction: column;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    flex-direction: column;
     padding-bottom: var(--dl-space-space-twounits);
     justify-content: space-between;
 }
@@ -1443,7 +1452,8 @@
 
     .pricing-sub-heading {
         text-align: center;
-        padding-left: 3vw padding-right: 3vw
+        padding-left: 3vw;
+        padding-right: 3vw
     }
 
     .container03 {
