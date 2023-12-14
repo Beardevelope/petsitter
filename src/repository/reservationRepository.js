@@ -62,7 +62,6 @@ export default class ReservationRepository {
             });
             return userData;
         } catch (error) {
-            console.error(error);
             throw error;
         }
     }

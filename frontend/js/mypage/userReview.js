@@ -8,10 +8,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         headers: myHeaders,
         redirect: 'follow'
     };
+    let review = null;
+    let reservation = null;
 
-    // URL을 전체 URL로 수정
     fetch("http://localhost:3000/api/review/myPage", requestOptions)
         .then(response => response.json()) // 'json()'로 수정
-        .then(result => console.log(result))
+        .then(result => review = result)
         .catch(error => console.log('error', error));
+    fetch("http://localhost:3000/api/reservations/myPage", requestOptions)
+        .then(response => response.json()) // 'json()'로 수정
+        .then(result => reservation = result)
+        .catch(error => console.log('error', error));
+
 })
