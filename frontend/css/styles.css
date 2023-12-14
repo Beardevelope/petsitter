@@ -1,4 +1,4 @@
-.changi-container {
+.hanvit1-container {
     width: 100%;
     display: flex;
     overflow: auto;
@@ -7,17 +7,17 @@
     flex-direction: column;
 }
 
-.changi-header {
+.hanvit1-header {
     width: 100%;
     display: flex;
     align-items: center;
     padding-top: var(--dl-space-space-oneandhalfunits);
     flex-direction: column;
     padding-bottom: var(--dl-space-space-oneandhalfunits);
-    background-color: var(--dl-color-primary1-blue80);
+    background-color: var(--dl-color-primary-700);
 }
 
-.changi-navbar-interactive {
+.hanvit1-navbar-interactive {
     width: 90%;
     display: flex;
     position: sticky;
@@ -32,20 +32,21 @@
     background-color: var(--dl-color-gray-white);
 }
 
-.changi-logo {
+.hanvit1-logo {
+    color: var(--dl-color-primary-300);
     font-size: 2em;
     font-family: "Lato";
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.changi-desktop-menu {
+.hanvit1-desktop-menu {
     flex: 1;
     display: flex;
     justify-content: space-between;
 }
 
-.changi-links {
+.hanvit1-links {
     flex: 1;
     display: flex;
     align-items: center;
@@ -53,58 +54,49 @@
     justify-content: center;
 }
 
-.changi-nav1 {
+.hanvit1-nav1 {
     transition: 0.3s;
 }
 
-.changi-nav1:hover {
+.hanvit1-nav1:hover {
     color: #3d6e70ff;
 }
 
-.changi-nav2 {
-    transition: 0.3s;
-    margin-left: var(--dl-space-space-twounits);
-}
-
-.changi-nav2:hover {
-    color: #3d6e70ff;
-}
-
-.changi-nav3 {
+.hanvit1-nav2 {
     transition: 0.3s;
     margin-left: var(--dl-space-space-twounits);
 }
 
-.changi-nav3:hover {
+.hanvit1-nav2:hover {
     color: #3d6e70ff;
 }
 
-.changi-nav4 {
+.hanvit1-nav3 {
     transition: 0.3s;
     margin-left: var(--dl-space-space-twounits);
 }
 
-.changi-nav4:hover {
+.hanvit1-nav3:hover {
     color: #3d6e70ff;
 }
 
-.changi-nav5 {
+.hanvit1-nav5 {
     transition: 0.3s;
     margin-left: var(--dl-space-space-twounits);
 }
 
-.changi-nav5:hover {
+.hanvit1-nav5:hover {
     color: #3d6e70ff;
 }
 
-.changi-buttons {
+.hanvit1-buttons {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.changi-login {
+.hanvit1-login {
     border-color: var(--dl-color-primary1-blue100);
     border-width: 1px;
     margin-right: var(--dl-space-space-twounits);
@@ -113,35 +105,35 @@
     padding-right: 1.5rem;
 }
 
-.changi-register {
+.hanvit1-register {
     color: var(--dl-color-gray-white);
     transition: 0.3s;
     font-weight: bold;
-    border-color: var(--dl-color-primary1-blue100);
+    border-color: var(--dl-color-primary-300);
     padding-left: 1.5rem;
     border-radius: 45px;
     padding-right: 1.5rem;
-    background-color: var(--dl-color-primary1-blue100);
+    background-color: var(--dl-color-primary-300);
 }
 
-.changi-register:hover {
+.hanvit1-register:hover {
     border-color: rgba(41, 20, 119, 0.9);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     background-color: rgba(41, 20, 119, 0.9);
 }
 
-.changi-burger-menu {
+.hanvit1-burger-menu {
     display: none;
 }
 
-.changi-icon {
+.hanvit1-icon {
     width: var(--dl-size-size-xsmall);
     cursor: pointer;
     height: var(--dl-size-size-xsmall);
 }
 
-.changi-mobile-menu {
+.hanvit1-mobile-menu {
     top: 0px;
     left: 0px;
     width: 100%;
@@ -156,13 +148,13 @@
     background-color: var(--dl-color-gray-white);
 }
 
-.changi-nav {
+.hanvit1-nav {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
 }
 
-.changi-top {
+.hanvit1-top {
     width: 100%;
     display: flex;
     align-items: center;
@@ -170,25 +162,25 @@
     justify-content: space-between;
 }
 
-.changi-logo1 {
+.hanvit1-logo1 {
     font-size: 2em;
     font-weight: bold;
 }
 
-.changi-close-menu {
+.hanvit1-close-menu {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.changi-icon02 {
+.hanvit1-icon02 {
     fill: var(--dl-color-gray-900);
     width: var(--dl-size-size-xsmall);
     cursor: pointer;
     height: var(--dl-size-size-xsmall);
 }
 
-.changi-links1 {
+.hanvit1-links1 {
     flex: 0 0 auto;
     display: flex;
     align-self: flex-start;
@@ -196,32 +188,32 @@
     flex-direction: column;
 }
 
-.changi-nav11 {
+.hanvit1-nav11 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.changi-nav21 {
+.hanvit1-nav21 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.changi-nav31 {
+.hanvit1-nav31 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.changi-nav41 {
+.hanvit1-nav4 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.changi-nav51 {
+.hanvit1-nav51 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.changi-buttons1 {
+.hanvit1-buttons1 {
     display: flex;
     margin-top: var(--dl-space-space-unit);
     align-items: center;
@@ -229,7 +221,7 @@
     justify-content: space-between;
 }
 
-.changi-login1 {
+.hanvit1-login1 {
     border-color: var(--dl-color-primary1-blue100);
     border-width: 1px;
     margin-right: var(--dl-space-space-twounits);
@@ -238,7 +230,7 @@
     padding-right: 1.5rem;
 }
 
-.changi-register1 {
+.hanvit1-register1 {
     color: var(--dl-color-gray-white);
     transition: 0.3s;
     border-color: var(--dl-color-primary1-blue100);
@@ -249,29 +241,29 @@
     background-color: var(--dl-color-primary1-blue100);
 }
 
-.changi-register1:hover {
+.hanvit1-register1:hover {
     border-color: #849492ff;
     background-color: #849492ff;
 }
 
-.changi-icon04 {
+.hanvit1-icon04 {
     width: var(--dl-size-size-xsmall);
     height: var(--dl-size-size-xsmall);
     margin-right: var(--dl-space-space-twounits);
 }
 
-.changi-icon06 {
+.hanvit1-icon06 {
     width: var(--dl-size-size-xsmall);
     height: var(--dl-size-size-xsmall);
     margin-right: var(--dl-space-space-twounits);
 }
 
-.changi-icon08 {
+.hanvit1-icon08 {
     width: var(--dl-size-size-xsmall);
     height: var(--dl-size-size-xsmall);
 }
 
-.changi-hero {
+.hanvit1-hero {
     flex: 0 0 auto;
     width: 100%;
     height: auto;
@@ -281,9 +273,9 @@
     background-color: var(--dl-color-primary1-blue80);
 }
 
-.changi-hero1 {
+.hanvit1-hero1 {
     width: 100%;
-    height: 867px;
+    height: 862px;
     display: flex;
     max-width: var(--dl-size-size-maxwidth);
     min-height: auto;
@@ -294,76 +286,16 @@
     flex-direction: column;
     padding-bottom: var(--dl-space-space-sixunits);
     justify-content: center;
+    background-color: #ffffff;
 }
 
-.changi-container01 {
-    gap: var(--dl-space-space-twounits);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
+.hanvit1-li {
+    width: 303px;
+    height: 384px;
+    align-self: center;
 }
 
-.changi-hero-heading {
-    color: var(--dl-color-gray-white);
-    max-width: 800px;
-    text-align: center;
-    font-family: "Raleway";
-    line-height: 1.6;
-}
-
-.changi-hero-sub-heading {
-    color: var(--dl-color-gray-white);
-    font-size: 18px;
-    text-align: center;
-    line-height: 1.6;
-}
-
-.changi-btn-group {
-    gap: var(--dl-space-space-oneandhalfunits);
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-
-.changi-hero-button1 {
-    color: var(--dl-color-gray-white);
-    font-size: 18px;
-    transition: 0.3s;
-    font-weight: bold;
-    padding-top: 1.5rem;
-    border-color: var(--dl-color-primary1-blue100);
-    border-width: 0px;
-    padding-left: 3rem;
-    border-radius: 45px;
-    padding-right: 3rem;
-    padding-bottom: 1.5rem;
-    background-color: var(--dl-color-primary1-blue100);
-}
-
-.changi-hero-button1:hover {
-    color: var(--dl-color-gray-white);
-    border-color: rgba(41, 20, 119, 0.9);
-    background-color: rgba(41, 20, 119, 0.9);
-}
-
-.changi-hero-button2 {
-    color: var(--dl-color-gray-white);
-    transition: 0.3s;
-    font-weight: bold;
-    padding-top: var(--dl-space-space-unit);
-    border-color: transparent;
-    padding-left: var(--dl-space-space-twounits);
-    padding-right: var(--dl-space-space-twounits);
-    padding-bottom: var(--dl-space-space-unit);
-    background-color: transparent;
-}
-
-.changi-hero-button2:hover {
-    border-color: var(--dl-color-gray-white);
-}
-
-.changi-pricing {
+.hanvit1-pricing {
     flex: 0 0 auto;
     width: 100%;
     height: auto;
@@ -372,7 +304,7 @@
     justify-content: center;
 }
 
-.changi-pricing1 {
+.hanvit1-pricing1 {
     gap: var(--dl-space-space-twounits);
     width: 100%;
     display: none;
@@ -386,7 +318,7 @@
     background-color: var(--dl-color-gray-white);
 }
 
-.changi-container02 {
+.hanvit1-container01 {
     gap: 0;
     display: flex;
     align-items: center;
@@ -394,26 +326,26 @@
     justify-content: flex-start;
 }
 
-.changi-text {
+.hanvit1-text01 {
     color: var(--dl-color-primary1-blue80);
     font-family: "Raleway";
     margin-bottom: var(--dl-space-space-oneandhalfunits);
 }
 
-.changi-pricing-heading {
+.hanvit1-pricing-heading {
     font-family: "Raleway";
     line-height: 1.6;
     margin-bottom: var(--dl-space-space-oneandhalfunits);
 }
 
-.changi-pricing-sub-heading {
+.hanvit1-pricing-sub-heading {
     color: var(--dl-color-gray-800);
     font-size: 18px;
     text-align: center;
     line-height: 1.6;
 }
 
-.changi-container03 {
+.hanvit1-container02 {
     gap: var(--dl-space-space-twounits);
     width: 100%;
     display: flex;
@@ -422,7 +354,7 @@
     justify-content: center;
 }
 
-.changi-pricing-card {
+.hanvit1-pricing-card {
     gap: var(--dl-space-space-twounits);
     width: 100%;
     height: auto;
@@ -441,7 +373,7 @@
     background-color: var(--dl-color-primary1-blue60);
 }
 
-.changi-container04 {
+.hanvit1-container03 {
     gap: var(--dl-space-space-oneandhalfunits);
     display: flex;
     align-items: flex-start;
@@ -449,35 +381,35 @@
     justify-content: flex-start;
 }
 
-.changi-text03 {
+.hanvit1-text04 {
     font-family: "Raleway";
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.changi-free-plan-description {
+.hanvit1-free-plan-description {
     line-height: 1.6;
 }
 
-.changi-container05 {
+.hanvit1-container04 {
     display: flex;
     align-items: center;
     margin-bottom: var(--dl-space-space-twounits);
     flex-direction: row;
 }
 
-.changi-text04 {
+.hanvit1-text05 {
     font-size: 1.15rem;
     margin-top: var(--dl-space-space-twounits);
     font-weight: 300;
 }
 
-.changi-free-plan-price {
+.hanvit1-free-plan-price {
     font-size: 4rem;
     font-weight: 700;
 }
 
-.changi-container06 {
+.hanvit1-container05 {
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -485,7 +417,7 @@
     flex-direction: column;
 }
 
-.changi-container07 {
+.hanvit1-container06 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -495,15 +427,15 @@
     flex-direction: row;
 }
 
-.changi-text07 {
+.hanvit1-text08 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-free-plan-features {
+.hanvit1-free-plan-features {
     color: var(--dl-color-gray-800);
 }
 
-.changi-container08 {
+.hanvit1-container07 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -513,16 +445,16 @@
     flex-direction: row;
 }
 
-.changi-text08 {
+.hanvit1-text09 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-free-plan-features1 {
+.hanvit1-free-plan-features1 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container09 {
+.hanvit1-container08 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -532,16 +464,16 @@
     flex-direction: row;
 }
 
-.changi-text09 {
+.hanvit1-text10 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-free-plan-features2 {
+.hanvit1-free-plan-features2 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container10 {
+.hanvit1-container09 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -551,16 +483,16 @@
     flex-direction: row;
 }
 
-.changi-text10 {
+.hanvit1-text11 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-free-plan-features3 {
+.hanvit1-free-plan-features3 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-button {
+.hanvit1-button {
     color: var(--dl-color-gray-black);
     width: 100%;
     margin-top: auto;
@@ -573,12 +505,12 @@
     background-color: transparent;
 }
 
-.changi-button:hover {
+.hanvit1-button:hover {
     border-color: rgba(41, 20, 119, 0.9);
     background-color: rgba(217, 217, 217, 0.1);
 }
 
-.changi-pricing-card1 {
+.hanvit1-pricing-card1 {
     gap: var(--dl-space-space-twounits);
     width: 100%;
     display: flex;
@@ -591,7 +523,7 @@
     background-color: var(--dl-color-primary1-blue60);
 }
 
-.changi-container11 {
+.hanvit1-container10 {
     gap: var(--dl-space-space-oneandhalfunits);
     display: flex;
     align-items: flex-start;
@@ -599,42 +531,42 @@
     justify-content: flex-start;
 }
 
-.changi-text11 {
+.hanvit1-text12 {
     font-family: "Raleway";
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.changi-basic-plan-description {
+.hanvit1-basic-plan-description {
     line-height: 1.6;
 }
 
-.changi-container12 {
+.hanvit1-container11 {
     display: flex;
     align-items: center;
     margin-bottom: var(--dl-space-space-twounits);
     flex-direction: row;
 }
 
-.changi-text12 {
+.hanvit1-text13 {
     font-size: 1.15rem;
     margin-top: var(--dl-space-space-twounits);
     font-weight: 300;
 }
 
-.changi-basic-plan-pricing {
+.hanvit1-basic-plan-pricing {
     font-size: 4rem;
     font-weight: 700;
 }
 
-.changi-text15 {
+.hanvit1-text16 {
     font-size: 1.15rem;
     font-style: normal;
     margin-top: var(--dl-space-space-twounits);
     font-weight: 300;
 }
 
-.changi-container13 {
+.hanvit1-container12 {
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -642,7 +574,7 @@
     flex-direction: column;
 }
 
-.changi-container14 {
+.hanvit1-container13 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -652,15 +584,15 @@
     flex-direction: row;
 }
 
-.changi-text16 {
+.hanvit1-text17 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-text17 {
+.hanvit1-text18 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-container15 {
+.hanvit1-container14 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -670,16 +602,16 @@
     flex-direction: row;
 }
 
-.changi-text18 {
+.hanvit1-text19 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-basic-plan-features {
+.hanvit1-basic-plan-features {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container16 {
+.hanvit1-container15 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -689,16 +621,16 @@
     flex-direction: row;
 }
 
-.changi-text19 {
+.hanvit1-text20 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-basic-plan-features1 {
+.hanvit1-basic-plan-features1 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container17 {
+.hanvit1-container16 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -708,16 +640,16 @@
     flex-direction: row;
 }
 
-.changi-text20 {
+.hanvit1-text21 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-basic-plan-features2 {
+.hanvit1-basic-plan-features2 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container18 {
+.hanvit1-container17 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -727,16 +659,16 @@
     flex-direction: row;
 }
 
-.changi-text21 {
+.hanvit1-text22 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-basic-plan-features3 {
+.hanvit1-basic-plan-features3 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-button1 {
+.hanvit1-button1 {
     color: var(--dl-color-gray-white);
     width: 100%;
     margin-top: auto;
@@ -750,12 +682,12 @@
     background-color: var(--dl-color-primary1-blue100);
 }
 
-.changi-button1:hover {
+.hanvit1-button1:hover {
     border-color: rgba(41, 20, 119, 0.9);
     background-color: rgba(41, 20, 119, 0.9);
 }
 
-.changi-pricing-card2 {
+.hanvit1-pricing-card2 {
     gap: var(--dl-space-space-twounits);
     width: 100%;
     display: flex;
@@ -772,7 +704,7 @@
     background-color: var(--dl-color-primary1-blue60);
 }
 
-.changi-container19 {
+.hanvit1-container18 {
     gap: var(--dl-space-space-oneandhalfunits);
     display: flex;
     align-items: flex-start;
@@ -780,42 +712,42 @@
     justify-content: flex-start;
 }
 
-.changi-text22 {
+.hanvit1-text23 {
     font-family: "Raleway";
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.changi-pro-plan-description {
+.hanvit1-pro-plan-description {
     line-height: 1.6;
 }
 
-.changi-container20 {
+.hanvit1-container19 {
     display: flex;
     align-items: center;
     margin-bottom: var(--dl-space-space-twounits);
     flex-direction: row;
 }
 
-.changi-text25 {
+.hanvit1-text26 {
     font-size: 1.15rem;
     margin-top: var(--dl-space-space-twounits);
     font-weight: 300;
 }
 
-.changi-pro-plan-pricing {
+.hanvit1-pro-plan-pricing {
     font-size: 4rem;
     font-weight: 700;
 }
 
-.changi-text28 {
+.hanvit1-text29 {
     font-size: 1.15rem;
     font-style: normal;
     margin-top: var(--dl-space-space-twounits);
     font-weight: 300;
 }
 
-.changi-container21 {
+.hanvit1-container20 {
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -823,7 +755,7 @@
     flex-direction: column;
 }
 
-.changi-container22 {
+.hanvit1-container21 {
     flex: 0 0 auto;
     width: 100%;
     display: flex;
@@ -832,16 +764,16 @@
     flex-direction: row;
 }
 
-.changi-text29 {
+.hanvit1-text30 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-text30 {
+.hanvit1-text31 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container23 {
+.hanvit1-container22 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -851,16 +783,16 @@
     flex-direction: row;
 }
 
-.changi-text31 {
+.hanvit1-text32 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-pro-plan-features {
+.hanvit1-pro-plan-features {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container24 {
+.hanvit1-container23 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -870,16 +802,16 @@
     flex-direction: row;
 }
 
-.changi-text32 {
+.hanvit1-text33 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-pro-plan-features1 {
+.hanvit1-pro-plan-features1 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-container25 {
+.hanvit1-container24 {
     gap: 4px;
     flex: 0 0 auto;
     width: 100%;
@@ -889,16 +821,16 @@
     flex-direction: row;
 }
 
-.changi-text33 {
+.hanvit1-text34 {
     color: var(--dl-color-gray-800);
 }
 
-.changi-pro-plan-features2 {
+.hanvit1-pro-plan-features2 {
     color: var(--dl-color-gray-800);
     line-height: 1.6;
 }
 
-.changi-button2 {
+.hanvit1-button2 {
     color: var(--dl-color-gray-white);
     width: 100%;
     margin-top: auto;
@@ -912,198 +844,302 @@
     background-color: var(--dl-color-primary1-blue100);
 }
 
-.changi-button2:hover {
+.hanvit1-button2:hover {
     border-color: rgba(41, 20, 119, 0.9);
     background-color: rgba(41, 20, 119, 0.9);
 }
 
+.hanvit1-footer {
+    width: 100%;
+    display: flex;
+    max-width: var(--dl-size-size-maxwidth);
+    align-items: center;
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-threeunits);
+    padding-right: var(--dl-space-space-threeunits);
+    flex-direction: column;
+    padding-bottom: var(--dl-space-space-twounits);
+    justify-content: space-between;
+}
+
+.hanvit1-container25 {
+    display: flex;
+    max-width: var(--dl-size-size-maxwidth);
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hanvit1-nav1 {
+    flex: 0 0 auto;
+    display: flex;
+    margin-top: 0px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.hanvit1-text35 {
+    margin-left: 0px;
+}
+
+.hanvit1-text36 {
+    margin-left: var(--dl-space-space-unit);
+}
+
+.hanvit1-text37 {
+    margin-left: var(--dl-space-space-unit);
+}
+
+.hanvit1-text38 {
+    margin-left: var(--dl-space-space-unit);
+}
+
+.hanvit1-separator {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 0px;
+    display: flex;
+    margin-top: var(--dl-space-space-twounits);
+    align-items: flex-start;
+    margin-left: 0px;
+    border-color: var(--dl-color-gray-900);
+    border-style: solid;
+    border-width: 1px;
+    margin-right: 0px;
+    margin-bottom: var(--dl-space-space-twounits);
+    flex-direction: row;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+.hanvit1-container26 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.hanvit1-icon-group1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.hanvit1-icon10 {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+    margin-right: var(--dl-space-space-twounits);
+}
+
+.hanvit1-icon12 {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+    margin-right: var(--dl-space-space-twounits);
+}
+
+.hanvit1-icon14 {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+}
+
 @media(max-width: 991px) {
-    .changi-hero1 {
+    .hanvit1-hero1 {
         flex-direction: column;
     }
 
-    .changi-container01 {
-        align-items: center;
-        margin-right: 0px;
-        margin-bottom: var(--dl-space-space-twounits);
-        padding-right: 0px;
-    }
-
-    .changi-hero-heading {
-        text-align: center;
-    }
-
-    .changi-hero-sub-heading {
+    .hanvit1-pricing-sub-heading {
         text-align: center;
         padding-left: var(--dl-space-space-threeunits);
         padding-right: var(--dl-space-space-threeunits);
     }
 
-    .changi-pricing-sub-heading {
-        text-align: center;
-        padding-left: var(--dl-space-space-threeunits);
-        padding-right: var(--dl-space-space-threeunits);
-    }
-
-    .changi-container03 {
+    .hanvit1-container02 {
         align-items: center;
         flex-direction: column;
     }
 
-    .changi-pricing-card {
+    .hanvit1-pricing-card {
         width: 100%;
         padding: var(--dl-space-space-twounits);
         max-width: 450px;
     }
 
-    .changi-pricing-card1 {
+    .hanvit1-pricing-card1 {
         width: 100%;
         max-width: 450px;
     }
 
-    .changi-pricing-card2 {
+    .hanvit1-pricing-card2 {
         width: 100%;
         max-width: 450px;
     }
 }
 
 @media(max-width: 767px) {
-    .changi-navbar-interactive {
+    .hanvit1-navbar-interactive {
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
     }
 
-    .changi-desktop-menu {
+    .hanvit1-desktop-menu {
         display: none;
     }
 
-    .changi-burger-menu {
+    .hanvit1-burger-menu {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .changi-mobile-menu {
+    .hanvit1-mobile-menu {
         padding-top: var(--dl-space-space-oneandhalfunits);
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
         padding-bottom: var(--dl-space-space-oneandhalfunits);
     }
 
-    .changi-nav11 {
+    .hanvit1-nav11 {
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .changi-nav21 {
+    .hanvit1-nav21 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .changi-nav31 {
+    .hanvit1-nav31 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .changi-nav41 {
+    .hanvit1-nav4 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .changi-nav51 {
+    .hanvit1-nav51 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .changi-hero1 {
+    .hanvit1-hero1 {
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
     }
 
-    .changi-hero-sub-heading {
-        padding-left: var(--dl-space-space-unit);
-        padding-right: var(--dl-space-space-unit);
-    }
-
-    .changi-pricing1 {
+    .hanvit1-pricing1 {
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
     }
 
-    .changi-pricing-sub-heading {
+    .hanvit1-pricing-sub-heading {
         padding-left: var(--dl-space-space-unit);
         padding-right: var(--dl-space-space-unit);
     }
 
-    .changi-container03 {
+    .hanvit1-container02 {
         align-items: center;
         flex-direction: column;
     }
 
-    .changi-pricing-card {
+    .hanvit1-pricing-card {
         width: 100%;
         max-width: 450px;
         margin-right: 0px;
         margin-bottom: var(--dl-space-space-twounits);
     }
 
-    .changi-pricing-card1 {
+    .hanvit1-pricing-card1 {
         width: 100%;
         max-width: 450px;
         margin-right: 0px;
         margin-bottom: var(--dl-space-space-twounits);
     }
 
-    .changi-pricing-card2 {
+    .hanvit1-pricing-card2 {
         width: 100%;
         max-width: 450px;
         margin-right: 0px;
         margin-bottom: var(--dl-space-space-twounits);
+    }
+
+    .hanvit1-footer {
+        padding-left: var(--dl-space-space-twounits);
+        padding-right: var(--dl-space-space-twounits);
+    }
+
+    .hanvit1-separator {
+        margin-top: var(--dl-space-space-oneandhalfunits);
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: var(--dl-space-space-oneandhalfunits);
+    }
+
+    .hanvit1-container26 {
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hanvit1-text39 {
+        margin-bottom: var(--dl-space-space-oneandhalfunits);
     }
 }
 
 @media(max-width: 479px) {
-    .changi-navbar-interactive {
+    .hanvit1-navbar-interactive {
         width: 90%;
         padding: var(--dl-space-space-unit);
     }
 
-    .changi-logo {
+    .hanvit1-logo {
         font-size: 1.5em;
     }
 
-    .changi-mobile-menu {
+    .hanvit1-mobile-menu {
         padding: 16px;
     }
 
-    .changi-logo1 {
+    .hanvit1-logo1 {
         font-size: 1.5em;
     }
 
-    .changi-icon02 {
+    .hanvit1-icon02 {
         fill: var(--dl-color-gray-900);
     }
 
-    .changi-hero1 {
+    .hanvit1-hero1 {
         padding-top: var(--dl-space-space-twounits);
         padding-left: var(--dl-space-space-unit);
         padding-right: var(--dl-space-space-unit);
         padding-bottom: var(--dl-space-space-twounits);
     }
 
-    .changi-container01 {
-        margin-bottom: var(--dl-space-space-unit);
-    }
-
-    .changi-btn-group {
-        flex-direction: column;
-    }
-
-    .changi-hero-button2 {
-        margin-top: var(--dl-space-space-unit);
-        margin-left: 0px;
-    }
-
-    .changi-pricing-card2 {
+    .hanvit1-pricing-card2 {
         margin-bottom: 0px;
+    }
+
+    .hanvit1-footer {
+        padding: var(--dl-space-space-unit);
+    }
+
+    .hanvit1-separator {
+        margin-top: var(--dl-space-space-oneandhalfunits);
+        margin-bottom: var(--dl-space-space-oneandhalfunits);
+    }
+
+    .hanvit1-container26 {
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hanvit1-text39 {
+        text-align: center;
+        margin-bottom: var(--dl-space-space-oneandhalfunits);
     }
 }
