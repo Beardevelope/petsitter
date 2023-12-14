@@ -2,21 +2,47 @@ import { prisma } from '../utils/prisma/index.js';
 
 export class ReviewRepository {
     getMe = async ({ userId }) => {
-        const reviews = await prisma.review.findMany({
-            where: { userId }
-        })
-        return reviews
+        const reservationDates = await prisma.reservation.findMany({
+            where: {
+                pet: {
+                    userId: userId
+                }
+            },
+            select: {
+                reservationDate: true
+            }
+        });
+        return reservationDates.map(reservation => reservation.reservationDate);
     }
-    getSitter = async ({ reservationId }) => {
+    getSitter = async ({ sitterId }) => {
         const reviews = await prisma.review.findMany({
-            where: { reservationId }
-        })
-        return reviews
+            where: {
+                reservation: {
+                    sitterId: sitterId
+                }
+            },
+            select: {
+                reviewId: true,
+                reservation: {
+                    select: {
+                        reservationDate: true
+                    }
+                },
+                content: true
+            }
+        });
+        return reviews.map(review => {
+            return {
+                reviewId: review.reviewId,
+                date: review.reservation.reservationDate,
+                review: review.content
+            };
+        });
     }
-    post = async ({ content, reservationId, userId }) => {
-        console.log("content, reservationId, userId", content, reservationId, userId)
+    post = async ({ content, reservationId }) => {
+        console.log("content, reservationId, userId", content, reservationId)
         const review = await prisma.review.create({
-            data: { content, reservationId, userId, updatedAt: new Date(), createdAt: new Date() }
+            data: { content, reservationId }
         })
         return review
     }

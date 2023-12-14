@@ -11,13 +11,13 @@ export class ReviewService {
         return reviews
     }
 
-    sitter = async ({ reservationId }) => {
-        const reviews = await this.reviewRepository.getSitter({ reservationId })
+    sitter = async ({ sitterId }) => {
+        const reviews = await this.reviewRepository.getSitter({ sitterId })
         return reviews
     }
 
-    post = async ({ content, reservationId, userId }) => {
-        const review = await this.reviewRepository.post({ content, reservationId, userId })
+    post = async ({ content, reservationId }) => {
+        const review = await this.reviewRepository.post({ content, reservationId })
         return review
     }
 
