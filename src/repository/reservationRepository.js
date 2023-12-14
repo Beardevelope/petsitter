@@ -1,11 +1,11 @@
 import { prisma } from '../utils/prisma/index.js'
 
 export default class ReservationRepository {
-    createReservation = async ({ userId, reservationDate, sitterId }) => {
+    createReservation = async ({ petId, reservationDate, sitterId }) => {
         try {
             const userData = await prisma.reservation.create({
                 data: {
-                    userId,
+                    petId,
                     reservationDate,
                     sitterId
                 },
@@ -55,10 +55,10 @@ export default class ReservationRepository {
         return userData
     }
 
-    getMyPage = async (userId) => {
+    getMyPage = async (petId) => {
         try {
             const userData = await prisma.reservation.findMany({
-                where: { userId },
+                where: { petId },
             });
             return userData;
         } catch (error) {
