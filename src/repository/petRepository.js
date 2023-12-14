@@ -51,15 +51,4 @@ export default class UserRepository {
     });
     return user;
   };
-
-  // user info delete
-  deleteUser = async (userId) => {
-    const user = await prisma.user.delete({
-      where: {
-        userId: userId,
-      },
-    });
-
-    return user;
-  };
 }

@@ -31,6 +31,7 @@ export default class UserController {
       petType: req.user.petTpye,
     });
   };
+
   // 유저 정보 수정
 
   putUser = async (req, res) => {
