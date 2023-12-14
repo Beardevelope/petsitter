@@ -5,12 +5,11 @@ export default class ReservationController {
 
     createController = async (req, res) => {
         try {
-            const { reservationDate, sitterId } = req.body;
-            const userId = req.locals.userId
+            const { petId, reservationDate, sitterId } = req.body;
             if (!reservationDate) throw new Error('예약 날짜를 선택해주세요.');
 
             const reservation = await this.reservationService.createService({
-                userId,
+                petId,
                 reservationDate,
                 sitterId
             })
@@ -22,9 +21,9 @@ export default class ReservationController {
 
     getAll = async (req, res) => {
         try {
-            const { sort } = req.params
-            const userId = req.locals.userId;
-            const reservations = await this.reservationService.getAll(userId, sort)
+            const { sort } = req.query;
+            const { petId, sitterId } = req.body;
+            const reservations = await this.reservationService.getAll(sitterId, sort)
             res.json(reservations)
         } catch (error) {
             console.error(error)
@@ -57,9 +56,9 @@ export default class ReservationController {
     getMyPage = async (req, res) => {
         try {
             console.log(res.locals.user)
-            const { userId } = res.locals.user;
-            console.log("userId", userId)
-            const reservation = await this.reservationService.getMyPage(userId);
+            const { petId } = res.locals.user;
+            console.log("petId", petId)
+            const reservation = await this.reservationService.getMyPage(petId);
             res.status(201).json({
                 success: true,
                 message: '데이터 조회에 성공하였습니다.',
