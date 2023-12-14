@@ -22,10 +22,9 @@ export default class ReservationController {
 
     getAll = async (req, res) => {
         try {
-            const { sort } = req.query
-            console.log(sort)
-            const userId = 1;
-            const reservations = await this.reservationService.getAll(userId, sort)
+            const { sort } = req.query;
+            const { sitterId } = req.body;
+            const reservations = await this.reservationService.getAll(sitterId, sort)
             res.json(reservations)
         } catch (error) {
             console.error(error)
@@ -48,8 +47,9 @@ export default class ReservationController {
     deleteController = async (req, res) => {
         try {
             const { reservationId } = req.params;
+            console.log(reservationId)
             const reservation = await this.reservationService.deleteService(Number(reservationId));
-            res.json('삭제 성공', reservation)
+            res.json({ messsage: '삭제 성공', reservation })
         } catch (error) {
             console.error(error)
         }

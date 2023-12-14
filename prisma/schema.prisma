@@ -11,11 +11,9 @@ model Reservation {
   reservationId   Int       @id @default(autoincrement()) @map("reservationId")
   userId          Int
   sitterId        Int
-  reservationDate String    @map("reservationDate") @db.VarChar(26)
-  updatedAt       DateTime  @updatedAt @map("updatedAt")
-  createdAt       DateTime  @default(now()) @map("createdAt")
-  sitter          PetSitter @relation(fields: [sitterId], references: [sitterId])
-  user            User      @relation(fields: [userId], references: [userId])
+  reservationDate DateTime @map("reservationDate")
+  updatedAt       DateTime @updatedAt @map("updatedAt")
+  createdAt       DateTime @default(now()) @map("createdAt")
   reviews         Review[]
 
   @@index([sitterId], map: "reservation_sitterid_foreign")

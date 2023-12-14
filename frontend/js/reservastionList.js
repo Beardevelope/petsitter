@@ -25,7 +25,7 @@ const getAllReservations = async () => {
         availabilityCell.textContent = '예약 가능';
       } else {
         availabilityCell.textContent = '예약 불가능';
-      }
+      };
     });
   };
   

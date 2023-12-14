@@ -34,8 +34,7 @@ export const needSignin = async (req, res, next) => {
     );
     const { userEmail } = decodedPayload;
     // 일치 하는 userEmail이 없는 경우
-    console.log(userEmail)
-    const user = await prisma.User.findUnique({
+    const user = await prisma.users.findUnique({
       where: {
         userEmail: userEmail,
       },

@@ -1,29 +1,4 @@
-.question-container {
-    gap: var(--dl-space-space-unit);
-    flex: 1;
-    width: auto;
-    height: auto;
-    display: flex;
-    position: relative;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-.question-text {
-    font-weight: 700;
-    line-height: 1.6;
-}
-
-.question-text1 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.question-root-class-name {
-    align-self: center;
-}
-
-.home1-container {
+.changi-container {
     width: 100%;
     display: flex;
     overflow: auto;
@@ -32,7 +7,7 @@
     flex-direction: column;
 }
 
-.home1-header {
+.changi-header {
     width: 100%;
     display: flex;
     align-items: center;
@@ -42,7 +17,7 @@
     background-color: var(--dl-color-primary1-blue80);
 }
 
-.home1-navbar-interactive {
+.changi-navbar-interactive {
     width: 90%;
     display: flex;
     position: sticky;
@@ -57,20 +32,20 @@
     background-color: var(--dl-color-gray-white);
 }
 
-.home1-logo {
+.changi-logo {
     font-size: 2em;
     font-family: "Lato";
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.home1-desktop-menu {
+.changi-desktop-menu {
     flex: 1;
     display: flex;
     justify-content: space-between;
 }
 
-.home1-links {
+.changi-links {
     flex: 1;
     display: flex;
     align-items: center;
@@ -78,58 +53,58 @@
     justify-content: center;
 }
 
-.home1-nav1 {
+.changi-nav1 {
     transition: 0.3s;
 }
 
-.home1-nav1:hover {
+.changi-nav1:hover {
     color: #3d6e70ff;
 }
 
-.home1-nav2 {
-    transition: 0.3s;
-    margin-left: var(--dl-space-space-twounits);
-}
-
-.home1-nav2:hover {
-    color: #3d6e70ff;
-}
-
-.home1-nav3 {
+.changi-nav2 {
     transition: 0.3s;
     margin-left: var(--dl-space-space-twounits);
 }
 
-.home1-nav3:hover {
+.changi-nav2:hover {
     color: #3d6e70ff;
 }
 
-.home1-nav4 {
+.changi-nav3 {
     transition: 0.3s;
     margin-left: var(--dl-space-space-twounits);
 }
 
-.home1-nav4:hover {
+.changi-nav3:hover {
     color: #3d6e70ff;
 }
 
-.home1-nav5 {
+.changi-nav4 {
     transition: 0.3s;
     margin-left: var(--dl-space-space-twounits);
 }
 
-.home1-nav5:hover {
+.changi-nav4:hover {
     color: #3d6e70ff;
 }
 
-.home1-buttons {
+.changi-nav5 {
+    transition: 0.3s;
+    margin-left: var(--dl-space-space-twounits);
+}
+
+.changi-nav5:hover {
+    color: #3d6e70ff;
+}
+
+.changi-buttons {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.home1-login {
+.changi-login {
     border-color: var(--dl-color-primary1-blue100);
     border-width: 1px;
     margin-right: var(--dl-space-space-twounits);
@@ -138,7 +113,7 @@
     padding-right: 1.5rem;
 }
 
-.home1-register {
+.changi-register {
     color: var(--dl-color-gray-white);
     transition: 0.3s;
     font-weight: bold;
@@ -149,24 +124,24 @@
     background-color: var(--dl-color-primary1-blue100);
 }
 
-.home1-register:hover {
+.changi-register:hover {
     border-color: rgba(41, 20, 119, 0.9);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     background-color: rgba(41, 20, 119, 0.9);
 }
 
-.home1-burger-menu {
+.changi-burger-menu {
     display: none;
 }
 
-.home1-icon {
+.changi-icon {
     width: var(--dl-size-size-xsmall);
     cursor: pointer;
     height: var(--dl-size-size-xsmall);
 }
 
-.home1-mobile-menu {
+.changi-mobile-menu {
     top: 0px;
     left: 0px;
     width: 100%;
@@ -181,13 +156,13 @@
     background-color: var(--dl-color-gray-white);
 }
 
-.home1-nav {
+.changi-nav {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
 }
 
-.home1-top {
+.changi-top {
     width: 100%;
     display: flex;
     align-items: center;
@@ -195,25 +170,25 @@
     justify-content: space-between;
 }
 
-.home1-logo1 {
+.changi-logo1 {
     font-size: 2em;
     font-weight: bold;
 }
 
-.home1-close-menu {
+.changi-close-menu {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.home1-icon02 {
+.changi-icon02 {
     fill: var(--dl-color-gray-900);
     width: var(--dl-size-size-xsmall);
     cursor: pointer;
     height: var(--dl-size-size-xsmall);
 }
 
-.home1-links1 {
+.changi-links1 {
     flex: 0 0 auto;
     display: flex;
     align-self: flex-start;
@@ -221,32 +196,32 @@
     flex-direction: column;
 }
 
-.home1-nav11 {
+.changi-nav11 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.home1-nav21 {
+.changi-nav21 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.home1-nav31 {
+.changi-nav31 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.home1-nav41 {
+.changi-nav41 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.home1-nav51 {
+.changi-nav51 {
     color: var(--dl-color-gray-black);
     margin-bottom: var(--dl-space-space-unit);
 }
 
-.home1-buttons1 {
+.changi-buttons1 {
     display: flex;
     margin-top: var(--dl-space-space-unit);
     align-items: center;
@@ -254,7 +229,7 @@
     justify-content: space-between;
 }
 
-.home1-login1 {
+.changi-login1 {
     border-color: var(--dl-color-primary1-blue100);
     border-width: 1px;
     margin-right: var(--dl-space-space-twounits);
@@ -263,7 +238,7 @@
     padding-right: 1.5rem;
 }
 
-.home1-register1 {
+.changi-register1 {
     color: var(--dl-color-gray-white);
     transition: 0.3s;
     border-color: var(--dl-color-primary1-blue100);
@@ -274,29 +249,121 @@
     background-color: var(--dl-color-primary1-blue100);
 }
 
-.home1-register1:hover {
+.changi-register1:hover {
     border-color: #849492ff;
     background-color: #849492ff;
 }
 
-.home1-icon04 {
+.changi-icon04 {
     width: var(--dl-size-size-xsmall);
     height: var(--dl-size-size-xsmall);
     margin-right: var(--dl-space-space-twounits);
 }
 
-.home1-icon06 {
+.changi-icon06 {
     width: var(--dl-size-size-xsmall);
     height: var(--dl-size-size-xsmall);
     margin-right: var(--dl-space-space-twounits);
 }
 
-.home1-icon08 {
+.changi-icon08 {
     width: var(--dl-size-size-xsmall);
     height: var(--dl-size-size-xsmall);
 }
 
-.home1-faq {
+.changi-hero {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--dl-color-primary1-blue80);
+}
+
+.changi-hero1 {
+    width: 100%;
+    height: 867px;
+    display: flex;
+    max-width: var(--dl-size-size-maxwidth);
+    min-height: auto;
+    align-items: center;
+    padding-top: var(--dl-space-space-sixunits);
+    padding-left: var(--dl-space-space-threeunits);
+    padding-right: var(--dl-space-space-threeunits);
+    flex-direction: column;
+    padding-bottom: var(--dl-space-space-sixunits);
+    justify-content: center;
+}
+
+.changi-container01 {
+    gap: var(--dl-space-space-twounits);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.changi-hero-heading {
+    color: var(--dl-color-gray-white);
+    max-width: 800px;
+    text-align: center;
+    font-family: "Raleway";
+    line-height: 1.6;
+}
+
+.changi-hero-sub-heading {
+    color: var(--dl-color-gray-white);
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.changi-btn-group {
+    gap: var(--dl-space-space-oneandhalfunits);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.changi-hero-button1 {
+    color: var(--dl-color-gray-white);
+    font-size: 18px;
+    transition: 0.3s;
+    font-weight: bold;
+    padding-top: 1.5rem;
+    border-color: var(--dl-color-primary1-blue100);
+    border-width: 0px;
+    padding-left: 3rem;
+    border-radius: 45px;
+    padding-right: 3rem;
+    padding-bottom: 1.5rem;
+    background-color: var(--dl-color-primary1-blue100);
+}
+
+.changi-hero-button1:hover {
+    color: var(--dl-color-gray-white);
+    border-color: rgba(41, 20, 119, 0.9);
+    background-color: rgba(41, 20, 119, 0.9);
+}
+
+.changi-hero-button2 {
+    color: var(--dl-color-gray-white);
+    transition: 0.3s;
+    font-weight: bold;
+    padding-top: var(--dl-space-space-unit);
+    border-color: transparent;
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+    padding-bottom: var(--dl-space-space-unit);
+    background-color: transparent;
+}
+
+.changi-hero-button2:hover {
+    border-color: var(--dl-color-gray-white);
+}
+
+.changi-pricing {
     flex: 0 0 auto;
     width: 100%;
     height: auto;
@@ -305,120 +372,738 @@
     justify-content: center;
 }
 
-.home1-faq-container {
-    flex: 0 0 auto;
+.changi-pricing1 {
+    gap: var(--dl-space-space-twounits);
     width: 100%;
-    display: flex;
+    display: none;
     align-items: center;
-    flex-direction: row;
+    padding-top: var(--dl-space-space-fourunits);
+    padding-left: var(--dl-space-space-threeunits);
+    padding-right: var(--dl-space-space-threeunits);
+    flex-direction: column;
+    padding-bottom: var(--dl-space-space-fourunits);
     justify-content: center;
+    background-color: var(--dl-color-gray-white);
 }
 
-.home1-faq1 {
+.changi-container02 {
+    gap: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.changi-text {
+    color: var(--dl-color-primary1-blue80);
+    font-family: "Raleway";
+    margin-bottom: var(--dl-space-space-oneandhalfunits);
+}
+
+.changi-pricing-heading {
+    font-family: "Raleway";
+    line-height: 1.6;
+    margin-bottom: var(--dl-space-space-oneandhalfunits);
+}
+
+.changi-pricing-sub-heading {
+    color: var(--dl-color-gray-800);
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.changi-container03 {
     gap: var(--dl-space-space-twounits);
     width: 100%;
     display: flex;
     max-width: var(--dl-size-size-maxwidth);
     align-items: flex-start;
-    padding-top: var(--dl-space-space-fourunits);
-    padding-left: var(--dl-space-space-threeunits);
-    padding-right: var(--dl-space-space-threeunits);
-    flex-direction: row;
-    padding-bottom: var(--dl-space-space-fourunits);
+    justify-content: center;
 }
 
-.home1-container1 {
+.changi-pricing-card {
+    gap: var(--dl-space-space-twounits);
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: var(--dl-space-space-threeunits);
+    max-width: 450px;
+    min-height: 450px;
+    align-items: flex-start;
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-twounits);
+    border-radius: var(--dl-radius-radius-radius8);
+    padding-right: var(--dl-space-space-twounits);
+    flex-direction: column;
+    padding-bottom: var(--dl-space-space-twounits);
+    justify-content: space-between;
+    background-color: var(--dl-color-primary1-blue60);
+}
+
+.changi-container04 {
     gap: var(--dl-space-space-oneandhalfunits);
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
-.home1-footer {
-    flex: 0 0 auto;
-    width: 100%;
-    border: 2px dashed rgba(120, 120, 120, 0.4);
-    height: auto;
+.changi-text03 {
+    font-family: "Raleway";
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.changi-free-plan-description {
+    line-height: 1.6;
+}
+
+.changi-container05 {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: var(--dl-color-gray-black);
+    margin-bottom: var(--dl-space-space-twounits);
+    flex-direction: row;
+}
+
+.changi-text04 {
+    font-size: 1.15rem;
+    margin-top: var(--dl-space-space-twounits);
+    font-weight: 300;
+}
+
+.changi-free-plan-price {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.changi-container06 {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: column;
+}
+
+.changi-container07 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text07 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-free-plan-features {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-container08 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text08 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-free-plan-features1 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container09 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text09 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-free-plan-features2 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container10 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text10 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-free-plan-features3 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-button {
+    color: var(--dl-color-gray-black);
+    width: 100%;
+    margin-top: auto;
+    transition: 0.3s;
+    font-weight: 700;
+    padding-top: 1rem;
+    border-color: var(--dl-color-primary1-blue100);
+    border-radius: 45px;
+    padding-bottom: 1rem;
+    background-color: transparent;
+}
+
+.changi-button:hover {
+    border-color: rgba(41, 20, 119, 0.9);
+    background-color: rgba(217, 217, 217, 0.1);
+}
+
+.changi-pricing-card1 {
+    gap: var(--dl-space-space-twounits);
+    width: 100%;
+    display: flex;
+    padding: var(--dl-space-space-twounits);
+    max-width: 450px;
+    min-height: 450px;
+    align-items: flex-start;
+    border-radius: var(--dl-radius-radius-radius8);
+    flex-direction: column;
+    background-color: var(--dl-color-primary1-blue60);
+}
+
+.changi-container11 {
+    gap: var(--dl-space-space-oneandhalfunits);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.changi-text11 {
+    font-family: "Raleway";
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.changi-basic-plan-description {
+    line-height: 1.6;
+}
+
+.changi-container12 {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--dl-space-space-twounits);
+    flex-direction: row;
+}
+
+.changi-text12 {
+    font-size: 1.15rem;
+    margin-top: var(--dl-space-space-twounits);
+    font-weight: 300;
+}
+
+.changi-basic-plan-pricing {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.changi-text15 {
+    font-size: 1.15rem;
+    font-style: normal;
+    margin-top: var(--dl-space-space-twounits);
+    font-weight: 300;
+}
+
+.changi-container13 {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-threeunits);
+    flex-direction: column;
+}
+
+.changi-container14 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text16 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-text17 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-container15 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text18 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-basic-plan-features {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container16 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text19 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-basic-plan-features1 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container17 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text20 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-basic-plan-features2 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container18 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text21 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-basic-plan-features3 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-button1 {
+    color: var(--dl-color-gray-white);
+    width: 100%;
+    margin-top: auto;
+    transition: 0.3s;
+    font-weight: 700;
+    padding-top: 1rem;
+    border-color: rgba(41, 20, 119, 0.9);
+    border-width: 0px;
+    border-radius: 45px;
+    padding-bottom: 1rem;
+    background-color: var(--dl-color-primary1-blue100);
+}
+
+.changi-button1:hover {
+    border-color: rgba(41, 20, 119, 0.9);
+    background-color: rgba(41, 20, 119, 0.9);
+}
+
+.changi-pricing-card2 {
+    gap: var(--dl-space-space-twounits);
+    width: 100%;
+    display: flex;
+    padding: var(--dl-space-space-threeunits);
+    max-width: 450px;
+    min-height: 450px;
+    align-items: flex-start;
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-twounits);
+    border-radius: var(--dl-radius-radius-radius8);
+    padding-right: var(--dl-space-space-twounits);
+    flex-direction: column;
+    padding-bottom: var(--dl-space-space-twounits);
+    background-color: var(--dl-color-primary1-blue60);
+}
+
+.changi-container19 {
+    gap: var(--dl-space-space-oneandhalfunits);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.changi-text22 {
+    font-family: "Raleway";
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.changi-pro-plan-description {
+    line-height: 1.6;
+}
+
+.changi-container20 {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--dl-space-space-twounits);
+    flex-direction: row;
+}
+
+.changi-text25 {
+    font-size: 1.15rem;
+    margin-top: var(--dl-space-space-twounits);
+    font-weight: 300;
+}
+
+.changi-pro-plan-pricing {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.changi-text28 {
+    font-size: 1.15rem;
+    font-style: normal;
+    margin-top: var(--dl-space-space-twounits);
+    font-weight: 300;
+}
+
+.changi-container21 {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: column;
+}
+
+.changi-container22 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text29 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-text30 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container23 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text31 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-pro-plan-features {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container24 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text32 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-pro-plan-features1 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-container25 {
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: row;
+}
+
+.changi-text33 {
+    color: var(--dl-color-gray-800);
+}
+
+.changi-pro-plan-features2 {
+    color: var(--dl-color-gray-800);
+    line-height: 1.6;
+}
+
+.changi-button2 {
+    color: var(--dl-color-gray-white);
+    width: 100%;
+    margin-top: auto;
+    transition: 0.3s;
+    font-weight: 700;
+    padding-top: 1rem;
+    border-color: #3d6e70ff;
+    border-width: 0px;
+    border-radius: 45px;
+    padding-bottom: 1rem;
+    background-color: var(--dl-color-primary1-blue100);
+}
+
+.changi-button2:hover {
+    border-color: rgba(41, 20, 119, 0.9);
+    background-color: rgba(41, 20, 119, 0.9);
+}
+
+@media(max-width: 991px) {
+    .changi-hero1 {
+        flex-direction: column;
+    }
+
+    .changi-container01 {
+        align-items: center;
+        margin-right: 0px;
+        margin-bottom: var(--dl-space-space-twounits);
+        padding-right: 0px;
+    }
+
+    .changi-hero-heading {
+        text-align: center;
+    }
+
+    .changi-hero-sub-heading {
+        text-align: center;
+        padding-left: var(--dl-space-space-threeunits);
+        padding-right: var(--dl-space-space-threeunits);
+    }
+
+    .changi-pricing-sub-heading {
+        text-align: center;
+        padding-left: var(--dl-space-space-threeunits);
+        padding-right: var(--dl-space-space-threeunits);
+    }
+
+    .changi-container03 {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .changi-pricing-card {
+        width: 100%;
+        padding: var(--dl-space-space-twounits);
+        max-width: 450px;
+    }
+
+    .changi-pricing-card1 {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .changi-pricing-card2 {
+        width: 100%;
+        max-width: 450px;
+    }
 }
 
 @media(max-width: 767px) {
-    .home1-navbar-interactive {
+    .changi-navbar-interactive {
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
     }
 
-    .home1-desktop-menu {
+    .changi-desktop-menu {
         display: none;
     }
 
-    .home1-burger-menu {
+    .changi-burger-menu {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .home1-mobile-menu {
+    .changi-mobile-menu {
         padding-top: var(--dl-space-space-oneandhalfunits);
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
         padding-bottom: var(--dl-space-space-oneandhalfunits);
     }
 
-    .home1-nav11 {
+    .changi-nav11 {
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .home1-nav21 {
+    .changi-nav21 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .home1-nav31 {
+    .changi-nav31 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .home1-nav41 {
+    .changi-nav41 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .home1-nav51 {
+    .changi-nav51 {
         margin-left: 0;
         margin-bottom: var(--dl-space-space-unit);
     }
 
-    .home1-faq1 {
+    .changi-hero1 {
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
+    }
+
+    .changi-hero-sub-heading {
+        padding-left: var(--dl-space-space-unit);
+        padding-right: var(--dl-space-space-unit);
+    }
+
+    .changi-pricing1 {
+        padding-left: var(--dl-space-space-twounits);
+        padding-right: var(--dl-space-space-twounits);
+    }
+
+    .changi-pricing-sub-heading {
+        padding-left: var(--dl-space-space-unit);
+        padding-right: var(--dl-space-space-unit);
+    }
+
+    .changi-container03 {
+        align-items: center;
         flex-direction: column;
+    }
+
+    .changi-pricing-card {
+        width: 100%;
+        max-width: 450px;
+        margin-right: 0px;
+        margin-bottom: var(--dl-space-space-twounits);
+    }
+
+    .changi-pricing-card1 {
+        width: 100%;
+        max-width: 450px;
+        margin-right: 0px;
+        margin-bottom: var(--dl-space-space-twounits);
+    }
+
+    .changi-pricing-card2 {
+        width: 100%;
+        max-width: 450px;
+        margin-right: 0px;
+        margin-bottom: var(--dl-space-space-twounits);
     }
 }
 
 @media(max-width: 479px) {
-    .home1-navbar-interactive {
+    .changi-navbar-interactive {
         width: 90%;
         padding: var(--dl-space-space-unit);
     }
 
-    .home1-logo {
+    .changi-logo {
         font-size: 1.5em;
     }
 
-    .home1-mobile-menu {
+    .changi-mobile-menu {
         padding: 16px;
     }
 
-    .home1-logo1 {
+    .changi-logo1 {
         font-size: 1.5em;
     }
 
-    .home1-icon02 {
+    .changi-icon02 {
         fill: var(--dl-color-gray-900);
+    }
+
+    .changi-hero1 {
+        padding-top: var(--dl-space-space-twounits);
+        padding-left: var(--dl-space-space-unit);
+        padding-right: var(--dl-space-space-unit);
+        padding-bottom: var(--dl-space-space-twounits);
+    }
+
+    .changi-container01 {
+        margin-bottom: var(--dl-space-space-unit);
+    }
+
+    .changi-btn-group {
+        flex-direction: column;
+    }
+
+    .changi-hero-button2 {
+        margin-top: var(--dl-space-space-unit);
+        margin-left: 0px;
+    }
+
+    .changi-pricing-card2 {
+        margin-bottom: 0px;
     }
 }
