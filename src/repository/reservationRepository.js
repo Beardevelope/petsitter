@@ -65,4 +65,15 @@ export default class ReservationRepository {
             throw error;
         }
     }
+
+    getMyReservation = async (reservationDate) => {
+        try {
+            const reservation = await prisma.reservation.findMany({
+                where: {reservationDate: reservationDate},    
+            });
+            return reservation
+        } catch (error) {
+            throw error
+        }
+    }
 }
