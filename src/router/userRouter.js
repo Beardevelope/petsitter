@@ -7,4 +7,5 @@ const userController = new UserController();
 
 userRouter.get('/', userController.getAllUsers);
 userRouter.put('/put', needSignin, userController.putUser);
+userRouter.get('/me', needSignin, userController.getUserOfMe);
 export { userRouter };
