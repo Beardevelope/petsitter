@@ -295,560 +295,6 @@
     align-self: center;
 }
 
-.hanvit1-pricing {
-    flex: 0 0 auto;
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hanvit1-pricing1 {
-    gap: var(--dl-space-space-twounits);
-    width: 100%;
-    display: none;
-    align-items: center;
-    padding-top: var(--dl-space-space-fourunits);
-    padding-left: var(--dl-space-space-threeunits);
-    padding-right: var(--dl-space-space-threeunits);
-    flex-direction: column;
-    padding-bottom: var(--dl-space-space-fourunits);
-    justify-content: center;
-    background-color: var(--dl-color-gray-white);
-}
-
-.hanvit1-container01 {
-    gap: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.hanvit1-text01 {
-    color: var(--dl-color-primary1-blue80);
-    font-family: "Raleway";
-    margin-bottom: var(--dl-space-space-oneandhalfunits);
-}
-
-.hanvit1-pricing-heading {
-    font-family: "Raleway";
-    line-height: 1.6;
-    margin-bottom: var(--dl-space-space-oneandhalfunits);
-}
-
-.hanvit1-pricing-sub-heading {
-    color: var(--dl-color-gray-800);
-    font-size: 18px;
-    text-align: center;
-    line-height: 1.6;
-}
-
-.hanvit1-container02 {
-    gap: var(--dl-space-space-twounits);
-    width: 100%;
-    display: flex;
-    max-width: var(--dl-size-size-maxwidth);
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.hanvit1-pricing-card {
-    gap: var(--dl-space-space-twounits);
-    width: 100%;
-    height: auto;
-    display: flex;
-    padding: var(--dl-space-space-threeunits);
-    max-width: 450px;
-    min-height: 450px;
-    align-items: flex-start;
-    padding-top: var(--dl-space-space-twounits);
-    padding-left: var(--dl-space-space-twounits);
-    border-radius: var(--dl-radius-radius-radius8);
-    padding-right: var(--dl-space-space-twounits);
-    flex-direction: column;
-    padding-bottom: var(--dl-space-space-twounits);
-    justify-content: space-between;
-    background-color: var(--dl-color-primary1-blue60);
-}
-
-.hanvit1-container03 {
-    gap: var(--dl-space-space-oneandhalfunits);
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.hanvit1-text04 {
-    font-family: "Raleway";
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.hanvit1-free-plan-description {
-    line-height: 1.6;
-}
-
-.hanvit1-container04 {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--dl-space-space-twounits);
-    flex-direction: row;
-}
-
-.hanvit1-text05 {
-    font-size: 1.15rem;
-    margin-top: var(--dl-space-space-twounits);
-    font-weight: 300;
-}
-
-.hanvit1-free-plan-price {
-    font-size: 4rem;
-    font-weight: 700;
-}
-
-.hanvit1-container05 {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: column;
-}
-
-.hanvit1-container06 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text08 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-free-plan-features {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-container07 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text09 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-free-plan-features1 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container08 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text10 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-free-plan-features2 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container09 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text11 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-free-plan-features3 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-button {
-    color: var(--dl-color-gray-black);
-    width: 100%;
-    margin-top: auto;
-    transition: 0.3s;
-    font-weight: 700;
-    padding-top: 1rem;
-    border-color: var(--dl-color-primary1-blue100);
-    border-radius: 45px;
-    padding-bottom: 1rem;
-    background-color: transparent;
-}
-
-.hanvit1-button:hover {
-    border-color: rgba(41, 20, 119, 0.9);
-    background-color: rgba(217, 217, 217, 0.1);
-}
-
-.hanvit1-pricing-card1 {
-    gap: var(--dl-space-space-twounits);
-    width: 100%;
-    display: flex;
-    padding: var(--dl-space-space-twounits);
-    max-width: 450px;
-    min-height: 450px;
-    align-items: flex-start;
-    border-radius: var(--dl-radius-radius-radius8);
-    flex-direction: column;
-    background-color: var(--dl-color-primary1-blue60);
-}
-
-.hanvit1-container10 {
-    gap: var(--dl-space-space-oneandhalfunits);
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.hanvit1-text12 {
-    font-family: "Raleway";
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.hanvit1-basic-plan-description {
-    line-height: 1.6;
-}
-
-.hanvit1-container11 {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--dl-space-space-twounits);
-    flex-direction: row;
-}
-
-.hanvit1-text13 {
-    font-size: 1.15rem;
-    margin-top: var(--dl-space-space-twounits);
-    font-weight: 300;
-}
-
-.hanvit1-basic-plan-pricing {
-    font-size: 4rem;
-    font-weight: 700;
-}
-
-.hanvit1-text16 {
-    font-size: 1.15rem;
-    font-style: normal;
-    margin-top: var(--dl-space-space-twounits);
-    font-weight: 300;
-}
-
-.hanvit1-container12 {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-threeunits);
-    flex-direction: column;
-}
-
-.hanvit1-container13 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text17 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-text18 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-container14 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text19 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-basic-plan-features {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container15 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text20 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-basic-plan-features1 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container16 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text21 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-basic-plan-features2 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container17 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text22 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-basic-plan-features3 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-button1 {
-    color: var(--dl-color-gray-white);
-    width: 100%;
-    margin-top: auto;
-    transition: 0.3s;
-    font-weight: 700;
-    padding-top: 1rem;
-    border-color: rgba(41, 20, 119, 0.9);
-    border-width: 0px;
-    border-radius: 45px;
-    padding-bottom: 1rem;
-    background-color: var(--dl-color-primary1-blue100);
-}
-
-.hanvit1-button1:hover {
-    border-color: rgba(41, 20, 119, 0.9);
-    background-color: rgba(41, 20, 119, 0.9);
-}
-
-.hanvit1-pricing-card2 {
-    gap: var(--dl-space-space-twounits);
-    width: 100%;
-    display: flex;
-    padding: var(--dl-space-space-threeunits);
-    max-width: 450px;
-    min-height: 450px;
-    align-items: flex-start;
-    padding-top: var(--dl-space-space-twounits);
-    padding-left: var(--dl-space-space-twounits);
-    border-radius: var(--dl-radius-radius-radius8);
-    padding-right: var(--dl-space-space-twounits);
-    flex-direction: column;
-    padding-bottom: var(--dl-space-space-twounits);
-    background-color: var(--dl-color-primary1-blue60);
-}
-
-.hanvit1-container18 {
-    gap: var(--dl-space-space-oneandhalfunits);
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.hanvit1-text23 {
-    font-family: "Raleway";
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.hanvit1-pro-plan-description {
-    line-height: 1.6;
-}
-
-.hanvit1-container19 {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--dl-space-space-twounits);
-    flex-direction: row;
-}
-
-.hanvit1-text26 {
-    font-size: 1.15rem;
-    margin-top: var(--dl-space-space-twounits);
-    font-weight: 300;
-}
-
-.hanvit1-pro-plan-pricing {
-    font-size: 4rem;
-    font-weight: 700;
-}
-
-.hanvit1-text29 {
-    font-size: 1.15rem;
-    font-style: normal;
-    margin-top: var(--dl-space-space-twounits);
-    font-weight: 300;
-}
-
-.hanvit1-container20 {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: column;
-}
-
-.hanvit1-container21 {
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text30 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-text31 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container22 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text32 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-pro-plan-features {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container23 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text33 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-pro-plan-features1 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-container24 {
-    gap: 4px;
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--dl-space-space-unit);
-    flex-direction: row;
-}
-
-.hanvit1-text34 {
-    color: var(--dl-color-gray-800);
-}
-
-.hanvit1-pro-plan-features2 {
-    color: var(--dl-color-gray-800);
-    line-height: 1.6;
-}
-
-.hanvit1-button2 {
-    color: var(--dl-color-gray-white);
-    width: 100%;
-    margin-top: auto;
-    transition: 0.3s;
-    font-weight: 700;
-    padding-top: 1rem;
-    border-color: #3d6e70ff;
-    border-width: 0px;
-    border-radius: 45px;
-    padding-bottom: 1rem;
-    background-color: var(--dl-color-primary1-blue100);
-}
-
-.hanvit1-button2:hover {
-    border-color: rgba(41, 20, 119, 0.9);
-    background-color: rgba(41, 20, 119, 0.9);
-}
-
 .hanvit1-footer {
     width: 100%;
     display: flex;
@@ -862,7 +308,7 @@
     justify-content: space-between;
 }
 
-.hanvit1-container25 {
+.hanvit1-container1 {
     display: flex;
     max-width: var(--dl-size-size-maxwidth);
     align-items: center;
@@ -878,19 +324,19 @@
     flex-direction: row;
 }
 
-.hanvit1-text35 {
+.hanvit1-text1 {
     margin-left: 0px;
 }
 
-.hanvit1-text36 {
+.hanvit1-text2 {
     margin-left: var(--dl-space-space-unit);
 }
 
-.hanvit1-text37 {
+.hanvit1-text3 {
     margin-left: var(--dl-space-space-unit);
 }
 
-.hanvit1-text38 {
+.hanvit1-text4 {
     margin-left: var(--dl-space-space-unit);
 }
 
@@ -913,7 +359,7 @@
     border-right-width: 0px;
 }
 
-.hanvit1-container26 {
+.hanvit1-container2 {
     flex: 0 0 auto;
     width: 100%;
     display: flex;
@@ -949,33 +395,6 @@
 @media(max-width: 991px) {
     .hanvit1-hero1 {
         flex-direction: column;
-    }
-
-    .hanvit1-pricing-sub-heading {
-        text-align: center;
-        padding-left: var(--dl-space-space-threeunits);
-        padding-right: var(--dl-space-space-threeunits);
-    }
-
-    .hanvit1-container02 {
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .hanvit1-pricing-card {
-        width: 100%;
-        padding: var(--dl-space-space-twounits);
-        max-width: 450px;
-    }
-
-    .hanvit1-pricing-card1 {
-        width: 100%;
-        max-width: 450px;
-    }
-
-    .hanvit1-pricing-card2 {
-        width: 100%;
-        max-width: 450px;
     }
 }
 
@@ -1031,42 +450,6 @@
         padding-right: var(--dl-space-space-twounits);
     }
 
-    .hanvit1-pricing1 {
-        padding-left: var(--dl-space-space-twounits);
-        padding-right: var(--dl-space-space-twounits);
-    }
-
-    .hanvit1-pricing-sub-heading {
-        padding-left: var(--dl-space-space-unit);
-        padding-right: var(--dl-space-space-unit);
-    }
-
-    .hanvit1-container02 {
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .hanvit1-pricing-card {
-        width: 100%;
-        max-width: 450px;
-        margin-right: 0px;
-        margin-bottom: var(--dl-space-space-twounits);
-    }
-
-    .hanvit1-pricing-card1 {
-        width: 100%;
-        max-width: 450px;
-        margin-right: 0px;
-        margin-bottom: var(--dl-space-space-twounits);
-    }
-
-    .hanvit1-pricing-card2 {
-        width: 100%;
-        max-width: 450px;
-        margin-right: 0px;
-        margin-bottom: var(--dl-space-space-twounits);
-    }
-
     .hanvit1-footer {
         padding-left: var(--dl-space-space-twounits);
         padding-right: var(--dl-space-space-twounits);
@@ -1079,13 +462,13 @@
         margin-bottom: var(--dl-space-space-oneandhalfunits);
     }
 
-    .hanvit1-container26 {
+    .hanvit1-container2 {
         align-items: center;
         flex-direction: column;
         justify-content: space-between;
     }
 
-    .hanvit1-text39 {
+    .hanvit1-text5 {
         margin-bottom: var(--dl-space-space-oneandhalfunits);
     }
 }
@@ -1119,10 +502,6 @@
         padding-bottom: var(--dl-space-space-twounits);
     }
 
-    .hanvit1-pricing-card2 {
-        margin-bottom: 0px;
-    }
-
     .hanvit1-footer {
         padding: var(--dl-space-space-unit);
     }
@@ -1132,14 +511,32 @@
         margin-bottom: var(--dl-space-space-oneandhalfunits);
     }
 
-    .hanvit1-container26 {
+    .hanvit1-container2 {
         align-items: center;
         flex-direction: column;
         justify-content: space-between;
     }
 
-    .hanvit1-text39 {
+    .hanvit1-text5 {
         text-align: center;
         margin-bottom: var(--dl-space-space-oneandhalfunits);
     }
+
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
 }
+
