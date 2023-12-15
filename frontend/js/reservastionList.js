@@ -1,7 +1,8 @@
 const apiUrl = 'http://localhost:3000/api/reservations'
 const MOCKSITTERID = 1;
 const MOCKPETID = 1;
-document.addEventListener("DOMContentLoaded", function () {  
+
+document.addEventListener("DOMContentLoaded", function () {
   function getReservations() {
     fetch(`${apiUrl}?sort=asc`).then(response => {
       if (!response.ok) throw new Error('http 오류');
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(mockData),
+      body: JSON.stringify(data),
     }).then(response => {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
@@ -27,17 +28,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }).catch(error => {
       console.error('예약 오류', error)
     })
-  }
+  }   
 
-  const deleteReservations = (reservationId) => {
-    fetch((`${apiUrl}/${reservationId}`).then(response => {
+  const deleteReservation = (reservationId) => {
+    fetch(`${apiUrl}/${reservationId}`, {
+      method: "DELETE"
+    }).then(response => {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
     }).then(data => {
-      console.log('예약 성공')
+      console.log('예')
     }).catch(error => {
       console.error('예약 오류', error)
-    }));
+    });
   }
 
   function displayReservations(reservations) {
@@ -70,17 +73,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     tableBody.addEventListener("click", function (event) {
       const clickedCell = event.target.closest("td");
+      const availability = (clickedCell.textContent)
+      const date = clickedCell.parentElement.cells[0].textContent;
 
+      const reservation = reservations.find((r) => r.reservationDate === date);
+      console.log(reservation)
       if (clickedCell) {
-        const date = clickedCell.parentElement.cells[0].textContent;
-        console.log(date)
-        const reservation = reservations.find((r) => r.reservationDate === date);
         if (!reservation) {
           createReservations({
-            petId: MOCKPETID,  
-            reservationDate: date,  
+            petId: MOCKPETID,
+            reservationDate: date,
             sitterId: MOCKSITTERID
           });
+        }
+        if (reservation &&  availability === 'cancel') {
+          const isConfirmed = confirm("예약을 취소하시겠습니까?");
+          if (isConfirmed) deleteReservation(reservation.reservationId)
         }
       }
     });
