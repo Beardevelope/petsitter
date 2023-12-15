@@ -1,77 +1,51 @@
-import AuthRepository from '../repository/authRepository.js';
+import PetsRepository from '../repository/petsRepository.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-export default class AuthService {
-  authRepository = new AuthRepository();
+export default class PetsService {
+  petsRepository = new PetsRepository();
 
-  //회원가입
-  signupUser = async (
-    userEmail,
-    password,
-    passwordConfirm,
-    userName,
-    petName,
-    petType
-  ) => {
-    if (password !== passwordConfirm)
-      throw new Error('입력한 비밀번호가 서로 일치하지 않습니다.');
+  // 전체 펫 리스트 조회하기
+  getAllMyPets = async (userId) => {
+    const pet = await this.petsRepository.getAllMyPets(userId);
+    if (pet.length === 0) throw new Error('등록한 반려동물이 없습니다.');
+    return pet;
+  };
 
-    if (!userName) throw new Error(' 사용자 이름은 필수 기재 사항입니다.');
-
-    if (password.length < 6)
-      throw new Error('비밀번호는 최소 6자리 이상이어야 합니다.');
-
-    const existedUser = await this.authRepository.findUserByEmail(userEmail);
-    if (existedUser) throw new Error('이미 가입된 이메일입니다.');
-
-    let emailValidationRegex = new RegExp('[a-z0-9._]+@[a-z]+.[a-z]{2,3}');
-    const isValidEmail = emailValidationRegex.test(userEmail);
-    if (!isValidEmail) throw new Error('이메일 형식이 맞지 않습니다.');
-
-    const hashedPassword = await bcrypt.hash(
-      password,
-      +process.env.PASSWORD_HASH_SALT_ROUNDS
-    );
-
-    const newUser = await this.authRepository.createUser({
-      userEmail,
-      password: hashedPassword,
-      userName,
+  // 펫 등록 기능
+  registerService = async ({ userId, petName, petType }) => {
+    console.log(userId);
+    const pet = await this.petsRepository.registerPet({
+      userId,
       petName,
       petType,
     });
-
-    return newUser;
+    return pet;
   };
 
-  // 로그인
-  signInUser = async (userEmail, password) => {
-    try {
-      if (!userEmail || !password)
-        throw new Error('이메일과 비밀번호 입력은 필수 사항입니다.');
+  // 펫 정보 수정
 
-      const user = await this.authRepository.findUserByEmail(userEmail);
+  updatedPet = async (userId, petId, petName, petType) => {
+    const user = await this.petsRepository.findUserById(userId);
+    console.log(userId);
+    if (user.userId !== userId) throw Error('수정 권한이 없는 유저입니다.');
 
-      if (!user) throw new Error('일치하는 email 정보가 없습니다.');
+    await this.petsRepository.updatepet(userId, petId, petName, petType);
 
-      const hashedPassword = user.password || '';
-      const isPasswordMatched = bcrypt.compareSync(password, hashedPassword);
+    const updateUser = await this.petsRepository.findUserById(userId);
+    return updateUser;
+  };
 
-      if (!isPasswordMatched) throw new Error(' 비밀번호가 일치하지 않습니다.');
+  // 펫 정보 삭제
 
-      const accessToken = jwt.sign(
-        { userEmail: user.userEmail },
-        process.env.JWT_ACCESS_TOKEN_SECRET,
-        {
-          expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES_IN,
-        }
-      );
+  deletePet = async (userId, petId) => {
+    const user = await this.petsRepository.findUserById(userId);
+    if (user.userId !== userId) throw new Error('삭제 권한이 없는 유저입니다.');
 
-      return { accessToken };
-    } catch (error) {
-      console.error(error);
-      throw new Error('예기치 못한 에러 발생, 관리자에게 문의하십시오.');
-    }
+    await this.petsRepository.deleteUser(userId, petId);
+
+    const deleteUser = await this.petsRepository.findUserById(userId);
+
+    return deleteUser;
   };
 }

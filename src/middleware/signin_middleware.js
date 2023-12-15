@@ -32,12 +32,13 @@ export const needSignin = async (req, res, next) => {
       accessToken,
       process.env.JWT_ACCESS_TOKEN_SECRET
     );
-    const { userEmail } = decodedPayload;
+    console.log("decodedPayload", decodedPayload);
+    const { userId } = decodedPayload;
 
     // 일치 하는 userEmail이 없는 경우
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: {
-        userEmail: userEmail,
+        userId: userId,
       },
     });
 
@@ -49,7 +50,7 @@ export const needSignin = async (req, res, next) => {
     }
 
     delete user.password;
-    res.locals.user = user;
+    req.user = user;
 
     next();
   } catch (error) {

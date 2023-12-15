@@ -8,63 +8,65 @@ datasource db {
 }
 
 model Users {
-  userId    Int      @id @default(autoincrement())
+  userId    Int       @id @default(autoincrement())
   email     String    @unique
-  password  String   
+  password  String
   role      Role
-  createdAt     DateTime @default(now()) @db.DateTime(3)
-  updatedAt     DateTime? @default(now()) @db.DateTime(3)
-
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @default(now())
   pets      Pets[]
-  sitters    Sitters?
-  reservations Reservation[]
+  sitters   Sitters?
 }
 
 model Sitters {
-  sitterId Int      @id @default(autoincrement())
-  userId   Int      @unique
-  career   Int
-  name     String   
-  createdAt     DateTime @default(now()) @db.DateTime(3)
-  updatedAt     DateTime? @default(now()) @db.DateTime(3)
-
-  users    Users    @relation(fields:[userId],references:[userId])
+  sitterId     Int           @id @default(autoincrement())
+  userId       Int           @unique
+  career       Int
+  name         String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime?     @default(now())
   reservations Reservation[]
+  users        Users         @relation(fields: [userId], references: [userId])
 }
 
 model Pets {
-  petId     Int      @id @default(autoincrement())
-  pet_name  String   @db.VarChar(100)
-  type      String   @db.VarChar(100)
-  userId    Int
-  createdAt     DateTime @default(now()) @db.DateTime(3)
-  updatedAt     DateTime? @default(now()) @db.DateTime(3)
-  user      Users    @relation(fields: [userId], references: [userId])
+  petId       Int           @id @default(autoincrement())
+  petName     String        
+  petType     String        
+  userId      Int
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime?     @default(now())
+  user        Users         @relation(fields: [userId], references: [userId])
+  Reservation Reservation[]
+
+  @@index([userId], map: "Pets_userId_fkey")
 }
 
 model Reservation {
-  reservationId  Int      @id @default(autoincrement())
-  userId         Int
-  sitterId        Int 
-  reservationDate String   @db.VarChar(191)
-  createdAt      DateTime @default(now()) @db.DateTime(3)
-  updatedAt      DateTime? @default(now()) @db.DateTime(3)
-  users           Users    @relation(fields: [userId], references: [userId])
-  sitter          Sitters  @relation(fields: [sitterId], references: [userId])
-  Review         Review[]
+  reservationId   Int       @id @default(autoincrement())
+  sitterId        Int
+  reservationDate String
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime? @default(now())
+  petId           Int
+  pets            Pets      @relation(fields: [petId], references: [petId])
+  sitter          Sitters   @relation(fields: [sitterId], references: [sitterId])
+  review          Review?
+
+  @@index([petId], map: "Reservation_petId_fkey")
+  @@index([sitterId], map: "Reservation_sitterId_fkey")
 }
 
 model Review {
-  reviewId      Int      @id @default(autoincrement())
-  reservationId Int
-  content       String   @db.VarChar(191)
-  createdAt     DateTime @default(now()) @db.DateTime(3)
-  updatedAt     DateTime? @default(now()) @db.DateTime(3)
-
+  reviewId      Int         @id @default(autoincrement())
+  reservationId Int   @unique
+  content       String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime?   @default(now())
   reservation   Reservation @relation(fields: [reservationId], references: [reservationId])
+
+  @@index([reservationId], map: "Review_reservationId_fkey")
 }
-
-
 
 enum Role {
   normal

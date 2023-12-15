@@ -22,7 +22,7 @@ export default class ReservationController {
     getAll = async (req, res) => {
         try {
             const { sort } = req.query;
-            const { petId, sitterId } = req.body;
+            const { sitterId } = req.body;
             const reservations = await this.reservationService.getAll(sitterId, sort)
             res.json(reservations)
         } catch (error) {
