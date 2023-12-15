@@ -74,6 +74,12 @@ export class UserController {
       if (sitterOrNormal.role === "normal") {
         const { password, newPassword, rePassword } = req.body;
 
+        if (!password) {
+          const errors = new Error("입력란을 확인해주세요.");
+          errors.statusCode = 404;
+          throw errors;
+        }
+
         if (newPassword !== rePassword) {
           const errors = new Error("변경할 비밀번호를 확인해주세요.");
         errors.statusCode = 404;
@@ -84,13 +90,25 @@ export class UserController {
           password,
           newPassword
         );
+        const updatedUser = {
+          userId: user.userId,
+          email: user.email,
+          role: user.role,
+          createdAt: user.createdAt
+        }
 
         res.status(200).json({
-          user,
+          updatedUser,
           message: "수정에 성공하였습니다.",
         });
       } else if (sitterOrNormal.role === "sitter") {
         const { career, name, password, newPassword, rePassword } = req.body;
+
+        if (!password) {
+          const errors = new Error("입력란을 확인해주세요.");
+          errors.statusCode = 404;
+          throw errors;
+        }
 
         if (newPassword !== rePassword) {
           const errors = new Error("변경할 비밀번호를 확인해주세요.");
@@ -105,8 +123,17 @@ export class UserController {
           password,
           newPassword
         );
+
+        const updatedUser = {
+          userId: user.userId,
+          email: user.email,
+          role: user.role,
+          career: user.sitters.career,
+          name: user.sitters.name,
+          createdAt: user.createdAt
+        }
         res.status(200).json({
-          user,
+          updatedUser,
           message: "수정에 성공하였습니다.",
         });
       }

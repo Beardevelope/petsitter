@@ -47,16 +47,15 @@ export class UserService {
   // 일반 유저 정보 수정
   updatedNormalUser = async (userId, password, newPassword) => {
     const user = await this.userRepositpry.findNormalUSerById(userId);
-    console.log(user)
     if (user.userId !== userId) {
       const errors = new Error("수정할 권한이 없습니다.");
       errors.statusCode = 403;
       throw errors;
     }
-
-    if (user.password !== password) {
-      const errors = new Error("비밀번호가 일치하지 않아서 수정이 불가능합니다.");
-      errors.statusCode = 403;
+    const match = bcrypt.compareSync(password, user.password);
+    if (!match) {
+      const errors = new Error("비밀번호가 일치하지 않습니다.");
+      errors.statusCode = 400;
       throw errors;
     }
 
@@ -67,10 +66,7 @@ export class UserService {
     );
 
     // 데이터 수정
-    await this.userRepositpry.updateNormalUser(
-      userId,
-      hashPassword
-    );
+    await this.userRepositpry.updateNormalUser(userId, hashPassword);
 
     // 수정된 데이터 가져오기
     const updateUser = await this.userRepositpry.findNormalUSerById(userId);
@@ -79,13 +75,7 @@ export class UserService {
   };
 
   // 시터 유저 정보 수정
-  updatedSitterUser = async (
-    userId,
-    career,
-    name,
-    password,
-    newPassword
-  ) => {
+  updatedSitterUser = async (userId, career, name, password, newPassword) => {
     const user = await this.userRepositpry.findSitterUSerById(userId);
     if (user.userId !== userId) {
       const errors = new Error("수정할 권한이 없습니다.");
@@ -93,30 +83,24 @@ export class UserService {
       throw errors;
     }
 
-    if (user.password !== password) {
-      const errors = new Error("비밀번호가 일치하지 않아서 수정이 불가능합니다.");
-      errors.statusCode = 403;
+    const match = bcrypt.compareSync(password, user.password);
+    if (!match) {
+      const errors = new Error("비밀번호가 일치하지 않습니다.");
+      errors.statusCode = 400;
       throw errors;
     }
 
-     // 비밀번호 암호화
-     const hashPassword = bcrypt.hashSync(
+    // 비밀번호 암호화
+    const hashPassword = bcrypt.hashSync(
       newPassword,
       parseInt(process.env.PASSWORD_HASH_SALT_ROUNDS)
     );
 
     // 데이터 수정 (유저 테이블 수정)
-    await this.userRepositpry.updateSitterUser(
-      userId,
-      hashPassword
-    );
+    await this.userRepositpry.updateSitterUser(userId, hashPassword);
 
     // 데이터 수정 (시터 테이블 수정)
-    await this.userRepositpry.updateSittertableUser(
-      userId,
-      career,
-      name,
-    );
+    await this.userRepositpry.updateSittertableUser(userId, career, name);
 
     // 수정된 데이터 가져오기
     const updateUser = await this.userRepositpry.findSitterUSerById(userId);
