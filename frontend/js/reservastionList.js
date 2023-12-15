@@ -1,10 +1,18 @@
-const apiUrl = 'http://localhost:3000/api/reservations'
+
+const reservastionAPI = 'http://localhost:3000/api/reservations'
+const petAPI = 'http://localhost:3000/api/pet'
 const MOCKSITTERID = 1;
 const MOCKPETID = 1;
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI2NTg5NzYsImV4cCI6MTcwMjcwMjE3Nn0.WZKWUFI3H8zsc4BP9r8v2qTKGI2nlTScm6yI9Mgw7TY'
 
 document.addEventListener("DOMContentLoaded", function () {
   function getReservations() {
-    fetch(`${apiUrl}?sort=asc`).then(response => {
+    fetch(`${reservastionAPI}?sort=asc`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    }).then(response => {
       if (!response.ok) throw new Error('http 오류');
       return response.json()
     }).then(data => {
@@ -12,35 +20,106 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   }
 
-  const createReservations = (data) => {
+  const createReservation = (data) => {
 
-    fetch(apiUrl, {
+    fetch(reservastionAPI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     }).then(response => {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
-    }).then(data => {
-      console.log('예약 성공')
     }).catch(error => {
       console.error('예약 오류', error)
     })
-  }   
+  }
 
   const deleteReservation = (reservationId) => {
-    fetch(`${apiUrl}/${reservationId}`, {
-      method: "DELETE"
+    fetch(`${reservastionAPI}/${reservationId}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      }
     }).then(response => {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
-    }).then(data => {
-      console.log('예')
     }).catch(error => {
       console.error('예약 오류', error)
     });
+  }
+
+  const getPet = (date) => {
+    fetch(`${petAPI}`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    }).then(response => {
+      if (!response.ok) throw new Error('http 오류');
+      return response.json()
+    }).then(pets => {
+      displayPetModal(pets, date)
+    }).catch(error => {
+      console.error('예약 오류', error)
+    })
+  }
+
+
+  function displayPetModal(pets, date) {
+    const modal = createPetModal(pets.data);            // 모달 열기
+    modal.style.display = "block";
+
+    // 사용자가 Pet을 선택한 경우
+    modal.addEventListener("click", function (event) {
+      console.log(event.target)
+      const selectedPetId = event.target.dataset.petId;
+      // 3. 예약 API 호출 (이 부분은 사용자가 Pet을 선택한 후 실행되어야 함)
+      if (selectedPetId) {
+        createReservation({
+          petId: +selectedPetId,
+          reservationDate: date,
+          sitterId: MOCKSITTERID
+          // ... 다른 필요한 예약 정보들
+        });
+      }
+
+      // 모달 닫기
+      modal.style.display = "none";
+    });
+
+    // 모달 영역 외부 클릭 시 모달 닫기
+    window.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  }
+  // 모달 생성 함수
+  function createPetModal(pets) {
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+
+    const modalContent = document.createElement("div");
+    modalContent.classList.add("modal-content");
+
+    pets.forEach(pet => {
+      const petButton = document.createElement("button");
+      petButton.textContent = pet.petName;
+      console.log(pet)
+      console.log(pet.petName)
+      petButton.dataset.petId = pet.petId;
+      console.log(pet.petId)
+      petButton.classList.add("pet-button");
+      modalContent.appendChild(petButton);
+    });
+
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    return modal;
   }
 
   function displayReservations(reservations) {
@@ -77,21 +156,20 @@ document.addEventListener("DOMContentLoaded", function () {
       const date = clickedCell.parentElement.cells[0].textContent;
 
       const reservation = reservations.find((r) => r.reservationDate === date);
-      console.log(reservation)
       if (clickedCell) {
         if (!reservation) {
-          createReservations({
-            petId: MOCKPETID,
-            reservationDate: date,
-            sitterId: MOCKSITTERID
-          });
+          getPet(date)
+
         }
-        if (reservation &&  availability === 'cancel') {
+        if (reservation && availability === 'cancel') {
           const isConfirmed = confirm("예약을 취소하시겠습니까?");
           if (isConfirmed) deleteReservation(reservation.reservationId)
         }
       }
+
+
     });
   }
   getReservations();
+
 });
