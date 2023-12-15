@@ -33,6 +33,7 @@ export class UserRepository {
       select: {
         userId: true,
         email: true,
+        password: true,
         role: true,
         createdAt: true,
       },
@@ -52,6 +53,7 @@ export class UserRepository {
       select: {
         userId: true,
         email: true,
+        password: true,
         role: true,
         sitters: {
           select: {
