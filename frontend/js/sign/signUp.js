@@ -25,7 +25,7 @@ async function signUp() {
     const newInformation = {
       email: email.value,
       role: role.value,
-      career: career.value,
+      career: +career.value,
       name: name.value,
       password: password.value,
       rePassword: rePassword.value,
@@ -50,6 +50,7 @@ async function signUp() {
     alert(err.message);
   }
 }
+
 
 // 마우스로 클릭하여 회원가입하기
 start.addEventListener("click", () => {
