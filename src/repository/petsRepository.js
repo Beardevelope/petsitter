@@ -8,6 +8,7 @@ export default class PetsRepository {
         userId: userId,
       },
       select: {
+        petId: true,
         petName: true,
         petType: true,
       },

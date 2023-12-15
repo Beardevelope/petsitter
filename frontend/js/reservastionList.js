@@ -7,7 +7,7 @@ const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3
 
 document.addEventListener("DOMContentLoaded", function () {
   function getReservations() {
-    fetch(`${reservastionAPI}?sort=asc`, {
+    fetch(`${reservastionAPI}/${MOCKSITTERID}?sort=asc`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`
@@ -32,6 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }).then(response => {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
+    }).then(data => {
+      console.log('예약 성공');
+      alert('예약을 하셨습니다.')
+      getReservations()
     }).catch(error => {
       console.error('예약 오류', error)
     })
@@ -46,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }).then(response => {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
+    }).then(data => {
+      console.log('예약 취소 성공');
+      alert('예약을 취소하셨습니다.')
+      getReservations()
     }).catch(error => {
       console.error('예약 오류', error)
     });
