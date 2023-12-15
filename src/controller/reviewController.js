@@ -7,33 +7,15 @@ export class ReviewController {
 
     myPage = async (req, res, next) => {
         try {
-            const { id: userId } = res.locals.user;
-            console.log(userId);
-            const reviews = await prisma.review.findMany({
-                where: {
-                    reservation: {
-                        pet: {
-                            userId: userId
-                        }
-                    }
-                },
-                select: {
-                    reviewId: true,
-                    reservation: {
-                        select: {
-                            reservationDate: true
-                        }
-                    },
-                    content: true
-                }
-            });
-            return reviews.map(review => {
-                return {
-                    reviewId: review.reviewId,
-                    date: review.reservation.reservationDate,
-                    review: review.content
-                };
-            });
+            const { userId } = req.user;
+            const data = await this.reviewService.myPage({
+                userId
+            })
+            return res.status(201).json({
+                success: true,
+                message: '데이터 조회에 성공하였습니다.',
+                data
+            })
         } catch (err) {
             next(err);
         }
@@ -57,10 +39,12 @@ export class ReviewController {
 
     post = async (req, res, next) => {
         try {
+            const { userId } = req.user;
             const { content, reservationId } = req.body;
             const data = await this.reviewService.post({
                 content,
-                reservationId
+                reservationId,
+                userId
             })
             return res.status(201).json({
                 success: true,
