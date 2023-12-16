@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert('예약을 취소하셨습니다.');
       getReservations();
     }).catch(error => {
+      
       console.error('예약 오류', error)
     });
   }
