@@ -154,13 +154,24 @@
                             </li>
                         </ul>
                     </div>
-                    <table class="chart-table" border="1" bordercolor="blue">
-                        <tr bgcolor="blue" align="center">
+                    <table class="chart-table" border="1">
+                        <tr align="center">
                             <p>
-                                <td colspan="3" span style="color:white">12월 예약 현황</td>
+                                <td colspan="3">12월 예약 현황</td>
                             </p>
                         </tr>
                     </table>
+                    <div class="modal-container" id="reviewModal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <h2>리뷰 작성</h2>
+                            <textarea id="reviewTextArea" rows="4" cols="30" placeholder="리뷰 내용을 입력하세요"></textarea>
+                            <br>
+                            <button id="add">생성하기</button>
+                            <button onclick="deleteReview()" id="delete">삭제하기</button>
+                            <button onclick="cancelReview()" id="cancel">취소하기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

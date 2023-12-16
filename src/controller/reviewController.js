@@ -58,10 +58,10 @@ export class ReviewController {
 
     put = async (req, res, next) => {
         try {
-            const { content, reviewId } = req.body;
+            const { content, reservationId } = req.body;
             const data = await this.reviewService.put({
                 content,
-                reviewId
+                reservationId
             })
             return res.status(201).json({
                 success: true,
@@ -75,9 +75,9 @@ export class ReviewController {
 
     delete = async (req, res, next) => {
         try {
-            const { reviewId } = req.body;
+            const { reservationId } = req.body;
             const data = await this.reviewService.delete({
-                reviewId
+                reservationId
             })
             return res.status(201).json({
                 success: true,
