@@ -15,7 +15,7 @@ export class ReviewRepository {
                 review: true,
             },
             orderBy: {
-                reservationDate: 'asc',
+                reservationDate: 'desc',
             },
         });
         // return result
@@ -52,31 +52,32 @@ export class ReviewRepository {
         }));
     }
     post = async ({ content, reservationId }) => {
-        console.log("content, reservationId, userId", content, reservationId)
+        console.log(":content, reservationId", content, reservationId)
+        reservationId = Number(reservationId)
         const review = await prisma.review.create({
             data: { content, reservationId }
         })
         return review
     }
-    put = async ({ content, reviewId }) => {
-        console.log("content, reviewId", content, reviewId)
-        const review = await prisma.review.findUnique({ where: { reviewId: reviewId } })
-        console.log("review 정보", review)
-        console.log("!review", review == null)
+    put = async ({ content, reservationId }) => {
+        reservationId = Number(reservationId)
+        const review = await prisma.review.findUnique({ where: { reservationId: reservationId } })
         if (review == null) {
             throw new HttpStatus.NotFound('상품 조회에 실패했습니다.');
         }
         const reviewUpdate = await prisma.review.update({
-            where: { reviewId },
+            where: { reservationId },
             data: {
                 ...(content && { content })
             },
         })
         return reviewUpdate
     }
-    delete = async ({ reviewId }) => {
+    delete = async ({ reservationId }) => {
+        reservationId = Number(reservationId)
+        console.log("reservationId", reservationId)
         const review = await prisma.review.delete({
-            where: { reviewId }
+            where: { reservationId: reservationId }
         });
         return review
     }
