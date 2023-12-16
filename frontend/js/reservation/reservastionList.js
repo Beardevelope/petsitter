@@ -40,11 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   function displayPetModal(pets, date) {
-    const modal = createPetModal(pets.data);         
+    const modal = createPetModal(pets.data);
     modal.style.display = "block";
 
     modal.addEventListener("click", function (event) {
-      console.log(event.target)
       const selectedPetId = event.target.dataset.petId;
       if (selectedPetId) {
         createReservation({
@@ -120,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
       alert('예약을 취소하셨습니다.');
       getReservations();
     }).catch(error => {
-      
       console.error('예약 오류', error)
     });
   }
@@ -128,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   function displayReservations(pets, reservations) {
-    const tableBody = document.querySelector("#reservationTable tbody");
+    const tableBody = document.querySelector("#reservationTable tbody")
 
     tableBody.innerHTML = "";
 
@@ -162,24 +160,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**날짜 고르기 동작*/
-    tableBody.addEventListener("click", function (event) {
-      const clickedCell = event.target.closest("td");
-      const availability = (clickedCell.textContent)
-      const date = clickedCell.parentElement.cells[0].textContent;
+    let isEventRunning = false  /**이벤트 중복 방지, 이것 때문에 한참 해맸네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ*/
 
-      const reservation = reservations.find((r) => r.reservationDate === date);
-      console.log(clickedCell)
-      if (clickedCell) { 
-        if (!reservation && availability === '예약') {
-          displayPetModal(pets, date)
-        }
-        if (reservation && availability === 'cancel') {
-          const isConfirmed = confirm("예약을 취소하시겠습니까?");
-          if (isConfirmed) deleteReservation(reservation.reservationId)
+    tableBody.addEventListener("click", function (event) {
+      if (!isEventRunning) {
+
+        isEventRunning = true;
+
+        const clickedCell = event.target.closest("td");
+        const availability = (clickedCell.textContent)
+        const date = clickedCell.parentElement.cells[0].textContent;
+
+        const reservation = reservations.find((r) => r.reservationDate === date);
+        if (clickedCell) {
+          if (!reservation && availability === '예약') {
+            displayPetModal(pets, date)
+          }
+          if (reservation && availability === 'cancel') {
+            const isConfirmed = confirm("예약을 취소하시겠습니까?");
+            if (isConfirmed) {
+              deleteReservation(reservation.reservationId)
+            }
+          }
         }
       }
-
-
     });
   }
   getReservations();
