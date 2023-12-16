@@ -13,6 +13,7 @@ export class UserRepository {
         role: true,
         sitters: {
           select: {
+            sitterId: true,
             career: true,
             name: true,
           },
