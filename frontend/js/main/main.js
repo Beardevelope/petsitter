@@ -59,23 +59,34 @@ function sitterSearch(userInput) {
 
 // 시터 목록 출력
 function attach(info) {
-  let image = `<tr class ="col" id="${info["sitterId"]}">
-                  <td>${info["sitterId"]}</td>
-                  <td>${info["email"]}</td>
-                  <td>${info["name"]}</td>
-                  <td>${info["career"]}</td>
-                  <td><button class="go">gogo</button></td>
-                </tr>`;
-
-                  
-  list.innerHTML += `${image}`;
+  if (localStorage.getItem('token') !== null) {
+    let image = `<tr class ="col" id="${info["sitterId"]}">
+                          <td>${info["sitterId"]}</td>
+                          <td>${info["email"]}</td>
+                          <td>${info["name"]}</td>
+                          <td>${info["career"]}</td>
+                          <td><button class="go" id="${info["sitterId"]}">gogo</button></td>
+                          </tr>`;
+    list.innerHTML += `${image}`;
+  
+  } else if (localStorage.getItem('token') === null) {
+    let image = `<tr class ="col" id="${info["sitterId"]}">
+                          <td>${info["sitterId"]}</td>
+                          <td>${info["email"]}</td>
+                          <td>${info["name"]}</td>
+                          <td>${info["career"]}</td>
+                          <td>회원전용</td>
+                          </tr>`;
+    list.innerHTML += `${image}`;
+  }
+  
 }
 
 // 검색 후 ID값 출력
 function ID() {
-  const col = document.querySelectorAll(".col");
-  col.forEach(function (col) {
-    col.addEventListener("click", function () {
+  const go = document.querySelectorAll(".go");
+  go.forEach(function (go) {
+    go.addEventListener("click", function () {
       alert("id: " + this.id);
     });
   });

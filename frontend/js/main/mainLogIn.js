@@ -1,6 +1,6 @@
 const loginEmail = document.querySelector('#loginEmail');
 const loginPassword = document.querySelector('#loginPassword');
-const signInButton = document.querySelector('#signInButton');
+const signInButton = document.querySelector('.signInButton');
 const buttontop = document.querySelector('#buttontop')
 const buttonbottom = document.querySelector("#buttonbottom")
 const register = document.querySelector(".register")
@@ -35,10 +35,10 @@ async function signIn() {
   }
 }
 
-// // 마우스로 클릭하여 로그인하기
-// signInButton.addEventListener('DOMContentLoaded', () => {
-//   signIn();
-// });
+// 마우스로 클릭하여 로그인하기
+signInButton.addEventListener('click', () => {
+  signIn();
+});
 
 
 // 로그아웃
