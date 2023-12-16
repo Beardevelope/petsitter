@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isEventRunning) {
 
         isEventRunning = true;
-        console.log(isEventRunning)
 
         const clickedCell = event.target.closest("td");
         const availability = (clickedCell.textContent)
