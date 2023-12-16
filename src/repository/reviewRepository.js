@@ -15,7 +15,7 @@ export class ReviewRepository {
                 review: true,
             },
             orderBy: {
-                reservationDate: 'asc',
+                reservationDate: 'desc',
             },
         });
         // return result

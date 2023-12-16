@@ -1,53 +1,6 @@
 const table = document.querySelector('.chart-table');
 
-// 함수를 만들어 데이터를 처리하고 테이블에 추가하는 부분을 분리합니다.
-function processReviewData(data) {
-    // Create header row
-    const headerRow = document.createElement('tr');
-    headerRow.setAttribute('align', 'center');
-
-    // Add header cells
-    const headerDateCell = document.createElement('td');
-    headerDateCell.textContent = '날짜';
-    headerRow.appendChild(headerDateCell);
-
-    const headerReviewCell = document.createElement('td');
-    headerReviewCell.textContent = '리뷰';
-    headerRow.appendChild(headerReviewCell);
-
-    // Append header row to the table
-    table.appendChild(headerRow);
-
-    // Loop through the data and create rows
-    data.forEach(item => {
-
-
-        const row = document.createElement('tr');
-        const dateCell = document.createElement('td');
-
-        const reviewCell = document.createElement('td');
-
-        // Set the content of the cells
-        dateCell.textContent = item.reservationDate;
-        reviewCell.textContent = item.review || '리뷰를 작성해주세요';
-        reviewCell.id = item.reservationId
-
-        // Append cells to the row
-        row.appendChild(dateCell);
-        row.appendChild(reviewCell);
-
-        // Append the row to the table
-        table.appendChild(row);
-
-        // Add event listener for the reviewCell
-        reviewCell.addEventListener('click', function () {
-            // Show the modal and pass the review content
-            showReviewModal(reviewCell.textContent, reviewCell.id);
-        });
-    });
-}
-
-var myHeaders = new Headers();
+const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJhc2RmQGRmLmNvbSIsImlhdCI6MTcwMjUwNDc2OCwiZXhwIjoxNzAzMTA5NTY4fQ.XT7DoLJrI7xPjyZfQbsEEaUy4wG7q_yfRdA4Dhmi_dI");
 
@@ -55,6 +8,51 @@ const requestOptions = {
     method: 'GET',
     headers: myHeaders
 };
+
+var today = new Date();
+
+var year = today.getFullYear();
+var month = ('0' + (today.getMonth() + 1)).slice(-2);
+var day = ('0' + today.getDate()).slice(-2);
+
+var dateString = year + '-' + month + '-' + day;
+
+function processReviewData(data) {
+    const headerRow = document.createElement('tr');
+    headerRow.setAttribute('align', 'center');
+    const headerDateCell = document.createElement('td');
+    headerDateCell.textContent = '날짜';
+    headerRow.appendChild(headerDateCell);
+    const headerReviewCell = document.createElement('td');
+    headerReviewCell.textContent = '리뷰';
+    headerRow.appendChild(headerReviewCell);
+    table.appendChild(headerRow);
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        const dateCell = document.createElement('td');
+        const reviewCell = document.createElement('td');
+        dateCell.textContent = item.reservationDate;
+        if (item.reservationDate > dateString) {
+            reviewCell.id = item.reservationId
+            reviewCell.innerHTML = `<button>예약 취소하기</button>`;
+            row.appendChild(dateCell);
+            row.appendChild(reviewCell);
+            table.appendChild(row);
+            reviewCell.addEventListener('click', function () {
+                deleteReservation(reviewCell.id);
+            });
+        } else {
+            reviewCell.innerHTML = item.review || '<button>리뷰 작성하기</button>';
+            reviewCell.id = item.reservationId
+            row.appendChild(dateCell);
+            row.appendChild(reviewCell);
+            table.appendChild(row);
+            reviewCell.addEventListener('click', function () {
+                showReviewModal(reviewCell.textContent, reviewCell.id);
+            });
+        }
+    });
+}
 
 fetch("http://localhost:3000/api/review/myPage", requestOptions)
     .then(response => {
@@ -97,8 +95,29 @@ function showReviewModal(reviewContent, reservationId) {
     reviewTextArea.class = reservationId;
     modal.style.display = 'flex';
 }
-
-//리뷰 수정
+function deleteReservation(reservationId) {
+    const createReviewURL = 'http://localhost:3000/api/reservations/' + reservationId;
+    const createReviewOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+    };
+    const deletedRow = document.querySelector(`tr#${reservationId}`);
+    deletedRow.parentNode.removeChild(deletedRow.parentNode);
+    fetch(createReviewURL, createReviewOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(result => {
+            const deletedRow = document.querySelector(`tr#${reservationId}`);
+            deletedRow.parentNode.removeChild(deletedRow.parentNode);
+        })
+        .catch(error => {
+            console.error('Error:', error.message);
+        });
+}
 function updateReview() {
     const modal = document.getElementById('reviewModal');
     const reviewTextArea = document.getElementById('reviewTextArea');
@@ -114,7 +133,6 @@ function updateReview() {
             reservationId: reservationClass
         })
     };
-
     fetch(createReviewURL, createReviewOptions)
         .then(response => {
             if (!response.ok) {
@@ -135,7 +153,6 @@ function updateReview() {
             console.error('Error:', error.message);
         });
 }
-// Function to create review
 function createReview() {
     const modal = document.getElementById('reviewModal');
     const reviewTextArea = document.getElementById('reviewTextArea');
@@ -151,7 +168,6 @@ function createReview() {
             reservationId: reservationClass
         })
     };
-
     fetch(createReviewURL, createReviewOptions)
         .then(response => {
             if (!response.ok) {
@@ -171,7 +187,6 @@ function createReview() {
             console.error('Error:', error.message);
         });
 }
-
 function deleteReview() {
     const modal = document.getElementById('reviewModal');
     const reviewTextArea = document.getElementById('reviewTextArea');
@@ -185,7 +200,6 @@ function deleteReview() {
             reservationId: reservationClass
         })
     };
-
     fetch(createReviewURL, createReviewOptions)
         .then(response => {
             if (!response.ok) {
@@ -205,13 +219,9 @@ function deleteReview() {
             console.error('Error:', error.message);
         });
 }
-
-// Function to cancel review
 function cancelReview() {
     const modal = document.getElementById('reviewModal');
     const reviewTextArea = document.getElementById('reviewTextArea');
-
-    // Clear the textarea and close the modal
     reviewTextArea.value = '';
     modal.style.display = 'none';
 }
