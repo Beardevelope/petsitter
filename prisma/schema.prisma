@@ -30,6 +30,7 @@ model Sitters {
 
   users    Users          @relation(fields:[userId],references:[userId])
   reservations Reservation[]
+  users        Users         @relation(fields: [userId], references: [userId])
 }
 
 model Pets {
@@ -62,9 +63,9 @@ model Review {
   updatedAt     DateTime?   @default(now()) @db.DateTime(3)
 
   reservation   Reservation @relation(fields: [reservationId], references: [reservationId])
+
+  @@index([reservationId], map: "Review_reservationId_fkey")
 }
-
-
 
 enum Role {
   normal
