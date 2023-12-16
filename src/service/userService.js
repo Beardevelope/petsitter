@@ -36,6 +36,7 @@ export class UserService {
     }
     const newUser = {
       userId: user.userId,
+      sitterId: user.sitters.sitterId,
       email: user.email,
       role: user.role,
       career: user.sitters.career,
