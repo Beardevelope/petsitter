@@ -6,7 +6,7 @@ const list = document.querySelector(".list");
 let sitter = [];
 let email = [];
 // 포스터 붙이기
-async function movieList() {
+async function sitterList() {
   try {
     const response = await fetch("http://localhost:3000/api/user", {
       accept: "application/json",
@@ -30,7 +30,7 @@ async function movieList() {
     alert(error.message);
   }
 }
-movieList();
+sitterList();
 
 // 엔터키로 검색하기
 function onClick() {
@@ -59,8 +59,8 @@ function sitterSearch(userInput) {
 
 // 시터 목록 출력
 function attach(info) {
-  let image = `<tr class ="col" id="${info["userId"]}">
-                  <td>${info["userId"]}</td>
+  let image = `<tr class ="col" id="${info["sitterId"]}">
+                  <td>${info["sitterId"]}</td>
                   <td>${info["email"]}</td>
                   <td>${info["name"]}</td>
                   <td>${info["career"]}</td>
@@ -85,3 +85,6 @@ function ID() {
 function add() {
   sitterSearch(input.value);
 }
+
+
+
