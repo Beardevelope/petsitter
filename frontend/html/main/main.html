@@ -19,10 +19,10 @@
                   <span class="nav3"><a href="#"></a>Reservation</a></span>
                   <span class="nav5"><a href="#"></a>My Page</a></span>
               </nav>
-              
+
               <div class="buttons" id="buttontop" style="display: none;">
-                <button class="myPage button" onclick=""><a href="../mypage/mypage.html">MyPage</a></button>
-                <button class="logOut button" onclick="">log-out</button>
+                <button class="myPage button" onClick="location.href='../mypage/mypage.html'">MyPage</button>
+                <button class="logOut button">log-out</button>
               </div>
               <div class="buttons" id="buttonbottom">
                   <button class="login button" onclick="logInopenModal()">log-in</button>
@@ -189,7 +189,7 @@
             <label class="signUpLabel" for="loginPassword">비밀번호:</label>
             <input class="signUpInput" type="password" id="loginPassword" name="loginPassword" required>
         </div>
-        <button class="signInButton" onclick="signIn()">로그인하기</button>
+        <button class="signInButton" id ="signInButton">로그인하기</button>
     </div>
   </div>
 </div>
