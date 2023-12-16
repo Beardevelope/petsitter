@@ -25,7 +25,11 @@ export default class ReservationController {
             const { sort } = req.query;
             const { sitterId } = req.params;
             const reservations = await this.reservationService.getAll(sitterId, sort)
-            res.json(reservations)
+            const reservationsWithUserId = reservations.map(reservation => ({
+                ...reservation,
+                userId: userId
+              }));            
+              res.json(reservationsWithUserId)
         } catch (error) {
             console.error(error)
         }
