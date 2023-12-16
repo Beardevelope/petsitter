@@ -21,12 +21,12 @@ export class ReviewService {
         return review
     }
 
-    put = async ({ content, reviewId }) => {
-        const review = await this.reviewRepository.put({ content, reviewId })
+    put = async ({ content, reservationId }) => {
+        const review = await this.reviewRepository.put({ content, reservationId })
         return review
     }
-    delete = async ({ reviewId }) => {
-        const review = await this.reviewRepository.delete({ reviewId })
+    delete = async ({ reservationId }) => {
+        const review = await this.reviewRepository.delete({ reservationId })
         return review
     }
 }
