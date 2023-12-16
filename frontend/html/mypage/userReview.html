@@ -15,7 +15,7 @@
     </header>
 
     <nav>
-        <a href="#myPets" class="button">내 펫 정보</a>
+        <a href="petInfo.html" class="button">내 펫 정보</a>
         <a href="#reservations" class="button">예약 현황</a>
         <a href="#editProfile" class="button">내 정보 수정</a>
         <a href="#mainMenu" class="button">메인 메뉴</a>
@@ -23,10 +23,21 @@
 
     <div class="profile-card">
         <h2>예약 현황</h2>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <span class="dropbtn_icon">more_horiz</span>
+                View More
+            </button>
+            <div class="dropdown-content">
+                <a href="#">profile</a>
+                <a href="#">write a post</a>
+                <a href="#">settings</a>
+            </div>
+        </div>
         <table class="chart-table" border="1">
             <tr align="center">
                 <p>
-                    <th colspan="3">12월 예약 현황</th>
+                    <th colspan="4">12월 예약 현황</th>
                 </p>
             </tr>
         </table>
@@ -34,7 +45,7 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <h2>리뷰 작성</h2>
-                <textarea id="reviewTextArea" rows="4" cols="30" placeholder="리뷰 내용을 입력하세요"></textarea>
+                <textarea id="reviewTextArea" cols="30" placeholder="리뷰 내용을 입력하세요"></textarea>
                 <br>
                 <button id="add">생성하기</button>
                 <button onclick="deleteReview()" id="delete">삭제하기</button>
