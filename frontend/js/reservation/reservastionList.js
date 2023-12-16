@@ -1,9 +1,8 @@
 
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
-const MOCKSITTERID = new URL(document.location.href).searchParams.get('sitterId') || 1;
-
-const token = sessionStorage.getItem('') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3MTM3MTgsImV4cCI6MTcwMjc1NjkxOH0.SamRN1dCL8dtzdIPxRsLRTYmI73OrQCsb6lSEyuc8O0'; 
+const MOCKSITTERID = 1;
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3MTM3MTgsImV4cCI6MTcwMjc1NjkxOH0.SamRN1dCL8dtzdIPxRsLRTYmI73OrQCsb6lSEyuc8O0'
 
 document.addEventListener("DOMContentLoaded", function () {
   const getReservations = () => {
