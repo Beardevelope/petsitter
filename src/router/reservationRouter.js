@@ -5,9 +5,9 @@ import { needSignin } from "../middleware/signin_middleware.js";
 const reservationRouter = Router();
 const reservationController = new ReservationController();
 
-reservationRouter.post('/',  reservationController.createController);
-reservationRouter.get('/',  reservationController.getAll);
-reservationRouter.put('/:reservationId',  reservationController.updateController);
-reservationRouter.delete('/:reservationId',  reservationController.deleteController);
-reservationRouter.get('/myPage', reservationController.getMyPage);
+reservationRouter.post('/', needSignin, reservationController.createController);
+reservationRouter.get('/:sitterId', needSignin, reservationController.getAll);
+reservationRouter.put('/:reservationId', needSignin, reservationController.updateController);
+reservationRouter.delete('/:reservationId', needSignin, reservationController.deleteController);
+reservationRouter.get('/myPage', needSignin, reservationController.getMyPage);
 export { reservationRouter };

@@ -22,7 +22,7 @@ export default class ReservationRepository {
     getAll = async (sitterId, sort) => {
         try {
             const userData = await prisma.reservation.findMany({
-                where: { sitterId: sitterId },
+                where: { sitterId: +sitterId },
                 orderBy: { createdAt: sort.toUpperCase() === 'ASC' ? 'asc' : 'desc' },
             });
 
@@ -63,6 +63,17 @@ export default class ReservationRepository {
             return userData;
         } catch (error) {
             throw error;
+        }
+    }
+
+    getMyReservation = async (reservationDate) => {
+        try {
+            const reservation = await prisma.reservation.findMany({
+                where: {reservationDate: reservationDate},    
+            });
+            return reservation
+        } catch (error) {
+            throw error
         }
     }
 }
