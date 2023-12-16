@@ -18,6 +18,7 @@ export class UserService {
         userId: user.userId,
         email: user.email,
         role: user.role,
+        sitterId: user.sitters.sitterId,
         career: user.sitters.career,
         name: user.sitters.name,
         createdAt: user.createdAt,
