@@ -8,46 +8,46 @@ datasource db {
 }
 
 model Users {
-  userId    Int      @id @default(autoincrement())
-  email     String    @unique
+  userId    Int            @id @default(autoincrement())
+  email     String         @unique
   password  String   
   role      Role
-  createdAt     DateTime @default(now()) @db.DateTime(3)
-  updatedAt     DateTime? @default(now()) @db.DateTime(3)
+  createdAt     DateTime   @default(now()) @db.DateTime(3)
+  updatedAt     DateTime?  @default(now()) @db.DateTime(3)
 
-  pets      Pets[]
+  pets       Pets[]
   sitters    Sitters?
   reservations Reservation[]
 }
 
 model Sitters {
-  sitterId Int      @id @default(autoincrement())
-  userId   Int      @unique
+  sitterId Int            @id @default(autoincrement())
+  userId   Int            @unique
   career   Int
   name     String   
-  createdAt     DateTime @default(now()) @db.DateTime(3)
+  createdAt     DateTime  @default(now()) @db.DateTime(3)
   updatedAt     DateTime? @default(now()) @db.DateTime(3)
 
-  users    Users    @relation(fields:[userId],references:[userId])
+  users    Users          @relation(fields:[userId],references:[userId])
   reservations Reservation[]
 }
 
 model Pets {
   petId     Int      @id @default(autoincrement())
-  pet_name  String   @db.VarChar(100)
-  type      String   @db.VarChar(100)
+  petName   String   @db.VarChar(100)
+  petType   String   @db.VarChar(100)
   userId    Int
-  createdAt     DateTime @default(now()) @db.DateTime(3)
+  createdAt     DateTime  @default(now()) @db.DateTime(3)
   updatedAt     DateTime? @default(now()) @db.DateTime(3)
   user      Users    @relation(fields: [userId], references: [userId])
 }
 
 model Reservation {
-  reservationId  Int      @id @default(autoincrement())
+  reservationId  Int       @id @default(autoincrement())
   userId         Int
   sitterId        Int 
   reservationDate String   @db.VarChar(191)
-  createdAt      DateTime @default(now()) @db.DateTime(3)
+  createdAt      DateTime  @default(now()) @db.DateTime(3)
   updatedAt      DateTime? @default(now()) @db.DateTime(3)
   users           Users    @relation(fields: [userId], references: [userId])
   sitter          Sitters  @relation(fields: [sitterId], references: [userId])
@@ -55,11 +55,11 @@ model Reservation {
 }
 
 model Review {
-  reviewId      Int      @id @default(autoincrement())
+  reviewId      Int         @id @default(autoincrement())
   reservationId Int
-  content       String   @db.VarChar(191)
-  createdAt     DateTime @default(now()) @db.DateTime(3)
-  updatedAt     DateTime? @default(now()) @db.DateTime(3)
+  content       String      @db.VarChar(191)
+  createdAt     DateTime    @default(now()) @db.DateTime(3)
+  updatedAt     DateTime?   @default(now()) @db.DateTime(3)
 
   reservation   Reservation @relation(fields: [reservationId], references: [reservationId])
 }
