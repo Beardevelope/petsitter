@@ -101,8 +101,7 @@ function deleteReservation(reservationId) {
         method: 'DELETE',
         headers: myHeaders,
     };
-    const deletedRow = document.querySelector(`tr#${reservationId}`);
-    deletedRow.parentNode.removeChild(deletedRow.parentNode);
+
     fetch(createReviewURL, createReviewOptions)
         .then(response => {
             if (!response.ok) {
@@ -111,8 +110,8 @@ function deleteReservation(reservationId) {
             return response.json();
         })
         .then(result => {
-            const deletedRow = document.querySelector(`tr#${reservationId}`);
-            deletedRow.parentNode.removeChild(deletedRow.parentNode);
+            const deletedRow = document.getElementById(reservationId);
+            deletedRow.parentNode.remove(deletedRow.parentNode)
         })
         .catch(error => {
             console.error('Error:', error.message);
