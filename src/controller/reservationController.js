@@ -21,10 +21,15 @@ export default class ReservationController {
 
     getAll = async (req, res) => {
         try {
+            const { userId } = req.user
             const { sort } = req.query;
-            const { petId, sitterId } = req.body;
+            const { sitterId } = req.params;
             const reservations = await this.reservationService.getAll(sitterId, sort)
-            res.json(reservations)
+            const reservationsWithUserId = reservations.map(reservation => ({
+                ...reservation,
+                userId: userId
+              }));            
+              res.json(reservationsWithUserId)
         } catch (error) {
             console.error(error)
         }
