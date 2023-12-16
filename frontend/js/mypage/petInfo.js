@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // 여기에 수정 로직을 추가하세요.
       closeModal();
     });
+
     modal.appendChild(saveButton);
 
     var cancelButton = document.createElement('button');
@@ -112,6 +113,12 @@ document.addEventListener('DOMContentLoaded', function () {
       closeModal();
     });
     modal.appendChild(cancelButton);
+
+    // 취소 버튼 클릭 이벤트 핸들러
+    cancelButton.addEventListener('click', function () {
+      console.log('취소 버튼 클릭됨');
+      closeModal();
+    });
 
     document.body.appendChild(modal);
   }
