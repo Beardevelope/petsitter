@@ -42,7 +42,7 @@
                     <div class="service-container">
                         <nav>
                             <a href="petInfo.html" class="button">내 펫 정보</a>
-                            <a href="" class="button">예약 현황</a>
+                            <a href="userReview.html" class="button">예약 현황</a>
                             <a href="mypage.html" class="button">내 정보 수정</a>
                         </nav>
 
@@ -51,18 +51,17 @@
                                 <section class="pet-registration">
                                     <h2>회원정보 수정</h2>
                                     <form id="petRegistrationForm">
-                                        <label for="name">name:</label>
-                                        <input type="text" id="name" name="name" required />
+                                        <label for="name" id="nameLabel">name:</label>
+                                        <input type="text" id="name" name="name" />
 
-                                        <label for="career">career:</label>
-                                        <input type="text" id="career" name="career" required />
+                                        <label for="career" id="careerLabel">career:</label>
+                                        <input type="text" id="career" name="career" />
 
                                         <label for="password">change password:</label>
                                         <input type="password" id="password" name="password" />
 
                                         <label for="passwordCheck">change password conform:</label>
                                         <input type="password" id="passwordCheck" name="passwordCheck" />
-
                                         <button type="button" id="putBtn" onclick="putInfomation()">수정하기</button>
                                     </form>
                                 </section>

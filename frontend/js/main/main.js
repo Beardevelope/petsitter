@@ -68,7 +68,7 @@ function attach(info) {
                           <td><button class="go" id="${info["sitterId"]}">gogo</button></td>
                           </tr>`;
     list.innerHTML += `${image}`;
-  
+
   } else if (localStorage.getItem('token') === null) {
     let image = `<tr class ="col" id="${info["sitterId"]}">
                           <td>${info["sitterId"]}</td>
@@ -79,7 +79,7 @@ function attach(info) {
                           </tr>`;
     list.innerHTML += `${image}`;
   }
-  
+
 }
 
 // 검색 후 ID값 출력
@@ -87,7 +87,11 @@ function ID() {
   const go = document.querySelectorAll(".go");
   go.forEach(function (go) {
     go.addEventListener("click", function () {
-      alert("id: " + this.id);
+      if (localStorage.getItem("token")) {
+        location.href = "../../html/reservationPage/reservationPageDemo.html?sitterId=" + this.id
+      } else {
+        alert('로그인을 진행해주세요')
+      }
     });
   });
 }

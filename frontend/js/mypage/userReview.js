@@ -64,7 +64,10 @@ fetch("http://localhost:3000/api/review/myPage", requestOptions)
     .then(result => {
         if (result.success) {
             const data = result.data;
-            processReviewData(data);
+            if (data.length > 0) {
+                document.getElementById('nonReservation').style.display = 'none';
+                processReviewData(data);
+            }
         } else {
             console.error(result.message);
         }

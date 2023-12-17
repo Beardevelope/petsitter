@@ -6,7 +6,7 @@ export class ReviewRepository {
             where: {
                 pets: {
                     user: {
-                        userId: 1,
+                        userId,
                     },
                 },
             },

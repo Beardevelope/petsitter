@@ -46,10 +46,15 @@ function openModal(petsData) {
       </tr>
     `;
   });
+  document.getElementById('createPetModal').addEventListener('click', function () {
+    if (petsData.length >= 5) {
+      alert('펫 등록은 최대 5마리만 가능합니다.')
+    } else {
+      showModal()
+    }
+  })
 }
-document.getElementById('createPetModal').addEventListener('click', function () {
-  showModal()
-})
+
 document.getElementById('cancelPet').addEventListener('click', function () {
   hideModal()
 })
@@ -127,8 +132,8 @@ async function createPet() {
         method: 'POST',
         headers: myHeaders,
         body: JSON.stringify({
-          petType: document.getElementById('petName').value,
-          petName: document.getElementById('petType').value
+          petName: document.getElementById('petName').value,
+          petType: document.getElementById('petType').value
         })
       },
     );

@@ -19,13 +19,15 @@
   flex-direction: column;
 }
 
-.pet-registration label {
+.pet-registration label,
+.onlySitter label {
   margin-bottom: 8px;
   font-weight: bold;
   color: #343a40;
 }
 
-.pet-registration input {
+.pet-registration input,
+.onlySitter input {
   padding: 10px;
   margin-bottom: 16px;
   box-sizing: border-box;

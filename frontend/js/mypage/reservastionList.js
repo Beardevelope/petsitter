@@ -1,7 +1,7 @@
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
 const userAPI = 'http://localhost:3000/api/user'
-const MOCKSITTERID = new URL (document.location.href).searchParams.get('sitterId') || 1;
+const MOCKSITTERID = new URL(document.location.href).searchParams.get('sitterId') || 1;
 const token = localStorage.getItem('token');
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = 'http://127.0.0.1:5500/frontend/html/main/main.html'
     });
   };
-  
+
   const getReservations = () => {
     fetch(`${reservastionAPI}/${MOCKSITTERID}?sort=asc`, {
       method: "GET",
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json().then(error => {
           throw new Error(error.message);
         })
-      }    
+      }
     }).then(data => {
       alert('예약을 하셨습니다.');
       getReservations()
@@ -208,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**날짜 고르기 동작*/
-    console.log(isEventRunning)
     tableBody.addEventListener("click", function (event) {
       const clickedCell = event.target.closest("td");
       if (!isEventRunning) {
@@ -231,7 +230,6 @@ document.addEventListener("DOMContentLoaded", function () {
               if (isConfirmed) window.location.href = 'http://127.0.0.1:5500/frontend/html/mypage/petInfo.html';
               return isEventRunning = false
             }
-            console.log('jfjf')
             displayPetModal(pets, date)
           }
           if (reservation && availability === 'cancel') {

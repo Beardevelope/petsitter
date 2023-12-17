@@ -17,6 +17,12 @@ fetch("http://localhost:3000/api/user/info/me", getAPI)
     return response.json();
   })
   .then(result => {
+    if (result.user.role !== 'sitter') {
+      document.getElementById('name').style.display = 'none';
+      document.getElementById('nameLabel').style.display = 'none';
+      document.getElementById('career').style.display = 'none';
+      document.getElementById('careerLabel').style.display = 'none';
+    }
     inputValue(result)
   })
   .catch(error => {
