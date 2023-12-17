@@ -7,7 +7,7 @@ export class AuthController {
   signUp = async (req, res, next) => {
     try {
       const { email, role, career, name, password, rePassword } = req.body;
-      if (!email || !role || !password || !rePassword) {
+      if (!email || !role || !career || !name || !password || !rePassword) {
         const errors = new Error("입력란을 확인해주세요.");
         errors.statusCode = 400;
         throw errors;
