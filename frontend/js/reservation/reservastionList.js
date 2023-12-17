@@ -1,8 +1,7 @@
-
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
-const MOCKSITTERID = 1;
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3MTM3MTgsImV4cCI6MTcwMjc1NjkxOH0.SamRN1dCL8dtzdIPxRsLRTYmI73OrQCsb6lSEyuc8O0'
+const MOCKSITTERID = new URL(document.location.href).searchParams.get('sitterId') || 1;
+const token = sessionStorage.getItem('') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3OTYxMzIsImV4cCI6MTcwMjgzOTMzMn0.J22hmCbz_iOJ7fnw51oNMy5MagjAzT8VGIRWEqOHQu4'; 
 
 document.addEventListener("DOMContentLoaded", function () {
   const getReservations = () => {
@@ -36,6 +35,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }).catch(error => {
       console.error('예약 오류', error)
     })
+  }
+
+  const createReservation = (data) => {
+
+    fetch(reservastionAPI, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    }).then(response => {
+      if (!response.ok) throw new Error('http 오류 ${response}');
+      return response.json();
+    }).then(data => {
+      console.log('예약 성공');
+      alert('예약을 하셨습니다.')
+      getReservations()
+    }).catch(error => {
+      console.error('예약 오류', error)
+    })
+  }
+
+  const deleteReservation = (reservationId) => {
+    fetch(`${reservastionAPI}/${reservationId}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      }
+    }).then(response => {
+      if (!response.ok) throw new Error(`http 오류 ${response}`);
+      return response.json();
+    }).then(data => {
+      console.log('예약 취소 성공');
+      alert('예약을 취소하셨습니다.');
+      getReservations();
+    }).catch(error => {
+      console.error('예약 오류', error)
+    });
   }
 
 
@@ -83,48 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return modal;
   }
-
-  const createReservation = (data) => {
-
-    fetch(reservastionAPI, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-      body: JSON.stringify(data),
-    }).then(response => {
-      if (!response.ok) throw new Error('http 오류 ${response}');
-      return response.json();
-    }).then(data => {
-      console.log('예약 성공');
-      alert('예약을 하셨습니다.')
-      getReservations()
-    }).catch(error => {
-      console.error('예약 오류', error)
-    })
-  }
-
-  const deleteReservation = (reservationId) => {
-    fetch(`${reservastionAPI}/${reservationId}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      }
-    }).then(response => {
-      if (!response.ok) throw new Error(`http 오류 ${response}`);
-      return response.json();
-    }).then(data => {
-      console.log('예약 취소 성공');
-      alert('예약을 취소하셨습니다.');
-      getReservations();
-    }).catch(error => {
-      console.error('예약 오류', error)
-    });
-  }
-
-
-
+  
   function displayReservations(pets, reservations) {
     const tableBody = document.querySelector("#reservationTable tbody")
 
@@ -160,26 +157,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**날짜 고르기 동작*/
-    let isEventRunning = false  /**이벤트 중복 방지, 이것 때문에 한참 해맸네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ*/
-
+    let isEventRunning = false; /**이벤트 중복 방지, 이것 때문에 한참 해맸네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ*/
     tableBody.addEventListener("click", function (event) {
+      const clickedCell = event.target.closest("td");
       if (!isEventRunning) {
 
-        isEventRunning = true;
-
-        const clickedCell = event.target.closest("td");
         const availability = (clickedCell.textContent)
         const date = clickedCell.parentElement.cells[0].textContent;
 
         const reservation = reservations.find((r) => r.reservationDate === date);
+        console.log(clickedCell)
         if (clickedCell) {
           if (!reservation && availability === '예약') {
+            console.log('예약')
+            isEventRunning = true;
+
             displayPetModal(pets, date)
           }
           if (reservation && availability === 'cancel') {
             const isConfirmed = confirm("예약을 취소하시겠습니까?");
             if (isConfirmed) {
+              isEventRunning = true;
+
               deleteReservation(reservation.reservationId)
+            } else {
+              isEventRunning = false
             }
           }
         }
@@ -187,5 +189,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   getReservations();
-
 });

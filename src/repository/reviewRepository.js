@@ -11,6 +11,7 @@ export class ReviewRepository {
                 },
             },
             include: {
+                sitter: true,
                 pets: true,
                 review: true,
             },
@@ -18,11 +19,13 @@ export class ReviewRepository {
                 reservationDate: 'desc',
             },
         });
+        console.log(result);
         // return result
         return result.map(result => ({
+            sitterName: result.sitter.name,
             reservationId: result.reservationId,
             reservationDate: result.reservationDate,
-            // review: result.review
+            petName: result.pets.petName,
             review: result.review !== null ? result.review.content : null,
             reviewId: result.review !== null ? result.review.reviewId : null
         }));
