@@ -108,15 +108,4 @@ export class UserRepository {
     });
     return user;
   };
-
-  //   // 시터 유저 정보 삭제
-  //   deleteUser = async (userId) => {
-  //     const user = await prisma.users.delete({
-  //       where: {
-  //         userId: +userId,
-  //       },
-  //     });
-  //
-  //     return user;
-  //   };
 }

@@ -10,7 +10,6 @@
   top: 0; /* 헤더를 화면 상단으로 이동 */
 }
 
-
 .navbar-interactive {
   width: 90%;
   display: flex;
@@ -29,7 +28,7 @@
 .logo {
   color: blue;
   font-size: 2em;
-  font-family: "Lato";
+  font-family: 'Lato';
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -489,9 +488,6 @@ body {
 #dataTable {
   color: black;
 }
-
-
-
 
 /* 회원가입 모달 */
 

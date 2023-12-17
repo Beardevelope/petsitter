@@ -109,18 +109,4 @@ export class UserService {
 
     return updateUser;
   };
-
-  //   // 시터 유저 정보 삭제
-  //   deletedUser = async (userId) => {
-  //     const user = await this.userRepositpry.findUSerById(userId);
-  //     if (user.userId !== userId) {
-  //       const errors = new Error('삭제할 권한이 없습니다.');
-  //       errors.statusCode = 403;
-  //       throw errors;
-  //     }
-  //
-  //     await this.userRepositpry.deleteUser(userId);
-  //
-  //     return user;
-  //   };
 }

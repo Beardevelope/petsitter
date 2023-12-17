@@ -75,14 +75,14 @@ export class UserController {
         const { password, newPassword, rePassword } = req.body;
 
         if (!password) {
-          const errors = new Error("입력란을 확인해주세요.");
-          errors.statusCode = 404;
+          const errors = new Error("비밀번호를 입력해주세요.");
+          errors.statusCode = 400;
           throw errors;
         }
 
         if (newPassword !== rePassword) {
           const errors = new Error("변경할 비밀번호를 확인해주세요.");
-        errors.statusCode = 404;
+        errors.statusCode = 400;
         throw errors;
         }
         const user = await this.userService.updatedNormalUser(
@@ -105,15 +105,14 @@ export class UserController {
         const { career, name, password, newPassword, rePassword } = req.body;
 
         if (!password) {
-          const errors = new Error("입력란을 확인해주세요.");
-          errors.statusCode = 404;
+          const errors = new Error("비밀번호를 입력해주세요.");
+          errors.statusCode = 400;
           throw errors;
         }
 
         if (newPassword !== rePassword) {
           const errors = new Error("변경할 비밀번호를 확인해주세요.");
-        errors.statusCode = 404;
-        throw errors;
+        errors.statusCode = 400
         }
 
         const user = await this.userService.updatedSitterUser(
@@ -124,16 +123,15 @@ export class UserController {
           newPassword
         );
 
-        const updatedUser = {
+        
+        res.status(200).json({
           userId: user.userId,
+          sitterId: user.sitters.sitterId,
           email: user.email,
           role: user.role,
-          career: user.sitters.career,
-          name: user.sitters.name,
-          createdAt: user.createdAt
-        }
-        res.status(200).json({
-          updatedUser,
+          career: user.sitters.career ?? "빈칸을 채워주세요",
+          name: user.sitters.name ?? "빈칸을 채워주세요",
+          createdAt: user.createdAt,
           message: "수정에 성공하였습니다.",
         });
       }
@@ -147,31 +145,4 @@ export class UserController {
       });
     }
   };
-
-  //   // 시터 유저 정보 삭제
-  //   deleteUser = async (req, res, next) => {
-  //     try {
-  //       const sitter = req.user;
-  //       if (!sitter) {
-  //         const errors = new Error('존재하지 않는 유저입니다.');
-  //         errors.statusCode = 404;
-  //         throw errors;
-  //       }
-  //       const sitterId = sitter.sitterId;
-  //       const user = await this.userService.deletedUser(sitterId);
-  //
-  //       res.status(200).json({
-  //         user,
-  //         message: '삭제에 성공하였습니다.',
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //       if (err.statusCode) {
-  //         return res.status(err.statusCode).json({ message: err.message });
-  //       }
-  //       res.status(500).json({
-  //         message: '서버 에러입니다.',
-  //       });
-  //     }
-  //   };
 }
