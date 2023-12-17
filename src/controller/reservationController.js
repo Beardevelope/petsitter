@@ -16,14 +16,17 @@ export default class ReservationController {
             res.json(reservation)
         } catch (error) {
             console.error(error)
+            res.status(500).json({error: error.message})
         }
     };
 
     getAll = async (req, res) => {
         try {
+            
             const { userId } = req.user
             const { sort } = req.query;
             const { sitterId } = req.params;
+            if (!sitterId) throw new Error('시터를 먼저 선택해주세요.')
             const reservations = await this.reservationService.getAll(sitterId, sort)
             const reservationsWithUserId = reservations.map(reservation => ({
                 ...reservation,
@@ -32,6 +35,7 @@ export default class ReservationController {
             res.json(reservationsWithUserId)
         } catch (error) {
             console.error(error)
+            res.status(500).json({error: error.message})
         }
     };
 
@@ -45,6 +49,7 @@ export default class ReservationController {
             res.json(reservation)
         } catch (error) {
             console.error(error)
+            res.status(500).json({error: error.message})
         }
     };
 
@@ -55,6 +60,7 @@ export default class ReservationController {
             res.json({ messsage: '삭제 성공', reservation })
         } catch (error) {
             console.error(error)
+            res.status(500).json({error: error.message})
         }
     };
 
@@ -70,6 +76,7 @@ export default class ReservationController {
                 data: reservation
             })
         } catch (error) {
+            res.status(500).json({error: error.message})
         }
     };
 }

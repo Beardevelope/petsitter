@@ -1,9 +1,33 @@
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
-const MOCKSITTERID = 2;
-const token = sessionStorage.getItem('') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3OTYxMzIsImV4cCI6MTcwMjgzOTMzMn0.J22hmCbz_iOJ7fnw51oNMy5MagjAzT8VGIRWEqOHQu4';
+const userAPI = 'http://localhost:3000/api/user'
+const MOCKSITTERID = new URL (document.location.href).searchParams.get('sitterId') || 1;
+const token = localStorage.getItem('token');
 
 document.addEventListener("DOMContentLoaded", function () {
+  const getUser = () => {
+    fetch(`${userAPI}/info/me`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    }).then(response => {
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }
+      return response.json()
+
+    }).then(data => {
+      if (data.user.role === 'sitter') alert('일반 유저만 예약이 가능합니다.')
+    }).catch(error => {
+      console.error('예약 오류', error);
+      alert(`서버 에러: ${error.message}`)
+      window.location.href = 'http://127.0.0.1:5500/frontend/html/main/main.html'
+    });
+  };
+  
   const getReservations = () => {
     fetch(`${reservastionAPI}/${MOCKSITTERID}?sort=asc`, {
       method: "GET",
@@ -17,7 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
       getPets(data)
     }).catch(error => {
       console.error('예약 오류', error);
-      alert('예약 불러오기 실패.')
+      if (!MOCKSITTERID) {
+        alert('시터를 먼저 선택해주세요.');
+        window.location.href = 'http://127.0.0.1:5500/frontend/html/main/main.html';
+        return
+      }
+      alert('예약 불러오기 실패')
     })
   }
 
@@ -28,16 +57,25 @@ document.addEventListener("DOMContentLoaded", function () {
         "Authorization": `Bearer ${token}`
       }
     }).then(response => {
-      if (!response.ok) throw new Error('http 오류');
+      const checkPetExist = () => {
+        if (!response.ok) {
+          return response.json().then(error => {
+            throw new Error(error.message);
+          })
+        }
+      }
       return response.json()
     }).then(pets => {
       displayReservations(pets, reservation);
     }).catch(error => {
+      alert(`서버 에러: ${error.message}`)
       console.error('예약 오류', error)
     })
+    return reservation
   }
 
   const createReservation = (data) => {
+    console.log(data)
     fetch(reservastionAPI, {
       method: "POST",
       headers: {
@@ -46,14 +84,16 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       body: JSON.stringify(data),
     }).then(response => {
-      if (!response.ok) throw new Error('http 오류 ${response}');
-      return response.json();
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }    
     }).then(data => {
-      console.log(data)
-      console.log('예약 성공');
-      alert('예약을 하셨습니다.')
+      alert('예약을 하셨습니다.');
       getReservations()
     }).catch(error => {
+      alert(`서버 에러: ${error.message}`)
       console.error('예약 오류', error)
     })
   }
@@ -65,13 +105,17 @@ document.addEventListener("DOMContentLoaded", function () {
         "Authorization": `Bearer ${token}`,
       }
     }).then(response => {
-      if (!response.ok) throw new Error(`http 오류 ${response}`);
-      return response.json();
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }
     }).then(data => {
       console.log('예약 취소 성공');
       alert('예약을 취소하셨습니다.');
       getReservations();
     }).catch(error => {
+      alert(`서버 에러:${error.status} ${error.message}`)
       console.error('예약 오류', error)
     });
   }
@@ -89,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
           createReservation({
             petId: +selectedPetId,
             reservationDate: date,
-            sitterId: MOCKSITTERID
+            sitterId: +MOCKSITTERID
           });
         } else {
           console.log(isEventRunning)
@@ -180,7 +224,14 @@ document.addEventListener("DOMContentLoaded", function () {
           if (!reservation && availability === '예약') {
             console.log('예약')
             isEventRunning = true;
+            if (pets.data.length <= 0) {
+              alert('등록된 펫이 없습니다.');
+              const isConfirmed = confirm('반려동물 등록 페이지로 이동하시겠습니까?');
 
+              if (isConfirmed) window.location.href = 'http://127.0.0.1:5500/frontend/html/mypage/petInfo.html';
+              return isEventRunning = false
+            }
+            console.log('jfjf')
             displayPetModal(pets, date)
           }
           if (reservation && availability === 'cancel') {
@@ -197,5 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  getUser();
   getReservations();
 });

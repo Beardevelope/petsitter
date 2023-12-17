@@ -18,7 +18,7 @@ export default class PetsController {
       console.error(error);
       return res.status(500).json({
         success: false,
-        message: '에러가 발생하였으니, 관리자에게 문의 부탁드립니다.',
+        message: error.message,
       });
     }
   };
