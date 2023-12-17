@@ -2,7 +2,7 @@ const table = document.querySelector('.chart-table');
 
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJhc2RmQGRmLmNvbSIsImlhdCI6MTcwMjUwNDc2OCwiZXhwIjoxNzAzMTA5NTY4fQ.XT7DoLJrI7xPjyZfQbsEEaUy4wG7q_yfRdA4Dhmi_dI");
+myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
 const requestOptions = {
     method: 'GET',
@@ -19,14 +19,14 @@ var dateString = year + '-' + month + '-' + day;
 
 function processReviewData(data) {
     const headerRow = document.createElement('tr');
-    headerRow.setAttribute('align', 'center');
     const headerDateCell = document.createElement('td');
-    headerDateCell.textContent = '날짜';
-    headerRow.appendChild(headerDateCell);
     const headerReviewCell = document.createElement('td');
-    headerReviewCell.textContent = '리뷰';
+    headerRow.setAttribute('align', 'center');
+    headerRow.appendChild(headerDateCell);
     headerRow.appendChild(headerReviewCell);
     table.appendChild(headerRow);
+    headerDateCell.textContent = '날짜';
+    headerReviewCell.textContent = '리뷰';
     data.forEach(item => {
         const row = document.createElement('tr');
         const dateCell = document.createElement('td');

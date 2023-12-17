@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="__next">
+        <div>
+            <div>
+                <div class="wrapper">
+                    <header id="hd">
+                        <div class="desktop hidden-s transparent-header">
+                            <div class="layout">
+                                <div class="logo text-hide">
+                                    <a href="../index.html">pet care</a>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div
+                                        style="border-right: 1px solid rgb(215, 219, 226); padding-right: 18px; margin-right: 18px;">
+                                        <a href="../mypage/mypage.html"
+                                            style="font-size: 14px; letter-spacing: 0.01em; color: rgb(57, 60, 71); font-weight: 500;">마이페이지</a>
+                                    </div>
+                                    <a href="/apply"
+                                        style="width: 105px; height: 40px; border: 1.2px solid rgb(83, 130, 235); display: flex; align-items: center; justify-content: center; border-radius: 20px; box-shadow: rgba(0, 0, 0, 0.12) 2px 2px 5px 0px;">
+                                        로그아웃
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="service-container">
+                        <nav>
+                            <a href="petInfo.html" class="button">내 펫 정보</a>
+                            <a href="" class="button">예약 현황</a>
+                            <a href="mypage.html" class="button">내 정보 수정</a>
+                        </nav>
+
+                        <div class="reservation_table">
+                            <h2 class="title">예약 현황</h2>
+                            <div class="table-card">
+                                <table class="chart-table" border="1">
+                                    <tr align="center">
+                                        <p>
+                                            <th colspan="3">12월 예약 현황</th>
+                                        </p>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-container" id="reviewModal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <h2>리뷰 작성</h2>
+                                    <textarea id="reviewTextArea" rows="4" cols="30"
+                                        placeholder="리뷰 내용을 입력하세요"></textarea>
+                                    <br />
+                                    <button id="add">생성하기</button>
+                                    <button onclick="deleteReview()" id="delete">삭제하기</button>
+                                    <button onclick="cancelReview()" id="cancel">취소하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -13,7 +13,6 @@ export default class PetsService {
 
   // 펫 등록 기능
   registerService = async ({ userId, petName, petType }) => {
-    console.log(userId);
     const pet = await this.petsRepository.registerPet({
       userId,
       petName,
@@ -37,14 +36,7 @@ export default class PetsService {
 
   // 펫 정보 삭제
 
-  deletePet = async (userId, petId) => {
-    const user = await this.petsRepository.findUserById(userId);
-    if (user.userId !== userId) throw new Error('삭제 권한이 없는 유저입니다.');
-
-    await this.petsRepository.deleteUser(userId, petId);
-
-    const deleteUser = await this.petsRepository.findUserById(userId);
-
-    return deleteUser;
+  deletePet = async (petId) => {
+    return await this.petsRepository.deleteUser(petId);
   };
 }

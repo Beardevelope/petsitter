@@ -63,86 +63,32 @@ export class UserController {
   // 유저 정보 수정
   putUser = async (req, res, next) => {
     try {
-      const sitterOrNormal = req.user;
-      if (!sitterOrNormal) {
-        const errors = new Error("존재하지 않는 유저입니다.");
-        errors.statusCode = 404;
-        throw errors;
-      }
-      const userId = sitterOrNormal.userId;
-
-      if (sitterOrNormal.role === "normal") {
-        const { password, newPassword, rePassword } = req.body;
-
-        if (!password) {
-          const errors = new Error("비밀번호를 입력해주세요.");
-          errors.statusCode = 400;
-          throw errors;
-        }
-
-        if (newPassword !== rePassword) {
-          const errors = new Error("변경할 비밀번호를 확인해주세요.");
-        errors.statusCode = 400;
-        throw errors;
-        }
-        const user = await this.userService.updatedNormalUser(
-          userId,
-          password,
-          newPassword
-        );
-        const updatedUser = {
-          userId: user.userId,
-          email: user.email,
-          role: user.role,
-          createdAt: user.createdAt
-        }
-
-        res.status(200).json({
-          updatedUser,
-          message: "수정에 성공하였습니다.",
-        });
-      } else if (sitterOrNormal.role === "sitter") {
-        const { career, name, password, newPassword, rePassword } = req.body;
-
-        if (!password) {
-          const errors = new Error("비밀번호를 입력해주세요.");
-          errors.statusCode = 400;
-          throw errors;
-        }
-
-        if (newPassword !== rePassword) {
-          const errors = new Error("변경할 비밀번호를 확인해주세요.");
-        errors.statusCode = 400
-        }
-
-        const user = await this.userService.updatedSitterUser(
+      const { userId, role } = req.user;
+      const { career, name, password, passwordCheck } = req.body;
+      const updateUser = await this.userService.updateUser(userId,
+        password,
+        passwordCheck)
+      if (updateUser.role == "sitter") {
+        console.log(updateUser)
+        await this.userService.updatedSitterUser(
           userId,
           career,
-          name,
-          password,
-          newPassword
+          name
         );
 
-        
-        res.status(200).json({
-          userId: user.userId,
-          sitterId: user.sitters.sitterId,
-          email: user.email,
-          role: user.role,
-          career: user.sitters.career ?? "빈칸을 채워주세요",
-          name: user.sitters.name ?? "빈칸을 채워주세요",
-          createdAt: user.createdAt,
-          message: "수정에 성공하였습니다.",
-        });
       }
+      res.status(200).json({
+        message: "정보가 수정되었습니다.",
+        data: updateUser
+      });
     } catch (err) {
-      console.log(err);
       if (err.statusCode) {
+        console.log("err.status, err.message", err.statusCode, err.message)
         return res.status(err.statusCode).json({ message: err.message });
       }
       res.status(500).json({
         message: "서버 에러입니다.",
       });
     }
-  };
-}
+  }
+};

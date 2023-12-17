@@ -13,6 +13,9 @@ export default class PetsRepository {
         petName: true,
         petType: true,
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
     return pet;
   };
@@ -20,16 +23,14 @@ export default class PetsRepository {
   // 내 펫 등록
 
   registerPet = async ({ userId, petType, petName }) => {
-    const craetePet = await prisma.pets.create({
+    const createPet = await prisma.pets.create({
       data: {
         userId: userId,
         petType: petType,
         petName: petName,
-        updatedAt: new Date(),
-        createdAt: new Date(),
       },
     });
-    return craetePet;
+    return createPet;
   };
 
   // Pet 정보 수정
@@ -61,7 +62,7 @@ export default class PetsRepository {
 
   deleteUser = async (petId) => {
     const deletePet = await prisma.pets.delete({
-      where: { petId: petId },
+      where: { petId },
     });
     return deletePet;
   };

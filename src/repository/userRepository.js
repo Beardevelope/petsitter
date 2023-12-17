@@ -28,8 +28,7 @@ export class UserRepository {
   findNormalUSerById = async (userId) => {
     const user = await prisma.users.findFirst({
       where: {
-        userId: +userId,
-        role: "normal",
+        userId
       },
       select: {
         userId: true,
@@ -73,7 +72,7 @@ export class UserRepository {
   updateNormalUser = async (userId, hashPassword) => {
     const user = await prisma.users.update({
       where: {
-        userId: +userId,
+        userId
       },
       data: {
         password: hashPassword,
@@ -99,11 +98,11 @@ export class UserRepository {
   updateSittertableUser = async (userId, career, name) => {
     const user = await prisma.sitters.update({
       where: {
-        userId: +userId,
+        userId,
       },
       data: {
-        career,
-        name,
+        career: career !== "" ? Number(career) : undefined,
+        name: name !== "" ? name : undefined,
       },
     });
     return user;

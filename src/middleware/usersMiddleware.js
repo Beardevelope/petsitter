@@ -53,7 +53,6 @@ export const needSignin = async (req, res, next) => {
         createdAt: sitterUser.createdAt,
         updatedAt: sitterUser.updatedAt,
       }
-  
       req.user = newuser;
       next();
     }
