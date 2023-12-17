@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**날짜 고르기 동작*/
-    let isEventRunning = false; /**이벤트 중복 방지, 이것 때문에 한참 해맸네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ*/
+    let isEventRunning = false; 
     tableBody.addEventListener("click", function (event) {
       const clickedCell = event.target.closest("td");
       if (!isEventRunning) {
