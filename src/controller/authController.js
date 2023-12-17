@@ -7,11 +7,7 @@ export class AuthController {
   signUp = async (req, res, next) => {
     try {
       const { email, role, career, name, password, rePassword } = req.body;
-      if (!email || !role || !career || !name || !password || !rePassword) {
-        const errors = new Error("입력란을 확인해주세요.");
-        errors.statusCode = 400;
-        throw errors;
-      }
+      
       const userType = { normal: "normal", sitter: "sitter" };
 
       // 프론트에서 어떻게 나타낼지 고민좀.. 버튼으로? 아니면 입력으로..
@@ -22,6 +18,12 @@ export class AuthController {
       }
       // 일반유저인 경우
       if (role === "normal") {
+        if (!email || !role || !password || !rePassword) {
+          const errors = new Error("입력란을 확인해주세요.");
+          errors.statusCode = 400;
+          throw errors;
+        }
+  
         const user = await this.authService.signUpNormalUser(
           email,
           role,
@@ -29,6 +31,13 @@ export class AuthController {
           rePassword
         );
         return res.status(201).json({ user });
+      }
+
+      // 시터유저인 경우
+      if (!email || !role || !career || !name || !password || !rePassword) {
+        const errors = new Error("입력란을 확인해주세요.");
+        errors.statusCode = 400;
+        throw errors;
       }
 
       const user = await this.authService.signUpSitterUser(
