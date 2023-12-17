@@ -4,7 +4,7 @@ export default class ReservationService {
     reservationRepository = new ReservationRepository();
 
     createService = async ({ petId, reservationDate, sitterId }) => {
-        const reservationAlreadyExists = this.reservationRepository.getMyReservation(reservationDate);
+        const reservationAlreadyExists = this.reservationRepository.getMyReservation(reservationDate, sitterId);
         if ((await reservationAlreadyExists).length > 0) throw new Error ('이미 예약된 날짜입니다.')
         
         const reservation = await this.reservationRepository.createReservation({
