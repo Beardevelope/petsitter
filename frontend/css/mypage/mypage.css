@@ -51,3 +51,8 @@ th {
   margin: 6vh 10vw;
   text-align: center;
 }
+
+.carrer,
+.name {
+  display: none;
+}

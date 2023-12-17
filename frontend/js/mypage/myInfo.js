@@ -25,6 +25,8 @@ function addInfo(info) {
   document.getElementById('email').innerText += info.user.email;
   document.getElementById('role').innerText += info.user.role;
   if (info.user.role === 'sitter') {
+    document.getElementById('name').style.display = 'flex';
+    document.getElementById('carrer').style.display = 'flex';
     document.getElementById('name').innerText += info.user.name;
     document.getElementById('carrer').innerText += info.user.career;
   }
