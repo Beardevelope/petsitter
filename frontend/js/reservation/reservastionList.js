@@ -1,7 +1,7 @@
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
-const MOCKSITTERID = new URL(document.location.href).searchParams.get('sitterId') || 1;
-const token = sessionStorage.getItem('') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3OTYxMzIsImV4cCI6MTcwMjgzOTMzMn0.J22hmCbz_iOJ7fnw51oNMy5MagjAzT8VGIRWEqOHQu4'; 
+const MOCKSITTERID = 2;
+const token = sessionStorage.getItem('') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3OTYxMzIsImV4cCI6MTcwMjgzOTMzMn0.J22hmCbz_iOJ7fnw51oNMy5MagjAzT8VGIRWEqOHQu4';
 
 document.addEventListener("DOMContentLoaded", function () {
   const getReservations = () => {
@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const createReservation = (data) => {
-
     fetch(reservastionAPI, {
       method: "POST",
       headers: {
@@ -50,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
     }).then(data => {
+      console.log(data)
       console.log('예약 성공');
       alert('예약을 하셨습니다.')
       getReservations()
@@ -76,53 +76,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
-  function displayPetModal(pets, date) {
-    const modal = createPetModal(pets.data);
-    modal.style.display = "block";
-
-    modal.addEventListener("click", function (event) {
-      const selectedPetId = event.target.dataset.petId;
-      if (selectedPetId) {
-        createReservation({
-          petId: +selectedPetId,
-          reservationDate: date,
-          sitterId: MOCKSITTERID
-        });
-      }
-      modal.style.display = "none";
-    });
-
-    window.addEventListener("click", function (event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-  }
-
-  function createPetModal(pets) {
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
-
-    const modalContent = document.createElement("div");
-    modalContent.classList.add("modal-content");
-
-    pets.forEach(pet => {
-      const petButton = document.createElement("button");
-      petButton.textContent = pet.petName;
-
-      petButton.dataset.petId = pet.petId;
-      petButton.classList.add("pet-button");
-      modalContent.appendChild(petButton);
-    });
-
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-
-    return modal;
-  }
-  
   function displayReservations(pets, reservations) {
+    let isEventRunning = false;
+
+    function displayPetModal(pets, date) {
+      const modal = createPetModal(pets.data);
+      modal.style.display = "block";
+
+      modal.addEventListener("click", function (event) {
+        const selectedPetId = event.target.dataset.petId;
+        if (selectedPetId) {
+          createReservation({
+            petId: +selectedPetId,
+            reservationDate: date,
+            sitterId: MOCKSITTERID
+          });
+        } else {
+          console.log(isEventRunning)
+          isEventRunning = false
+        }
+
+
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
+
+    function createPetModal(pets) {
+      const modal = document.createElement("div");
+      modal.classList.add("modal");
+
+      const modalContent = document.createElement("div");
+      modalContent.classList.add("modal-content");
+
+      pets.forEach(pet => {
+        const petButton = document.createElement("button");
+        petButton.textContent = pet.petName;
+
+        petButton.dataset.petId = pet.petId;
+        petButton.classList.add("pet-button");
+        modalContent.appendChild(petButton);
+      });
+
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+
+      return modal;
+    }
+
+
     const tableBody = document.querySelector("#reservationTable tbody")
 
     tableBody.innerHTML = "";
@@ -157,12 +164,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**날짜 고르기 동작*/
-    let isEventRunning = false; 
+    console.log(isEventRunning)
     tableBody.addEventListener("click", function (event) {
       const clickedCell = event.target.closest("td");
       if (!isEventRunning) {
 
         const availability = (clickedCell.textContent)
+        console.log(availability)
+
         const date = clickedCell.parentElement.cells[0].textContent;
 
         const reservation = reservations.find((r) => r.reservationDate === date);
