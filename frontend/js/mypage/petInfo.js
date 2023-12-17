@@ -1,132 +1,142 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var petProfiles = document.getElementById('petProfiles');
-  var petsData = [
-    { name: '멍멍이', type: '강아지' },
-    { name: '야옹이', type: '고양이' },
-    // 추가적인 펫 데이터를 필요에 따라 계속 추가할 수 있습니다.
-  ];
-
-  var table = document.createElement('table');
-
-  // Header row
-  var headerRow = document.createElement('tr');
-
-  var headerCell1 = document.createElement('th');
-  headerCell1.textContent = 'No.';
-  headerRow.appendChild(headerCell1);
-
-  var headerCell2 = document.createElement('th');
-  headerCell2.textContent = '펫 이름';
-  headerRow.appendChild(headerCell2);
-
-  var headerCell3 = document.createElement('th');
-  headerCell3.textContent = '펫 종류';
-  headerRow.appendChild(headerCell3);
-
-  var headerCell4 = document.createElement('th');
-  headerRow.appendChild(headerCell4);
-
-  table.appendChild(headerRow);
-
-  // Data rows
-  petsData.forEach(function (pet, index) {
-    var dataRow = document.createElement('tr');
-
-    var dataCell1 = document.createElement('td');
-    dataCell1.textContent = index + 1 + '.';
-    dataRow.appendChild(dataCell1);
-
-    var dataCell2 = document.createElement('td');
-    dataCell2.textContent = pet.name;
-    dataRow.appendChild(dataCell2);
-
-    var dataCell3 = document.createElement('td');
-    dataCell3.textContent = pet.type;
-    dataRow.appendChild(dataCell3);
-
-    var dataCell4 = document.createElement('td');
-
-    var buttonContainer = document.createElement('div');
-    buttonContainer.classList.add('button-container');
-
-    var editButton = document.createElement('button');
-    editButton.textContent = '수정';
-    editButton.classList.add('button');
-    editButton.addEventListener('click', function () {
-      openModal(pet.name, pet.type);
-    });
-    buttonContainer.appendChild(editButton);
-
-    var deleteButton = document.createElement('button');
-    deleteButton.textContent = '삭제';
-    deleteButton.classList.add('button');
-    deleteButton.addEventListener('click', function () {
-      // 여기에 삭제 버튼 클릭 시 동작하는 로직 추가
-      alert('삭제 버튼 클릭됨: ' + pet.name);
-    });
-    buttonContainer.appendChild(deleteButton);
-
-    dataCell4.appendChild(buttonContainer);
-    dataRow.appendChild(dataCell4);
-
-    table.appendChild(dataRow);
+const petList = document.getElementById('petList');
+const table = document.getElementById('petList');
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
+const requestOptions = {
+  method: 'GET',
+  headers: myHeaders
+};
+fetch("http://localhost:3000/api/pet", requestOptions)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(result => {
+    if (result.success) {
+      console.log(result.data)
+      if (result.data == []) {
+        document.getElementById('petProfiles').innerHTML += `<h2>등록된 펫이 없습니다</h2>`
+      } else {
+        openModal(result.data)
+      }
+    } else {
+      console.error(result.message);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error.message);
   });
 
-  petProfiles.appendChild(table);
+function openModal(petsData) {
+  petsData.forEach((pet, index) => {
+    table.innerHTML += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${pet.petName}</td>
+        <td>${pet.petType}</td>
+        <td>
+          <div class="button-container">
+            <button class="button" id="editBtn" onclick="editModal('${pet.petId}', '${pet.petName}', '${pet.petType}')">수정</button>
+            <button class="button" onclick = "deletePet('${pet.petId}')">삭제</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  });
+}
+document.getElementById('createPetModal').addEventListener('click', function () {
+  showModal()
+})
+document.getElementById('cancelPet').addEventListener('click', function () {
+  hideModal()
+})
 
-  function openModal(name, type) {
-    var modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    var nameLabel = document.createElement('label');
-    nameLabel.textContent = '펫 이름:';
-    modal.appendChild(nameLabel);
-
-    var nameInput = document.createElement('input');
-    nameInput.type = 'text';
-    nameInput.value = name;
-    modal.appendChild(nameInput);
-
-    var typeLabel = document.createElement('label');
-    typeLabel.textContent = '펫 종류:';
-    modal.appendChild(typeLabel);
-
-    var typeInput = document.createElement('input');
-    typeInput.type = 'text';
-    typeInput.value = type;
-    modal.appendChild(typeInput);
-
-    var saveButton = document.createElement('button');
-    saveButton.textContent = '수정';
-    saveButton.classList.add('button');
-    saveButton.addEventListener('click', function () {
-      // 여기에 수정 로직을 추가하세요.
-      closeModal();
-    });
-
-    modal.appendChild(saveButton);
-
-    var cancelButton = document.createElement('button');
-    cancelButton.textContent = '취소';
-    cancelButton.classList.add('button');
-    cancelButton.addEventListener('click', function () {
-      closeModal();
-    });
-    modal.appendChild(cancelButton);
-
-    // 취소 버튼 클릭 이벤트 핸들러
-    cancelButton.addEventListener('click', function () {
-      console.log('취소 버튼 클릭됨');
-      closeModal();
-    });
-
-    document.body.appendChild(modal);
+function editModal(petId, petName, petType) {
+  const modal = document.getElementById('createModal');
+  document.getElementById('petName').value = petName;
+  document.getElementById('petType').value = petType;
+  document.getElementById('createPet').addEventListener('click', function () {
+    editPet(petId)
+  })
+  modal.style.display = 'flex';
+}
+async function deletePet(petId) {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/pet/${petId}`,
+      {
+        method: 'DELETE',
+        headers: myHeaders,
+      },
+    );
+    const information = await response.json();
+    alert(information.message);
+    hideModal()
+    location.reload();
+  } catch (err) {
+    alert(err.message);
   }
-
-  function closeModal() {
-    var modal = document.querySelector('.modal');
-    if (modal) {
-      modal.remove();
-    }
+}
+async function editPet(petId) {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/pet/put/${petId}`,
+      {
+        method: 'PUT',
+        headers: myHeaders,
+        body: JSON.stringify({
+          petName: document.getElementById('petName').value,
+          petType: document.getElementById('petType').value
+        })
+      },
+    );
+    const information = await response.json();
+    alert(information.message);
+    hideModal()
+    location.reload();
+  } catch (err) {
+    alert(err.message);
   }
-});
+}
+
+function showModal() {
+  const modal = document.getElementById('createModal');
+  modal.style.display = 'flex';
+  document.getElementById('createPet').addEventListener('click', function () {
+    createPet()
+  })
+}
+function closeModal() {
+  var modal = document.querySelector('.modal');
+  if (modal) {
+    modal.remove();
+  }
+}
+function hideModal() {
+  const modal = document.getElementById('createModal');
+  modal.style.display = 'none';
+}
+async function createPet() {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/pet/post`,
+      {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({
+          petType: document.getElementById('petName').value,
+          petName: document.getElementById('petType').value
+        })
+      },
+    );
+    const information = await response.json();
+    alert(information.message);
+    hideModal()
+    location.reload();
+  } catch (err) {
+    alert(err.message);
+  }
+}

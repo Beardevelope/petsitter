@@ -28,8 +28,11 @@ export default class PetsController {
   registerPet = async (req, res) => {
     try {
       const { petType, petName } = req.body;
-      if (!petType || !petName)
-        throw new Error('반려동물의 종류와, 이름은 필수 기재 사항입니다.');
+      if (!petType || !petName) {
+        const errors = new Error('반려동물의 종류와, 이름은 필수 기재 사항입니다.');
+        errors.statusCode = 400;
+        throw errors;
+      }
 
       const userId = req.user.userId;
 
@@ -43,11 +46,13 @@ export default class PetsController {
         message: '반려동물 등록 완료!',
         data: pet,
       });
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
+      if (err.statusCode) {
+        return res.status(err.statusCode).json({ message: err.message });
+      }
       res.status(500).json({
-        success: false,
-        message: '에러가 발생하였으니, 관리자에게 문의 부탁드립니다.',
+        message: "서버 에러입니다.",
       });
     }
   };
@@ -67,7 +72,10 @@ export default class PetsController {
         petName,
         petType
       );
-      res.send(updatedPet);
+      res.status(200).json({
+        message: "정보가 수정되었습니다.",
+        data: updatedPet
+      });
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -83,11 +91,17 @@ export default class PetsController {
     try {
       const { petId } = req.params;
       const pet = await this.petsService.deletePet(Number(petId));
-      res.send(pet);
+      res.status(200).json({
+        message: "정보가 삭제되었습니다.",
+        data: pet
+      });
     } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: '에러가 발생하였으니, 관리자에게 문의 부탁드립니다.',
+      if (err.statusCode) {
+        console.log("err.status, err.message", err.statusCode, err.message)
+        return res.status(err.statusCode).json({ message: err.message });
+      }
+      res.status(500).json({
+        message: "서버 에러입니다.",
       });
     }
   };

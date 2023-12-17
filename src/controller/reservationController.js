@@ -28,8 +28,8 @@ export default class ReservationController {
             const reservationsWithUserId = reservations.map(reservation => ({
                 ...reservation,
                 userId: userId
-              }));            
-              res.json(reservationsWithUserId)
+            }));
+            res.json(reservationsWithUserId)
         } catch (error) {
             console.error(error)
         }
@@ -51,7 +51,6 @@ export default class ReservationController {
     deleteController = async (req, res) => {
         try {
             const { reservationId } = req.params;
-            console.log("--------------------------------reservationId--------------------------------", reservationId)
             const reservation = await this.reservationService.deleteService(Number(reservationId));
             res.json({ messsage: '삭제 성공', reservation })
         } catch (error) {
