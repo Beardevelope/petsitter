@@ -1,30 +1,42 @@
-/**테이블 css*/
-table {
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이페이지</title>
+</head>
+<style>
+  /**테이블 css*/
+  table {
     border-collapse: collapse;
     width: 50%;
     margin: 20px;
-}
+  }
 
-th,
-td {
+  th,
+  td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
-}
+  }
 
-th {
+  th {
     background-color: #7e7e7e;
-}
-/**테이블 css*/
+  }
+
+  /**테이블 css*/
 
 
 
-body {
+  body {
     font-family: Arial, sans-serif;
-}
+  }
 
-/**modal css*/
-.modal {
+  /**modal css*/
+  .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -34,81 +46,83 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-}
+  }
 
-.modal-content {
+  .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-}
+  }
 
-.close {
+  .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
+  }
 
-.close:hover,
-.close:focus {
+  .close:hover,
+  .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-/**modal css*/
+  }
+
+  /**modal css*/
 
 
-ul {
+  ul {
     list-style: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-}
+  }
 
-li {
+  li {
     margin: 10px;
     cursor: pointer;
     padding: 10px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     text-align: center;
-}
+  }
 
-li:hover {
+  li:hover {
     background-color: #f0f0f0;
-}
-body {
+  }
+
+  body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-}
+  }
 
-header {
+  header {
     background-color: #333;
     color: #fff;
     padding: 1em;
     text-align: center;
     border-bottom: 2px solid #fff;
-}
+  }
 
-nav {
+  nav {
     background-color: #ccc;
     padding: 1em;
     text-align: center;
-}
+  }
 
-nav a {
+  nav a {
     margin: 0 1em;
     text-decoration: none;
     color: #333;
     font-weight: bold;
-}
+  }
 
-nav a.button {
+  nav a.button {
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
@@ -116,67 +130,67 @@ nav a.button {
     color: #fff;
     border-radius: 5px;
     transition: background-color 0.3s;
-}
+  }
 
-nav a.button:hover {
+  nav a.button:hover {
     background-color: #555;
-}
+  }
 
-footer {
+  footer {
     background-color: #333;
     color: #fff;
     padding: 1em;
     text-align: center;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
-}
+  }
 
-footer a {
+  footer a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
-}
+  }
 
-.profile-card {
+  .profile-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px;
     text-align: center;
-}
+  }
 
-/* styles.css */
+  /* styles.css */
 
-body {
+  body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-}
+  }
 
-header {
+  header {
     background-color: #333;
     color: #fff;
     padding: 1em;
     text-align: center;
     border-bottom: 2px solid #fff;
-}
+  }
 
-nav {
+  nav {
     background-color: #ccc;
     padding: 1em;
     text-align: center;
-}
+  }
 
-nav a {
+  nav a {
     margin: 0 1em;
     text-decoration: none;
     color: #333;
     font-weight: bold;
-}
+  }
 
-nav a.button {
+  nav a.button {
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
@@ -184,32 +198,70 @@ nav a.button {
     color: #fff;
     border-radius: 5px;
     transition: background-color 0.3s;
-}
+  }
 
-nav a.button:hover {
+  nav a.button:hover {
     background-color: #555;
-}
+  }
 
-footer {
+  footer {
     background-color: #333;
     color: #fff;
     padding: 1em;
     text-align: center;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
-}
+  }
 
-footer a {
+  footer a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
-}
+  }
 
-.profile-card {
+  .profile-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px;
     text-align: center;
-}
+  }
+</style>
+
+<body>
+  <header>
+    <h1>마이페이지</h1>
+  </header>
+
+  <nav>
+    <a href="../mypage/petInfo.html" class="button">내 펫 정보</a>
+    <a href="./reservationPage.html" class="button">예약 현황</a>
+    <a href="../mypage/putMyInfo.html" class="button">내 정보 수정</a>
+    <a href="../mypage/mypage.html" class="button">메인 메뉴</a>
+  </nav>
+
+  <h1>예약 리스트</h1>
+  <table id="reservationTable">
+    <thead>
+      <tr>
+        <th>날짜</th>
+        <th>예약 가능 여부</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 예약 리스트가 여기에 동적으로 추가될 것입니다. -->
+    </tbody>
+  </table>
+  <footer>
+    <a href="#">Suna Kim</a>
+    <a href="#">Minhee Cho</a>
+    <a href="#">Changi Min</a>
+    <a href="#">Hanvit Lee</a>
+    <p>(주)이브 프시케 검은모자의 김선아</p>
+  </footer>
+
+  <script src="../../js/mypage/reservastionList.js"></script>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
 const userAPI = 'http://localhost:3000/api/user'
-const MOCKSITTERID = new URL (document.location.href).searchParams.get('sitterId');
+const MOCKSITTERID = new URL (document.location.href).searchParams.get('sitterId') || 1;
 const token = localStorage.getItem('token');
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json()
 
     }).then(data => {
-      if (data.user.role === 'sitter') throw new Error('일반 유저만 예약이 가능합니다.')
+      if (data.user.role === 'sitter') alert('일반 유저만 예약이 가능합니다.')
     }).catch(error => {
       console.error('예약 오류', error);
       alert(`서버 에러: ${error.message}`)
@@ -230,7 +230,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
               if (isConfirmed) window.location.href = 'http://127.0.0.1:5500/frontend/html/mypage/petInfo.html';
               return isEventRunning = false
-            } 
+            }
+            console.log('jfjf')
             displayPetModal(pets, date)
           }
           if (reservation && availability === 'cancel') {
