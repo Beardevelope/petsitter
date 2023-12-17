@@ -71,6 +71,7 @@ export default class ReservationController {
                 data: reservation
             })
         } catch (error) {
+            
         }
     };
 }

@@ -1,9 +1,36 @@
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
-const MOCKSITTERID = 2;
-const token = sessionStorage.getItem('') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE3MDI3OTYxMzIsImV4cCI6MTcwMjgzOTMzMn0.J22hmCbz_iOJ7fnw51oNMy5MagjAzT8VGIRWEqOHQu4';
+const userAPI = 'http://localhost:3000/api/user'
+const MOCKSITTERID = new URL (document.location.href).searchParams.get('sitterId') || 5;
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUzLCJyb2xlIjoibm9ybWFsIiwiaWF0IjoxNzAyODI2NTA0LCJleHAiOjE3MDI4Njk3MDR9.RjCbg3dAi6IY-llE1nChFeZ49mUyA1XY-OcKERB1qWo';
+
+//첫번째 회원한테 펫이 없으면은 에러 발생
+//sitterId 예약 에러...
+//에러 처리;
 
 document.addEventListener("DOMContentLoaded", function () {
+  const getUser = () => {
+    fetch(`${userAPI}/info/me`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    }).then(response => {
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }
+      return response.json()
+
+    }).then(data => {
+      if (data.user.role === 'sitter') throw new Error('일반 유저만 예약이 가능합니다.')
+    }).catch(error => {
+      console.error('예약 오류', error);
+      alert(`서버 에러: ${error.message}`)
+      window.location.href = 'http://127.0.0.1:5500/frontend/html/main/main.html'
+    });
+  }
   const getReservations = () => {
     fetch(`${reservastionAPI}/${MOCKSITTERID}?sort=asc`, {
       method: "GET",
@@ -11,14 +38,19 @@ document.addEventListener("DOMContentLoaded", function () {
         "Authorization": `Bearer ${token}`
       }
     }).then(response => {
-      if (!response.ok) throw new Error('http 오류');
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }
       return response.json()
+
     }).then(data => {
       getPets(data)
     }).catch(error => {
       console.error('예약 오류', error);
-      alert('예약 불러오기 실패.')
-    })
+      alert(`서버 에러: ${error.message}`)
+    });
   }
 
   const getPets = (reservation) => {
@@ -28,11 +60,20 @@ document.addEventListener("DOMContentLoaded", function () {
         "Authorization": `Bearer ${token}`
       }
     }).then(response => {
-      if (!response.ok) throw new Error('http 오류');
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }
+      
       return response.json()
     }).then(pets => {
       displayReservations(pets, reservation);
     }).catch(error => {
+      alert(`서버 에러: ${error.message}`)
+      if (error.status === 404 || error.message === '등록한 반려동물이 없습니다.') {
+        window.location.href = 'http://127.0.0.1:5500/frontend/html/mypage/createpet.html'
+      } 
       console.error('예약 오류', error)
     })
   }
@@ -49,11 +90,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!response.ok) throw new Error('http 오류 ${response}');
       return response.json();
     }).then(data => {
-      console.log(data)
-      console.log('예약 성공');
-      alert('예약을 하셨습니다.')
-      getReservations()
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }
     }).catch(error => {
+      alert(`서버 에러: ${error.message}`)
       console.error('예약 오류', error)
     })
   }
@@ -65,13 +108,17 @@ document.addEventListener("DOMContentLoaded", function () {
         "Authorization": `Bearer ${token}`,
       }
     }).then(response => {
-      if (!response.ok) throw new Error(`http 오류 ${response}`);
-      return response.json();
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        })
+      }
     }).then(data => {
       console.log('예약 취소 성공');
       alert('예약을 취소하셨습니다.');
       getReservations();
     }).catch(error => {
+      alert(`서버 에러: ${error.message}`)
       console.error('예약 오류', error)
     });
   }
@@ -89,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
           createReservation({
             petId: +selectedPetId,
             reservationDate: date,
-            sitterId: MOCKSITTERID
+            sitterId: +MOCKSITTERID
           });
         } else {
           console.log(isEventRunning)
@@ -197,5 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  getUser()
   getReservations();
 });
