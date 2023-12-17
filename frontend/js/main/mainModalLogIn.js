@@ -10,18 +10,18 @@ let logInspan = document.getElementsByClassName("logInclose")[0];
 // 버튼 클릭 시 모달 열기
 function logInopenModal() {
     logInmodal.style.display = "block";
+    signUpmodal.style.display = "none";
 }
 
-// 닫기 버튼 클릭 시 모달 닫기
 function logIncloseModal() {
+  // 닫기 버튼 클릭 시 모달 닫기
     logInmodal.style.display = "none";
   window.location.reload();
 }
 
-// 모달 외부 클릭 시 모달 닫기
-window.onclick = function (event) {
-  if (event.target == logInmodal) {
-    logInmodal.style.display = "none";
-    window.location.reload();
+// ESC 키를 눌렀을 때 모달 닫기
+window.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    logInmodal.style.display = 'none';
   }
-};
+});
