@@ -25,3 +25,10 @@ window.onclick = function (event) {
     window.location.reload();
   }
 };
+
+// ESC 키를 눌렀을 때 모달 닫기
+window.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    modal.style.display = 'none';
+  }
+}); 

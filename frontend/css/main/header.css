@@ -1,0 +1,97 @@
+#hd .desktop {
+    top: 0;
+    opacity: 1;
+    z-index: 50;
+    width: 100%;
+    height: 85px;
+    display: flex;
+    /* position: fixed; */
+    background: white;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+#hd .desktop .layout {
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+#hd .desktop .layout .logo img {
+    width: 104px;
+    height: 39px;
+}
+
+#hd .desktop .layout .selected {
+    width: 102px;
+    text-align: center;
+    color: #80ABFF !important;
+    border: 1.2px #80ABFF solid;
+    border-radius: 7px;
+    font-weight: bold;
+    margin-right: 200px;
+}
+
+#hd .mobile {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    position: fixed;
+    background: transparent;
+    height: 60px;
+}
+
+#hd .mobile .nav {
+    width: 77px;
+    height: 60px;
+    left: 5px;
+    padding: 27px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#hd .mobile .nav img {
+    width: 23px;
+    height: 15px;
+}
+
+#hd .mobile .download {
+    right: 6px;
+    width: 60px;
+    height: 60px;
+    padding: 18px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#hd .mobile .download img {
+    width: 34px;
+    height: 34px;
+}
+
+#hd .background-white {
+    background-color: white;
+}
+
+#hd .transparent-header {
+    border-bottom: 0px;
+    padding-bottom: 1px;
+    background-color: transparent;
+}
+
+footer {
+    margin: 3vh 10vw;
+    ;
+}
+
+
+#logo {
+    font-size: xx-large;
+    font-weight: bold;
+}
