@@ -10,7 +10,6 @@
   top: 0; /* 헤더를 화면 상단으로 이동 */
 }
 
-
 .navbar-interactive {
   width: 90%;
   display: flex;
@@ -29,7 +28,7 @@
 .logo {
   color: blue;
   font-size: 2em;
-  font-family: "Lato";
+  font-family: 'Lato';
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -99,7 +98,27 @@
   padding-right: 1.5rem;
 }
 
+.myPage {
+  border-color: blue;
+  border-width: 1px;
+  margin-right: 2vw;
+  padding-left: 1.5rem;
+  border-radius: 45px;
+  padding-right: 1.5rem;
+}
+
 .register {
+  color: white;
+  transition: 0.3s;
+  font-weight: bold;
+  border-color: rgb(0, 170, 255);
+  padding-left: 1.5rem;
+  border-radius: 45px;
+  padding-right: 1.5rem;
+  background-color: rgb(0, 170, 255);
+}
+
+.logOut {
   color: white;
   transition: 0.3s;
   font-weight: bold;
@@ -400,6 +419,208 @@ body {
   cursor: pointer;
 }
 
+/* 회원가입모달 스타일 */
+#signUpmodal {
+  
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.signUpmodal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* 모달 창의 너비를 조정할 수 있습니다. */
+  max-width: 530px; /* 모달 창의 최대 너비를 조정할 수 있습니다. */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.signUpmodal-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px; /* 필요에 따라 조절하세요 */
+}
+
+.signUpmodal-button {
+  font-size: 30px;
+  width: 300px; /* 가로 크기를 조절 (필요에 따라 조절) */
+  height: 80px; /* 세로 크기를 조절 (필요에 따라 조절) */
+  border-radius: 50px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.signUpmodal-button:hover {
+  background-color: #2980b9;
+}
+
+.signUpclose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.signUpclose:hover,
+.signUpclose:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 #dataTable {
   color: black;
+}
+
+/* 회원가입 모달 */
+
+.signup-container {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.signUpLabel {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.signUpInput {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.signUpButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signUpButton:hover {
+  background-color: #2980b9;
+}
+
+.form-select {
+  font-size: 28px;
+  width: 400px;
+}
+
+#careerBox {
+  display: none;
+}
+
+#nameBox {
+  display: none;
+}
+
+
+/* 로그인모달 스타일 */
+#logInmodal {
+  
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logInmodal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* 모달 창의 너비를 조정할 수 있습니다. */
+  max-width: 530px; /* 모달 창의 최대 너비를 조정할 수 있습니다. */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.logInmodal-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px; /* 필요에 따라 조절하세요 */
+}
+
+.logInmodal-button {
+  font-size: 30px;
+  width: 300px; /* 가로 크기를 조절 (필요에 따라 조절) */
+  height: 80px; /* 세로 크기를 조절 (필요에 따라 조절) */
+  border-radius: 50px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.logInmodal-button:hover {
+  background-color: #2980b9;
+}
+
+.logInclose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logInclose:hover,
+.logInclose:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.signInButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

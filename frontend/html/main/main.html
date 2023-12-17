@@ -19,9 +19,14 @@
                   <span class="nav3"><a href="#"></a>Reservation</a></span>
                   <span class="nav5"><a href="#"></a>My Page</a></span>
               </nav>
-              <div class="buttons">
-                  <button class="login button">Log in</button>
-                  <button class="register button">Register</button>
+
+              <div class="buttons" id="buttontop" style="display: none;">
+                <button class="myPage button" onClick="location.href='../mypage/mypage.html'">MyPage</button>
+                <button class="logOut button">log-out</button>
+              </div>
+              <div class="buttons" id="buttonbottom">
+                  <button class="login button" onclick="logInopenModal()">log-in</button>
+                  <button class="register button" onclick="signUpopenModal()">sign-up</button>
               </div>
           </div>
           <div data-thq="thq-burger-menu" class="burger-menu">
@@ -51,7 +56,7 @@
                       <span class="nav51">Blog</span>
                   </nav>
                   <div class="buttons1">
-                      <button class="login1 button"><a href="#">Login</a></button>
+                      <button class="login1 button" >Login</a></button>
                       <button class="register1 button">Register</button>
                   </div>
               </div>
@@ -119,7 +124,81 @@
       </table>
     </div>
   </div>
+
+
+<!-- 회원가입모달 -->
+<div id="signUpmodal" class="signUpmodal">
+    <!-- 회원가입모달 내용 -->
+    <div class="signUpmodal-content">
+      <span class="signUpclose" onclick="signUpcloseModal()">&times;</span>
+      <div class="signup-container">
+        <h2>회원가입</h2>
+            <div class="form-group">
+                <label class="signUpLabel" for="email">email:</label>
+                <input class="signUpInput" type="text" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+            <div class="rolecss">
+              <label class="signUpLabel" for="email">role:</label>
+              <select name="signrole" class="form-select" id="signrole">
+                  <option value="normal">Normal</option>
+                  <option value="sitter">Sitter</option>
+              </select>
+            </div>
+          </div>
+
+            <div class="form-group" id="careerBox">
+                <label class="signUpLabel" for="career">career:</label>
+                <input class="signUpInput" type="text" id="career" name="career" required>
+            </div>
+
+            <div class="form-group" id="nameBox">
+                <label class="signUpLabel" for="name">name:</label>
+                <input class="signUpInput" type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label class="signUpLabel" for="password">password:</label>
+                <input class="signUpInput" type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label class="signUpLabel" for="rePassword">password_confirm:</label>
+                <input class="signUpInput" type="password" id="rePassword" name="rePassword" required>
+            </div>
+
+            <button class="signUpButton"type="submit">가입하기</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 로그인모달 -->
+<div id="logInmodal" class="logInmodal">
+  <!-- 로그인모달 내용 -->
+  <div class="logInmodal-content">
+    <span class="logInclose" onclick="logIncloseModal()">&times;</span>
+  <div class="signup-container">
+    <h2>로그인</h2>
+        <div class="form-group">
+          <label class="signUpLabel" for="loginEmail">이메일:</label>
+          <input class="signUpInput" type="email" id="loginEmail" name="loginEmail" required>
+        </div>
+          <div class="form-group">
+            <label class="signUpLabel" for="loginPassword">비밀번호:</label>
+            <input class="signUpInput" type="password" id="loginPassword" name="loginPassword" required>
+        </div>
+        <button class="signInButton" id ="signInButton">로그인하기</button>
+    </div>
+  </div>
+</div>
 </body>
+
 <script src="../../js/main/mainModal.js"></script>
 <script src="../../js/main/main.js"></script>
+<script src="../../js/main/mainModalSignUp.js"></script>
+<script src="../../js/main/mainSignUp.js"></script>
+<script src="../../js/main/mainModalLogIn.js"></script>
+<script src="../../js/main/mainLogIn.js"></script>
 </html>
