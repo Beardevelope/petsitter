@@ -5,12 +5,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../css/mypage/mypage.css" />
-    <title>마이페이지</title>
+    <link rel="stylesheet" href="../../css/mypage/createpet.css" />
+    <title>펫 등록</title>
   </head>
   <body>
     <header>
-      <h1>마이페이지</h1>
+      <h1>내 펫 등록하기</h1>
     </header>
 
     <nav>
@@ -22,13 +22,19 @@
       <a href="../main/main.html" class="button">메인 메뉴</a>
     </nav>
 
-    <div class="profile-card">
-      <h2>프로필 정보</h2>
-      <p>Email: your-email@example.com</p>
-      <p>Role: Your Role</p>
-      <p>Career: Your Career</p>
-      <p>Name: Your Name</p>
-    </div>
+    <!-- New section for pet registration -->
+    <section class="pet-registration">
+      <h2>펫 등록</h2>
+      <form id="petRegistrationForm">
+        <label for="petName">펫 네임:</label>
+        <input type="text" id="petName" name="petName" required />
+
+        <label for="petType">펫 종류:</label>
+        <input type="text" id="petType" name="petType" required />
+
+        <button type="button" onclick="registerPet()">등록하기</button>
+      </form>
+    </section>
 
     <footer>
       <a href="https://github.com/kim-sunah">Suna Kim</a>
@@ -40,6 +46,4 @@
 
     <script src="../../js/mypage/petInfo.js"></script>
   </body>
-  <!--내정보조회 js파일-->
-  <script src="../../js/mypage/myInfo.js"></script>
 </html>
