@@ -8,7 +8,6 @@ export default class PetsService {
   // 전체 펫 리스트 조회하기
   getAllMyPets = async (userId) => {
     const pet = await this.petsRepository.getAllMyPets(userId);
-    if (pet.length === 0) throw new Error('등록한 반려동물이 없습니다.');
     return pet;
   };
 

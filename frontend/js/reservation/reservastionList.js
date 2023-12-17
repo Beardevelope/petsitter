@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
       alert(`서버 에러: ${error.message}`)
       window.location.href = 'http://127.0.0.1:5500/frontend/html/main/main.html'
     });
-  }
+  };
+  
   const getReservations = () => {
     fetch(`${reservastionAPI}/${MOCKSITTERID}?sort=asc`, {
       method: "GET",
@@ -60,22 +61,21 @@ document.addEventListener("DOMContentLoaded", function () {
         "Authorization": `Bearer ${token}`
       }
     }).then(response => {
-      if (!response.ok) {
-        return response.json().then(error => {
-          throw new Error(error.message);
-        })
+      const checkPetExist = () => {
+        if (!response.ok) {
+          return response.json().then(error => {
+            throw new Error(error.message);
+          })
+        }
       }
-      
       return response.json()
     }).then(pets => {
       displayReservations(pets, reservation);
     }).catch(error => {
       alert(`서버 에러: ${error.message}`)
-      if (error.status === 404 || error.message === '등록한 반려동물이 없습니다.') {
-        window.location.href = 'http://127.0.0.1:5500/frontend/html/mypage/createpet.html'
-      } 
       console.error('예약 오류', error)
     })
+    return reservation
   }
 
   const createReservation = (data) => {
@@ -142,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(isEventRunning)
           isEventRunning = false
         }
-
 
         modal.style.display = "none";
       });
@@ -225,16 +224,20 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(clickedCell)
         if (clickedCell) {
           if (!reservation && availability === '예약') {
-            console.log('예약')
             isEventRunning = true;
+            if (pets.data.length <= 0) {
+              alert('등록된 펫이 없습니다.');
+              const isConfirmed = confirm('반려동물 등록 페이지로 이동하시겠습니까?');
 
+              if (isConfirmed) window.location.href = 'http://127.0.0.1:5500/frontend/html/mypage/petInfo.html';
+              return isEventRunning = false
+            } 
             displayPetModal(pets, date)
           }
           if (reservation && availability === 'cancel') {
             const isConfirmed = confirm("예약을 취소하시겠습니까?");
             if (isConfirmed) {
               isEventRunning = true;
-
               deleteReservation(reservation.reservationId)
             } else {
               isEventRunning = false
@@ -244,6 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  getUser()
+  getUser();
   getReservations();
 });
