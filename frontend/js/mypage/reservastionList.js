@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: myHeaders,
     }).then(async response => {
       const information = await response.json();
-
       if (!response.ok) {
         return response.json().then(error => {
           throw new Error(error.message);

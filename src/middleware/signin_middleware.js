@@ -33,9 +33,8 @@ export const needSignin = async (req, res, next) => {
       accessToken,
       process.env.JWT_ACCESS_TOKEN_SECRET
     );
-    console.log("decodedPayload", decodedPayload);
     const { userId } = decodedPayload;
-
+    console.log(userId);
     // 일치 하는 userEmail이 없는 경우
     const user = await prisma.users.findUnique({
       where: {

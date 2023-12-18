@@ -1,20 +1,15 @@
 const table = document.querySelector('.chart-table');
-
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJhc2RmQGRmLmNvbSIsImlhdCI6MTcwMjUwNDc2OCwiZXhwIjoxNzAzMTA5NTY4fQ.XT7DoLJrI7xPjyZfQbsEEaUy4wG7q_yfRdA4Dhmi_dI");
-
 const requestOptions = {
     method: 'GET',
     headers: myHeaders
 };
-
 var today = new Date();
-
 var year = today.getFullYear();
 var month = ('0' + (today.getMonth() + 1)).slice(-2);
 var day = ('0' + today.getDate()).slice(-2);
-
 var dateString = year + '-' + month + '-' + day;
 
 function processReviewData(data) {
@@ -52,7 +47,6 @@ function processReviewData(data) {
         row.append(...cells, reviewCell);
         table.appendChild(row);
     });
-
 }
 
 fetch("http://localhost:3000/api/review/myPage", requestOptions)
