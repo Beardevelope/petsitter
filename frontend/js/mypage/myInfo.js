@@ -24,13 +24,13 @@ getInfomationFromServer();
 function addInfo(info) {
   document.getElementById('email').innerText += info.user.email;
   document.getElementById('role').innerText += info.user.role;
-  if (info.user.role === 'sitter') {
-    document.getElementById('name').style.display = 'flex';
-    document.getElementById('carrer').style.display = 'flex';
+  console.log(info.user.role == 'sitter')
+  if (info.user.role == 'sitter') {
     document.getElementById('name').innerText += info.user.name;
     document.getElementById('carrer').innerText += info.user.career;
     document.getElementById('petInfo').style.display = 'none';
   } else {
+    console.log('여기는 나오면 안되')
     document.getElementById('name').style.display = 'none';
     document.getElementById('carrer').style.display = 'none';
   }

@@ -17,14 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     throw new Error(error.message);
                 })
             }
+            if (information.data.length > 0) {
+                document.getElementById('title').style.display = "none";
+            }
             setReservation(information.data)
         }).catch(error => {
             alert(`서버 에러: ${error.message}`)
             location.href = '../../html/main/main.html'
         });
     };
-    var tableCardHeight = $('.table-card').height();
-    $('.reveiw-card').height(tableCardHeight);
 
     getUser()
 });
