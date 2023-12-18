@@ -44,7 +44,8 @@ th {
     background-color: #f2f2f2;
 }
 
-.table-card {
+.table-card,
+.reveiw-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,16 +56,12 @@ th {
     width: 35%;
 }
 
+.table-card {
+    margin-left: 10vw;
+}
+
 .reveiw-card {
-    /* background-color: #fff; */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 35%;
-    float: right;
-    margin: 6vh 10vw 6vh 1vw;
-    /* text-align: center; */
-    /* box-sizing: border-box; */
+    margin-right: 10vw;
 }
 
 .display-flex {
