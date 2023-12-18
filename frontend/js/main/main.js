@@ -48,7 +48,8 @@ searchBtn.addEventListener("click", () => {
 function sitterSearch(userInput) {
   list.innerHTML = ``;
   sitter.forEach(function (info) {
-    if (info["email"].toLowerCase().includes(userInput.toLowerCase())) {
+    if (info["name"].toLowerCase().includes(userInput.toLowerCase()) || 
+    info["email"].toLowerCase().includes(userInput.toLowerCase())) {
       // 영화 목록 출력 함수 실행 --> 79번째 줄
       attach(info);
     }
