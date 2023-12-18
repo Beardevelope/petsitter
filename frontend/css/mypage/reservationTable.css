@@ -109,3 +109,11 @@ li {
 li:hover {
     background-color: #f0f0f0;
 }
+
+.review-list li {
+    text-align: left;
+}
+
+.review-list h2 {
+    text-align: center;
+}
