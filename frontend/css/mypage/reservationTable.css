@@ -114,3 +114,9 @@ li:hover {
 .review-list h2 {
     text-align: center;
 }
+
+.review-list h3 {
+
+    margin-top: 5vh;
+    text-align: center;
+}

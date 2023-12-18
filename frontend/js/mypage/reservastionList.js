@@ -29,16 +29,23 @@ document.addEventListener("DOMContentLoaded", function () {
     await fetch('http://localhost:3000/api/review/sitter', {
       method: "GET",
       headers: myHeaders,
-    }).then(response => response.json())
+      body: JSON.stringify({
+        sitterId: MOCKSITTERID
+      })
+    }).then(response =>
+      response.json())
       .then(result =>
-        // console.log(result.data)
         result.data.forEach((review) => {
           review_table.innerHTML += `
           <li>${review.review}</li>
           `
-        })
+        }),
+        document.getElementById('notReview').style.display = 'none',
       )
-      .catch(error => console.log('error', error));
+      .catch(error =>
+        console.log(error.message)
+
+      );
 
   };
   const getReservations = () => {
@@ -249,5 +256,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   getUser();
   getReservations();
-  getReview();
 });

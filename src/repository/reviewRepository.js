@@ -47,7 +47,16 @@ export class ReviewRepository {
                 content: true
             }
         });
-
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log('---------reviews----------', reviews)
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log()
         return reviews.map(review => ({
             reviewId: review.reviewId,
             date: review.reservation.reservationDate,
