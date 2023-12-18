@@ -1,4 +1,8 @@
 footer {
     margin: 3vh 10vw;
-    ;
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+
 }

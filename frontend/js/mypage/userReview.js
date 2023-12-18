@@ -19,38 +19,31 @@ var dateString = year + '-' + month + '-' + day;
 
 function processReviewData(data) {
     const headerRow = document.createElement('tr');
-    const headerDateCell = document.createElement('td');
-    const headerReviewCell = document.createElement('td');
-    headerRow.setAttribute('align', 'center');
-    headerRow.appendChild(headerDateCell);
-    headerRow.appendChild(headerReviewCell);
+    headerRow.innerHTML = `
+      <td align="center">날짜</td>
+      <td align="center">리뷰</td>
+    `;
     table.appendChild(headerRow);
-    headerDateCell.textContent = '날짜';
-    headerReviewCell.textContent = '리뷰';
+
     data.forEach(item => {
         const row = document.createElement('tr');
         const dateCell = document.createElement('td');
         const reviewCell = document.createElement('td');
         dateCell.textContent = item.reservationDate;
+
         if (item.reservationDate > dateString) {
-            reviewCell.id = item.reservationId
-            reviewCell.innerHTML = `<button>예약 취소하기</button>`;
-            row.appendChild(dateCell);
-            row.appendChild(reviewCell);
-            table.appendChild(row);
-            reviewCell.addEventListener('click', function () {
-                deleteReservation(reviewCell.id);
-            });
+            reviewCell.id = item.reservationId;
+            reviewCell.innerHTML = `<button onclick="deleteReservation(${reviewCell.id})">예약 취소하기</button>`;
         } else {
-            reviewCell.innerHTML = item.review || '<button>리뷰 작성하기</button>';
-            reviewCell.id = item.reservationId
-            row.appendChild(dateCell);
-            row.appendChild(reviewCell);
-            table.appendChild(row);
-            reviewCell.addEventListener('click', function () {
-                showReviewModal(reviewCell.textContent, reviewCell.id);
-            });
+            reviewCell.innerHTML = item.review || '<button onclick="showReviewModal(\'' + reviewCell.textContent + '\', \'' + reviewCell.id + '\')">리뷰 작성하기</button>';
         }
+
+        row.innerHTML = `
+        <td>${dateCell.textContent}</td>
+        <td>${reviewCell.innerHTML}</td>
+      `;
+
+        table.appendChild(row);
     });
 }
 
@@ -64,6 +57,9 @@ fetch("http://localhost:3000/api/review/myPage", requestOptions)
     .then(result => {
         if (result.success) {
             const data = result.data;
+            if (result.role == 'sitter') {
+                location.href = '../../html/mypage/reservationPage.html';
+            }
             if (data.length > 0) {
                 document.getElementById('nonReservation').style.display = 'none';
                 processReviewData(data);

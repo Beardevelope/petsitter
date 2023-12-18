@@ -27,6 +27,7 @@ function addInfo(info) {
   if (info.user.role === 'sitter') {
     document.getElementById('name').innerText += info.user.name;
     document.getElementById('carrer').innerText += info.user.career;
+    document.getElementById('petInfo').style.display = 'none';
   } else {
     document.getElementById('name').style.display = 'none';
     document.getElementById('carrer').style.display = 'none';

@@ -22,6 +22,8 @@ fetch("http://localhost:3000/api/user/info/me", getAPI)
       document.getElementById('nameLabel').style.display = 'none';
       document.getElementById('career').style.display = 'none';
       document.getElementById('careerLabel').style.display = 'none';
+    } else {
+      document.getElementById('petInfo').style.display = 'none';
     }
     inputValue(result)
   })

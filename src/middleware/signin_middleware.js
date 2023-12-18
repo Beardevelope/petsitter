@@ -4,6 +4,7 @@ import { prisma } from '../utils/prisma/index.js';
 export const needSignin = async (req, res, next) => {
   try {
     const authorizationHeader = req.headers.authorization;
+    console.log(authorizationHeader)
 
     if (!authorizationHeader) {
       return res.status(400).json({

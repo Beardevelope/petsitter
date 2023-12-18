@@ -1,24 +1,76 @@
-
 /**modal css*/
-.modal {
+p {
+    margin-top: 3vh;
+}
+
+/* Style for the modal container */
+.modal-container {
     display: none;
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
+/* Style for the modal content */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
+    background-color: white;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3vh;
+    text-align: center;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.table-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 6vh 1vw 6vh 10vw;
+    float: left;
+    /* 왼쪽으로 부유시킴 */
+    width: 35%;
+}
+
+.reveiw-card {
+    /* background-color: #fff; */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 35%;
+    float: right;
+    margin: 6vh 10vw 6vh 1vw;
+    /* text-align: center; */
+    /* box-sizing: border-box; */
+}
+
+.display-flex {
+    display: flex;
+}
+
 
 .close {
     color: #aaa;
@@ -33,6 +85,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 /**modal css*/
 
 
@@ -56,4 +109,3 @@ li {
 li:hover {
     background-color: #f0f0f0;
 }
-

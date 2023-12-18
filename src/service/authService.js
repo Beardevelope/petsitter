@@ -99,11 +99,12 @@ export class AuthService {
 
     // checkPwd 함수를 이용한 패스워드 조건을 만족하는가
     if (!checkPwd(password)) {
-      const errors = new Error("비밀번호는 최소 6자리 이상이어야 합니다.");
+      const errors = new Error("비밀번호는 최소 6자리 이상이어야 하며, 특수문자를 사용하실 수 없습니다.");
       errors.statusCode = 400;
       throw errors;
     }
-
+    console.log(password, rePassword)
+    console.log(password !== rePassword)
     // 패스워드, 패스워드 검증 값이 일치하는가
     if (password !== rePassword) {
       const errors = new Error("비밀번호가 일치하지 않습니다.");
@@ -163,10 +164,10 @@ export class AuthService {
     }
     // 토큰의 만료시간 설정 12시간..
     const token = jwt.sign(
-      { 
+      {
         userId: existUser.userId,
         role: existUser.role
-       },
+      },
       process.env.JWT_ACCESS_TOKEN_SECRET,
       {
         expiresIn: "12h",

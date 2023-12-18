@@ -20,7 +20,7 @@ async function signIn() {
     });
 
     const information = await response.json();
-      
+
     if (response.status !== 200) {
       //cry catch 구문에서 throw는 에러가 발생했을 때 catch에다가 error를 던져준다.
       throw new Error(information.message);
@@ -44,7 +44,7 @@ signInButton.addEventListener('click', () => {
 // 로그아웃
 async function logout() {
   localStorage.removeItem('token');
-  window.location.reload();
+  location.href = '../../html/main/main.html'
 }
 
 // 마우스로 클릭하여 로그아웃하기
@@ -52,9 +52,6 @@ logOut.addEventListener('click', () => {
   logout();
   alert("로그아웃에 성공하였습니다.")
 });
-
-
-
 
 if (localStorage.getItem('token') !== null) {
   buttonbottom.style.display = 'none';

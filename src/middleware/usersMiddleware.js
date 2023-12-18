@@ -10,7 +10,6 @@ export const needSignin = async (req, res, next) => {
     });
     return;
   }
-
   // try , catch 를 사용한 이유 --> 에러컨트롤을 해주지 않으면 에러가 발생했을 때 서버가 꺼지는 현상이 생긴다.
   try {
     // 복호화 및 검증

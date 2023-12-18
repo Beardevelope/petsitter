@@ -3,28 +3,28 @@ const petAPI = 'http://localhost:3000/api/pet'
 const userAPI = 'http://localhost:3000/api/user'
 const MOCKSITTERID = new URL(document.location.href).searchParams.get('sitterId') || 1;
 const token = localStorage.getItem('token');
+let role = null
 
 document.addEventListener("DOMContentLoaded", function () {
-  const getUser = () => {
-    fetch(`${userAPI}/info/me`, {
+  const getUser = async () => {
+    await fetch(`${userAPI}/info/me`, {
       method: "GET",
       headers: {
+        "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       }
-    }).then(response => {
+    }).then(async response => {
+      const information = await response.json();
+
       if (!response.ok) {
         return response.json().then(error => {
           throw new Error(error.message);
         })
       }
-      return response.json()
-
-    }).then(data => {
-      if (data.user.role === 'sitter') alert('일반 유저만 예약이 가능합니다.')
+      role = information.user.role
     }).catch(error => {
-      console.error('예약 오류', error);
       alert(`서버 에러: ${error.message}`)
-      window.location.href = 'http://127.0.0.1:5500/frontend/html/main/main.html'
+      location.href = '../../html/main/main.html'
     });
   };
 
@@ -139,8 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(isEventRunning)
           isEventRunning = false
         }
-
-
         modal.style.display = "none";
       });
 
@@ -152,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function createPetModal(pets) {
+      console.log(pets)
       const modal = document.createElement("div");
       modal.classList.add("modal");
 
@@ -211,23 +210,21 @@ document.addEventListener("DOMContentLoaded", function () {
     tableBody.addEventListener("click", function (event) {
       const clickedCell = event.target.closest("td");
       if (!isEventRunning) {
-
         const availability = (clickedCell.textContent)
-        console.log(availability)
-
         const date = clickedCell.parentElement.cells[0].textContent;
-
         const reservation = reservations.find((r) => r.reservationDate === date);
-        console.log(clickedCell)
         if (clickedCell) {
           if (!reservation && availability === '예약') {
-            console.log('예약')
             isEventRunning = true;
+            if (role === "sitter") {
+              alert('일반유저만 예약이 가능합니다.')
+              return isEventRunning = false
+            }
             if (pets.data.length <= 0) {
               alert('등록된 펫이 없습니다.');
               const isConfirmed = confirm('반려동물 등록 페이지로 이동하시겠습니까?');
 
-              if (isConfirmed) window.location.href = 'http://127.0.0.1:5500/frontend/html/mypage/petInfo.html';
+              if (isConfirmed) window.location.href = '../../html/mypage/petInfo.html';
               return isEventRunning = false
             }
             displayPetModal(pets, date)

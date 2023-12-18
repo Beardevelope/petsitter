@@ -8,260 +8,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>마이페이지</title>
 </head>
-<style>
-  /**테이블 css*/
-  table {
-    border-collapse: collapse;
-    width: 50%;
-    margin: 20px;
-  }
-
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-  }
-
-  th {
-    background-color: #7e7e7e;
-  }
-
-  /**테이블 css*/
-
-
-
-  body {
-    font-family: Arial, sans-serif;
-  }
-
-  /**modal css*/
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /**modal css*/
-
-
-  ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  li {
-    margin: 10px;
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    text-align: center;
-  }
-
-  li:hover {
-    background-color: #f0f0f0;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    border-bottom: 2px solid #fff;
-  }
-
-  nav {
-    background-color: #ccc;
-    padding: 1em;
-    text-align: center;
-  }
-
-  nav a {
-    margin: 0 1em;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
-
-  nav a.button {
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-
-  nav a.button:hover {
-    background-color: #555;
-  }
-
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    border-top: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-  }
-
-  footer a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-
-  .profile-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
-  }
-
-  /* styles.css */
-
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    border-bottom: 2px solid #fff;
-  }
-
-  nav {
-    background-color: #ccc;
-    padding: 1em;
-    text-align: center;
-  }
-
-  nav a {
-    margin: 0 1em;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
-
-  nav a.button {
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-
-  nav a.button:hover {
-    background-color: #555;
-  }
-
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    border-top: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-  }
-
-  footer a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-
-  .profile-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
-  }
-</style>
+<link rel="stylesheet" href="../../css/mypage/reservationTable.css">
+<link rel="stylesheet" href="../../css/mypage/nav.css">
+<link rel="stylesheet" href="../../css/styles.99d3cc34.chunk.css">
+<link rel="stylesheet" href="../../css/_app.js.31301bca.chunk.css" />
+<link rel="stylesheet" href="../../css/footer.css">
 
 <body>
-  <header>
-    <h1>마이페이지</h1>
-  </header>
+  <div id="__next">
+    <div>
+      <div>
+        <div class="wrapper">
+          <header id="hd">
+            <div class="desktop hidden-s transparent-header">
+              <div class="layout">
+                <div class="logo text-hide">
+                  <a href="../main/main.html" class="logo" id="logo">pet care</a>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="border-right: 1px solid rgb(215, 219, 226); padding-right: 18px; margin-right: 18px;"><a
+                      href="../mypage/mypage.html"
+                      style="font-size: 14px; letter-spacing: 0.01em; color: rgb(57, 60, 71); font-weight: 500;">마이페이지</a>
+                  </div>
+                  <a class="logOut" style="width: 105px; height: 40px; border: 1.2px solid rgb(83, 130, 235); 
+                display: flex; align-items: center; justify-content: center; border-radius: 20px; 
+                box-shadow: rgba(0, 0, 0, 0.12) 2px 2px 5px 0px; cursor: pointer; color: rgb(83, 130, 235);">
+                    로그아웃
+                  </a>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="service-container">
+            <h1 class="title">예약 리스트</h1>
 
-  <nav>
-    <a href="../mypage/petInfo.html" class="button">내 펫 정보</a>
-    <a href="./reservationPage.html" class="button">예약 현황</a>
-    <a href="../mypage/putMyInfo.html" class="button">내 정보 수정</a>
-    <a href="../mypage/mypage.html" class="button">메인 메뉴</a>
-  </nav>
+            <div class="display-flex">
+              <div class="table-card">
+                <div class="profile-card">
+                  <table id="reservationTable">
+                    <thead>
+                      <tr>
+                        <th>날짜</th>
+                        <th>예약 가능 여부</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- 예약 리스트가 여기에 동적으로 추가될 것입니다. -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="reveiw-card">
+                <div class="review-list">
+                  <li>리뷰</li>
+                  <li>리뷰</li>
+                  <li>리뷰</li>
+                  <li>리뷰</li>
+                </div>
+              </div>
+            </div>
 
-  <h1>예약 리스트</h1>
-  <table id="reservationTable">
-    <thead>
-      <tr>
-        <th>날짜</th>
-        <th>예약 가능 여부</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- 예약 리스트가 여기에 동적으로 추가될 것입니다. -->
-    </tbody>
-  </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer>
-    <a href="#">Suna Kim</a>
-    <a href="#">Minhee Cho</a>
-    <a href="#">Changi Min</a>
-    <a href="#">Hanvit Lee</a>
+    <a href="https://github.com/kim-sunah">Suna Kim</a>
+    <a href="https://minhee5766.tistory.com/">Minhee Cho</a>
+    <a href="https://velog.io/@beardevelop">Changi Min</a>
+    <a href="https://github.com/hanlight910">Hanvit Lee</a>
     <p>(주)이브 프시케 검은모자의 김선아</p>
   </footer>
-
   <script src="../../js/mypage/reservastionList.js"></script>
+  <script src="../../js/logOut.js"></script>
 </body>
 
 </html>

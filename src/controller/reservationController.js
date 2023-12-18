@@ -16,13 +16,13 @@ export default class ReservationController {
             res.json(reservation)
         } catch (error) {
             console.error(error)
-            res.status(500).json({error: error.message})
+            res.status(500).json({ error: error.message })
         }
     };
 
     getAll = async (req, res) => {
         try {
-            
+
             const { userId } = req.user
             const { sort } = req.query;
             const { sitterId } = req.params;
@@ -35,7 +35,7 @@ export default class ReservationController {
             res.json(reservationsWithUserId)
         } catch (error) {
             console.error(error)
-            res.status(500).json({error: error.message})
+            res.status(500).json({ error: error.message })
         }
     };
 
@@ -49,7 +49,7 @@ export default class ReservationController {
             res.json(reservation)
         } catch (error) {
             console.error(error)
-            res.status(500).json({error: error.message})
+            res.status(500).json({ error: error.message })
         }
     };
 
@@ -60,23 +60,22 @@ export default class ReservationController {
             res.json({ messsage: '삭제 성공', reservation })
         } catch (error) {
             console.error(error)
-            res.status(500).json({error: error.message})
+            res.status(500).json({ error: error.message })
         }
     };
 
     getMyPage = async (req, res) => {
         try {
-            console.log(res.locals.user)
-            const { petId } = res.locals.user;
-            console.log("petId", petId)
-            const reservation = await this.reservationService.getMyPage(petId);
+            console.log(req.user)
+            const { userId } = req.user;
+            const reservation = await this.reservationService.getMyPage(userId);
             res.status(201).json({
                 success: true,
                 message: '데이터 조회에 성공하였습니다.',
                 data: reservation
             })
         } catch (error) {
-            res.status(500).json({error: error.message})
+            res.status(500).json({ error: error.message })
         }
     };
 }

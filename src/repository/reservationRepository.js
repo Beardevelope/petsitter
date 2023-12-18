@@ -55,10 +55,16 @@ export default class ReservationRepository {
         return userData
     }
 
-    getMyPage = async (petId) => {
+    getMyPage = async (sitterId) => {
         try {
             const userData = await prisma.reservation.findMany({
-                where: { petId },
+                where: { sitterId },
+                include: {
+                    pets: true,
+                },
+                orderBy: {
+                    reservationDate: 'asc',
+                },
             });
             return userData;
         } catch (error) {
@@ -72,7 +78,7 @@ export default class ReservationRepository {
                 where: {
                     reservationDate: reservationDate,
                     sitterId: sitterId,
-                },    
+                },
             });
             return reservation
         } catch (error) {

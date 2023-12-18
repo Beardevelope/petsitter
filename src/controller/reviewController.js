@@ -7,13 +7,14 @@ export class ReviewController {
 
     myPage = async (req, res, next) => {
         try {
-            const { userId } = req.user;
+            const { userId, role } = req.user;
             const data = await this.reviewService.myPage({
                 userId
             })
             return res.status(201).json({
                 success: true,
                 message: '데이터 조회에 성공하였습니다.',
+                role: role,
                 data
             })
         } catch (err) {
