@@ -16,7 +16,6 @@ fetch("http://localhost:3000/api/pet", requestOptions)
   })
   .then(result => {
     if (result.success) {
-      console.log(result.data)
       if (result.data == []) {
         document.getElementById('petProfiles').innerHTML += `<h2>등록된 펫이 없습니다</h2>`
       } else {

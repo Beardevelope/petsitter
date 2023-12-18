@@ -1,18 +1,18 @@
 const reservastionAPI = 'http://localhost:3000/api/reservations'
 const petAPI = 'http://localhost:3000/api/pet'
 const userAPI = 'http://localhost:3000/api/user'
-const MOCKSITTERID = new URL(document.location.href).searchParams.get('sitterId') || 1;
-const token = localStorage.getItem('token');
+const MOCKSITTERID = new URL(document.location.href).searchParams.get('sitterId')
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
+const review_table = document.getElementById('review-list')
 let role = null
 
 document.addEventListener("DOMContentLoaded", function () {
   const getUser = async () => {
     await fetch(`${userAPI}/info/me`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      }
+      headers: myHeaders,
     }).then(async response => {
       const information = await response.json();
 
@@ -22,18 +22,30 @@ document.addEventListener("DOMContentLoaded", function () {
         })
       }
       role = information.user.role
+
     }).catch(error => {
       alert(`서버 에러: ${error.message}`)
       location.href = '../../html/main/main.html'
     });
-  };
+    await fetch('http://localhost:3000/api/review/sitter', {
+      method: "GET",
+      headers: myHeaders,
+    }).then(response => response.json())
+      .then(result =>
+        // console.log(result.data)
+        result.data.forEach((review) => {
+          review_table.innerHTML += `
+          <li>${review.review}</li>
+          `
+        })
+      )
+      .catch(error => console.log('error', error));
 
+  };
   const getReservations = () => {
     fetch(`${reservastionAPI}/${MOCKSITTERID}?sort=asc`, {
       method: "GET",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
+      headers: myHeaders
     }).then(response => {
       if (!response.ok) throw new Error('http 오류');
       return response.json()
@@ -53,9 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const getPets = (reservation) => {
     fetch(`${petAPI}`, {
       method: "GET",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
+      headers: myHeaders
     }).then(response => {
       const checkPetExist = () => {
         if (!response.ok) {
@@ -78,10 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(data)
     fetch(reservastionAPI, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
+      headers: myHeaders,
       body: JSON.stringify(data),
     }).then(response => {
       if (!response.ok) {
@@ -101,9 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const deleteReservation = (reservationId) => {
     fetch(`${reservastionAPI}/${reservationId}`, {
       method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      }
+      headers: myHeaders
     }).then(response => {
       if (!response.ok) {
         return response.json().then(error => {
@@ -245,4 +250,5 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   getUser();
   getReservations();
+  getReview();
 });
