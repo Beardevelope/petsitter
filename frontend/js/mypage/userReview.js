@@ -6,6 +6,7 @@ const requestOptions = {
     method: 'GET',
     headers: myHeaders
 };
+const notReservation = document.getElementById('nonReservation')
 var today = new Date();
 var year = today.getFullYear();
 var month = ('0' + (today.getMonth() + 1)).slice(-2);
@@ -24,7 +25,9 @@ function processReviewData(data) {
     });
 
     table.appendChild(headerRow);
-
+    if (data.length > 0) {
+        notReservation.style.display = 'none';
+    }
     data.forEach(item => {
         const row = document.createElement('tr');
         const cells = ['sitterName', 'reservationDate', 'petName'].map(key => {
