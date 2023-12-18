@@ -2,7 +2,7 @@ const table = document.querySelector('.chart-table');
 
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
+myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJhc2RmQGRmLmNvbSIsImlhdCI6MTcwMjUwNDc2OCwiZXhwIjoxNzAzMTA5NTY4fQ.XT7DoLJrI7xPjyZfQbsEEaUy4wG7q_yfRdA4Dhmi_dI");
 
 const requestOptions = {
     method: 'GET',
@@ -19,32 +19,40 @@ var dateString = year + '-' + month + '-' + day;
 
 function processReviewData(data) {
     const headerRow = document.createElement('tr');
-    headerRow.innerHTML = `
-      <td align="center">날짜</td>
-      <td align="center">리뷰</td>
-    `;
+    headerRow.setAttribute('align', 'center');
+    const headerCells = ['시터', '날짜', '펫', '리뷰'];
+
+    headerCells.forEach(text => {
+        const cell = document.createElement('td');
+        cell.textContent = text;
+        headerRow.appendChild(cell);
+    });
+
     table.appendChild(headerRow);
 
     data.forEach(item => {
         const row = document.createElement('tr');
-        const dateCell = document.createElement('td');
-        const reviewCell = document.createElement('td');
-        dateCell.textContent = item.reservationDate;
+        const cells = ['sitterName', 'reservationDate', 'petName'].map(key => {
+            const cell = document.createElement('td');
+            cell.textContent = item[key];
+            return cell;
+        });
 
+        const reviewCell = document.createElement('td');
         if (item.reservationDate > dateString) {
             reviewCell.id = item.reservationId;
-            reviewCell.innerHTML = `<button onclick="deleteReservation(${reviewCell.id})">예약 취소하기</button>`;
+            reviewCell.innerHTML = `<button>예약 취소하기</button>`;
+            reviewCell.addEventListener('click', () => deleteReservation(reviewCell.id));
         } else {
-            reviewCell.innerHTML = item.review || '<button onclick="showReviewModal(\'' + reviewCell.textContent + '\', \'' + reviewCell.id + '\')">리뷰 작성하기</button>';
+            reviewCell.innerHTML = item.review || '<button>리뷰 작성하기</button>';
+            reviewCell.id = item.reservationId;
+            reviewCell.addEventListener('click', () => showReviewModal(reviewCell.textContent, reviewCell.id));
         }
 
-        row.innerHTML = `
-        <td>${dateCell.textContent}</td>
-        <td>${reviewCell.innerHTML}</td>
-      `;
-
+        row.append(...cells, reviewCell);
         table.appendChild(row);
     });
+
 }
 
 fetch("http://localhost:3000/api/review/myPage", requestOptions)
@@ -57,13 +65,7 @@ fetch("http://localhost:3000/api/review/myPage", requestOptions)
     .then(result => {
         if (result.success) {
             const data = result.data;
-            if (result.role == 'sitter') {
-                location.href = '../../html/mypage/reservationPage.html';
-            }
-            if (data.length > 0) {
-                document.getElementById('nonReservation').style.display = 'none';
-                processReviewData(data);
-            }
+            processReviewData(data);
         } else {
             console.error(result.message);
         }
@@ -77,7 +79,7 @@ function showReviewModal(reviewContent, reservationId) {
     let reviewAdd = document.getElementById('add')
     let reviewDelete = document.getElementById('delete')
 
-    if (reviewContent != "리뷰를 작성해주세요") {
+    if (reviewContent != "리뷰 작성하기") {
         reviewAdd.innerText = "수정하기"
         reviewAdd.addEventListener('click', () =>
             updateReview()
@@ -156,6 +158,10 @@ function createReview() {
     const reviewTextArea = document.getElementById('reviewTextArea');
     const reviewContent = reviewTextArea.value;
     const reservationClass = reviewTextArea.class;
+    if (reviewContent == '리뷰 작성하기') {
+        alert('리뷰 내용을 입력해주세요')
+        return
+    }
 
     const createReviewURL = 'http://localhost:3000/api/review';
     const createReviewOptions = {
