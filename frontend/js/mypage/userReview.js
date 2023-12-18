@@ -57,11 +57,18 @@ fetch("http://localhost:3000/api/review/myPage", requestOptions)
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
+        console.log(response)
         return response.json();
     })
     .then(result => {
+        console.log(result);
         if (result.success) {
             const data = result.data;
+            console.log(data)
+            if (result.role == 'sitter') {
+                location.href = '../../html/mypage/reservationPage.html'
+            }
+
             processReviewData(data);
         } else {
             console.error(result.message);
